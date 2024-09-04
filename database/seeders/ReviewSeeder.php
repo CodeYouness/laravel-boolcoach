@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -14,16 +15,16 @@ class ReviewSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        $datas = [];
+
+        $coaches_id = User::all()->pluck("id");
 
         for ($i=0; $i < 10; $i++) {
-            $datas[] = [
-                'name' => $faker->name(),
+            $data = [
+                'coach_id' => $faker->randomElement($coaches_id),
+                'username' => $faker->name(),
+                'email' => $faker->email(),
                 'description' => $faker->paragraph()
             ];
-        }
-
-        foreach ($datas as $data) {
             Review::create($data);
         }
     }

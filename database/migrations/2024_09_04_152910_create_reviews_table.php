@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger("coach_id");
             $table->foreign("coach_id")->references("id")->on("users");
             $table->string('username', 50);
+            $table->string('email', 50);
             $table->text('description');
             $table->timestamps();
         });
