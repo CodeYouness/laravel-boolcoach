@@ -6,19 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Coach extends Model
+class Coach extends User
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $fillable = [
-        'real_name',
+        'name',
+        'surname',
         'nickname',
         'email',
         'language',
         'password',
         'summary',
+        'img_url',
         'price',
-        'is_available'
+        'is_available',
     ];
 }
