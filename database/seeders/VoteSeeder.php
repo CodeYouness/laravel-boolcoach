@@ -26,3 +26,4 @@ class VoteSeeder extends Seeder
         }
     }
 }
+
