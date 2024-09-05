@@ -22,12 +22,14 @@
                     <td>{{ $user->nickname }}</td>
                     <td>{{ $user->language }}</td>
                     <td>{{ $user->price }}</td>
-                    <td><a href="{{ route('users.show', $user) }}" class="btn btn-primary">Show</a>
-                        @if (auth()->id() === $user->id)
+                    @if (auth()->id() === $user->id)
+                        <td><a href="{{ route('users.show', $user) }}" class="btn btn-primary">Show</a>
                             <a href="{{ route('users.edit', $user) }}" class="btn btn-warning">Edit</a>
                             <a href="{{ route('users.destroy', $user) }}" class="btn btn-danger">Delete</a>
-                        @endif
-                    </td>
+                        </td>
+                        @else <td>No action available</td>
+                    @endif
+
                 </tr>
             @endforeach
         </tbody>
