@@ -11,6 +11,7 @@
                 <th>Nickname</th>
                 <th>Language</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@
                     <td>{{ $user->nickname }}</td>
                     <td>{{ $user->language }}</td>
                     <td>{{ $user->price }}</td>
+                    <td><a href="{{ route('users.show', $user) }}" class="btn btn-primary">Show</a></td>
                 </tr>
             @endforeach
         </tbody>
