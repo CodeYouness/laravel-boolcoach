@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
-        @yiled('page-title', 'Boolcoach')
+        @yield('page-title', 'Boolcoach')
     </title>
 
     <!-- Fonts -->

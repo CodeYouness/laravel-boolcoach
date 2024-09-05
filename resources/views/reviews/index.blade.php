@@ -1,6 +1,6 @@
 @extends('layouts.users')
 @section('page-title')
-    Dashboard
+    Reviews
 @endsection
 @section('main-content')
     <div class="container">
