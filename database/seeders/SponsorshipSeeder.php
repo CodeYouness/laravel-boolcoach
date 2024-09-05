@@ -17,17 +17,17 @@ class SponsorshipSeeder extends Seeder
             [
                 "name" => "Basic",
                 "price" => 2.99,
-                "time" => "01:00:00:00",
+                "time" => 24,
             ],
             [
                 "name" => "Standard",
                 "price" => 5.99,
-                "time" => "03:00:00:00",
+                "time" => 72,
             ],
             [
                 "name" => "Premium",
                 "price" => 9.99,
-                "time" => "06:00:00:00",
+                "time" => 144,
             ]
         ];
 

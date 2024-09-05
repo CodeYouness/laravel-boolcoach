@@ -20,8 +20,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('sponsorship_id')->references('id')->on('sponsorships')->onDelete('cascade');
 
-            $table->time("start_date");
-            $table->time("end_date");
+            $table->dateTime("start_date");
+            $table->dateTime("end_date");
             $table->timestamps();
         });
     }
