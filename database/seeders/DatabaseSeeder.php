@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             MessageSeeder::class,
             GameUserSeeder::class,
             SponsorshipUserSeeder ::class,
+            UserVoteSeeder::class
         ]);
     }
 }
