@@ -47,7 +47,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        if (auth()->id() === $user->id) {
+            return view('users.edit', compact('user'));
+        } else {
+            return 'Non puoi modificare gli account di altri utenti';
+        }
     }
 
     /**
@@ -71,6 +75,7 @@ class UserController extends Controller
             $user->delete();
             return redirect()->route('users.index');
         } else {
-        return 'Non puoi cancellare gli account altrui';}
+            return 'Non puoi cancellare gli account altrui';
+        }
     }
 }
