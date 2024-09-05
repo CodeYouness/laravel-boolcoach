@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Game;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +14,8 @@ class UserController extends Controller
      */
     public function index(User $users)
     {
-        $users = User::all();
+        $users = $users->all();
+
         return view('users.index', compact('users'));
     }
 
