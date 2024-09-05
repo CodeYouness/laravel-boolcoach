@@ -32,7 +32,7 @@
                     <ul class="navbar-nav me-auto">
                         @auth
                             <li class="nav-item mx-2">
-                                <a href="#" class="text-decoration-none text-dark">Coaches</a>
+                                <a href="{{route('users.index')}}" class="text-decoration-none text-dark">Coaches</a>
                             </li>
                         @endauth
                     </ul>
