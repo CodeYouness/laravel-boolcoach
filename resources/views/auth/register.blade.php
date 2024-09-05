@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="nickname" class="col-md-4 col-form-label text-md-end">{{ __('ickname') }}</label>
+                            <label for="nickname" class="col-md-4 col-form-label text-md-end">{{ __('Nickname') }}</label>
 
                             <div class="col-md-6">
                                 <input id="nickname" type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname" value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('price') }}</label>
+                            <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
                                 <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="language" class="col-md-4 col-form-label text-md-end">{{ __('language') }}</label>
+                            <label for="language" class="col-md-4 col-form-label text-md-end">{{ __('Language') }}</label>
 
                             <div class="col-md-6">
                                 <input id="language" type="text" class="form-control @error('language') is-invalid @enderror" name="language" value="{{ old('language') }}" required autocomplete="language" autofocus>
