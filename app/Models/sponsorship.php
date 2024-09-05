@@ -14,4 +14,8 @@ class sponsorship extends Model
         'price',
         'time',
     ];
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }
