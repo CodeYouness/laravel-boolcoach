@@ -15,7 +15,7 @@ class GameUserSeeder extends Seeder
     public function run(Faker $faker): void
     {
         $users = User::all();
-        $game_ids = Game::all()->pluck('id')->toArray();
+        $game_ids = Game::all()->pluck('id');
 
         foreach ($users as $user) {
             $random_game_ids = $faker->randomElements($game_ids, $faker->numberBetween(1, 3));
