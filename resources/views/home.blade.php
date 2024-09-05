@@ -16,10 +16,10 @@
 
                     <ul class="list-unstyled">
                         <li>
-                            <a href="#">Check reviews</a>
+                            <a href="{{route('reviews.index')}}" class="text-decoration-none text-black">Check reviews</a>
                         </li>
                         <li>
-                            <a href="#">Check sponsorships</a>
+                            <a href="#" class="text-decoration-none text-black">Check sponsorships</a>
                         </li>
                     </ul>
                 </div>
