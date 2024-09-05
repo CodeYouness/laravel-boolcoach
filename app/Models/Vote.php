@@ -10,4 +10,8 @@ class Vote extends Model
     use HasFactory;
 
     protected $fillable = ['lable', 'value'];
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }

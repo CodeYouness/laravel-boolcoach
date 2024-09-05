@@ -67,4 +67,8 @@ class User extends Authenticatable
     public function sponsorships(){
         return $this->belongsToMany(Sponsorship::class);
     }
+
+    public function votes(){
+        return $this->belongsToMany(Vote::class);
+    }
 }
