@@ -65,6 +65,12 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+
+
+        if (auth()->id() === $user->id) {
+            $user->delete();
+            return redirect()->route('users.index');
+        } else {
+        return 'Non puoi cancellare gli account altrui';}
     }
 }
