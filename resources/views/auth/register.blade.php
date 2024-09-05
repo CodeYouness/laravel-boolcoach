@@ -26,6 +26,63 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('Surname') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surnname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+
+                                @error('surname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="nickname" class="col-md-4 col-form-label text-md-end">{{ __('ickname') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="nickname" type="text" class="form-control @error('nickname') is-invalid @enderror" name="surnname" value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
+
+                                @error('nickname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('price') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="surnname" value="{{ old('price') }}" required autocomplete="price" autofocus>
+
+                                @error('price')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="language" class="col-md-4 col-form-label text-md-end">{{ __('language') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="language" type="text" class="form-control @error('language') is-invalid @enderror" name="surnname" value="{{ old('language') }}" required autocomplete="language" autofocus>
+
+                                @error('language')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -60,6 +117,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
