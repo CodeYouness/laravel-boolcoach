@@ -14,4 +14,8 @@ class Game extends Model
         'genre',
         'img',
     ];
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }
