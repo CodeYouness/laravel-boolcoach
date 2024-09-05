@@ -12,7 +12,7 @@ class Review extends Model
 
     protected $fillable = [
         'coach_id',
-        'name',
+        'username',
         'email',
         'description',
     ];
