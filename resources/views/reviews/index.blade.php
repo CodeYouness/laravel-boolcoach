@@ -8,7 +8,7 @@
             <tr>
                 <th>ID</th>
                 <th>Date</th>
-                <th>Name</th>
+                <th>Username</th>
                 <th>Email</th>
                 <th>Description</th>
             </tr>
@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ $review->id }}</td>
                     <td>{{ $review->created_at }}</td>
-                    <td>{{ $review->name }}</td>
+                    <td>{{ $review->username }}</td>
                     <td>{{ $review->email }}</td>
                     <td>{{ $review->description }}</td>
                 </tr>
