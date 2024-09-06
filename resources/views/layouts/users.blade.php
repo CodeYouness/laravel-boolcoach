@@ -10,11 +10,14 @@
 </head>
 
 <body>
-    @include('partials.header')
-
-    @yield('main-content')
-
-    @include('partials.footer')
+    <div class="container-fluid d-flex">
+        @include('partials.side-nav')
+        <main id="page-main-section" class="d-flex flex-column">
+            @include('partials.header')
+            @yield('main-content')
+            @include('partials.footer')
+        </main>
+    </div>
 </body>
 
 </html>
