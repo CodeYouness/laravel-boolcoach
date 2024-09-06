@@ -61,7 +61,7 @@ class User extends Authenticatable
     }
 
     public function games(){
-        return $this->belongsToMany(Game::class);
+        return $this->belongsToMany(Game::class)->withPivot('rank');
     }
 
     public function sponsorships(){
