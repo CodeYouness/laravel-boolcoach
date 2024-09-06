@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">Welcome back</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,17 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-3">
+                            <a href="{{route('reviews.index')}}" class="text-decoration-none text-black">Check reviews</a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#" class="text-decoration-none text-black">Check sponsorships</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-decoration-none text-black">Check messages</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
