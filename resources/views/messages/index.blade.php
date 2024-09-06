@@ -3,33 +3,9 @@
     Reviews
 @endsection
 @section('main-content')
-    <div class="container">
-        <table class="table table-striped table-hover text-center">
-            <thead class="table-info">
-                <tr>
-                    <th>ID</th>
-                    <th>Date</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($messages as $message)
-                    <tr>
-                        <td>{{ $message->id }}</td>
-                        <td>{{ $message->created_at }}</td>
-                        <td></td>
-                        <td>{{ $message->email }}</td>
-                        <td>{{ $message->content }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-    <div class="container">
+    <div class="container m-4">
         @foreach ($messages as $message)
-        <div class="card mb-3">
+        <div class="card mb-3 me-4">
             <div class="row g-0">
             <div class="col-md-4 my-auto">
                 <div class="row">
