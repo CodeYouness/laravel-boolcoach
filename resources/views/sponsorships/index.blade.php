@@ -4,24 +4,25 @@
 @endsection
 @section('main-content')
     <div class="container">
+        <h3 class="text-center">{{ $user->name }}</h3>
         <table class="table table-striped table-hover text-center">
             <thead class="table-info">
                 <tr>
-                    <th>Username</th>
                     <th>Piano</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $user->name }}</td>
+
+                    @foreach($user->sponsorships as $sponsorship)
+                                    <td>{{ $sponsorship->name }}</td>
+                                    <td>{{ $sponsorship->pivot->start_date }}</td>
+                                    <td>{{ $sponsorship->pivot->end_date }}</td>
+                                @endforeach
 
                         @if($user->sponsorships->isNotEmpty())
                             <ul>
-                                @foreach($user->sponsorships as $sponsorship)
-                                    <li>{{ $sponsorship->name }}</li>
-                                    <li>{{ $sponsorship->pivot->start_date }}</li>
-                                    <li>{{ $sponsorship->pivot->end_date }}</li>
-                                @endforeach
+
                             </ul>
                         @else
                             Nessuna sponsorship
