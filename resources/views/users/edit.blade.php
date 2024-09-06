@@ -20,7 +20,7 @@
                                 <div class="col-md-9">
                                     <input id="registration-form-name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" minlength="3"
-                                        maxlength="20" name="name" value="{{ old('name') }}" required
+                                        maxlength="20" name="name" value="{{ old('name', $user->name) }}" required
                                         autocomplete="name" autofocus>
                                     <span class="error" id="registration-form-name-error"></span>
 
@@ -40,7 +40,7 @@
                                 <div class="col-md-9">
                                     <input id="registration-form-surname" type="text"
                                         class="form-control @error('surname') is-invalid @enderror" minlength="3"
-                                        maxlength="20" name="surname" value="{{ old('surname') }}" required
+                                        maxlength="20" name="surname" value="{{ old('surname', $user->surname) }}" required
                                         autocomplete="surname" autofocus>
                                     <span class="error" id="registration-form-surname-error"></span>
 
@@ -60,7 +60,7 @@
                                 <div class="col-md-9">
                                     <input id="registration-form-nickname" type="text"
                                         class="form-control @error('nickname') is-invalid @enderror" name="nickname"
-                                        minlength="3" maxlength="20" value="{{ old('nickname') }}" required
+                                        minlength="3" maxlength="20" value="{{ old('nickname', $user->nickname) }}" required
                                         autocomplete="nickname" autofocus>
                                     <span class="error" id="registration-form-nickname-error"></span>
 
@@ -80,7 +80,7 @@
                                 <div class="col-md-9">
                                     <input id="registration-form-price" type="text"
                                         class="form-control @error('price') is-invalid @enderror" name="price"
-                                        value="{{ old('price') }}" required autocomplete="price" autofocus>
+                                        value="{{ old('price', $user->price) }}" required autocomplete="price" autofocus>
                                     <span class="error" id="registration-form-price-error"></span>
 
                                     @error('price')
@@ -99,7 +99,7 @@
                                 <div class="col-md-9">
                                     <input id="registration-form-language" type="text"
                                         class="form-control @error('language') is-invalid @enderror" name="language"
-                                        value="{{ old('language') }}" required autocomplete="language" autofocus>
+                                        value="{{ old('language', $user->language) }}" required autocomplete="language" autofocus>
                                     <span class="error" id="registration-form-language-error"></span>
 
                                     @error('language')
@@ -118,7 +118,7 @@
                                 <div class="col-md-9">
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email">
+                                        value="{{ old('email', $user->email) }}" required autocomplete="email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -137,7 +137,8 @@
                                         aria-label="Basic checkbox toggle button group">
                                         @foreach ($games as $game)
                                             <input name="games[]" type="checkbox" class="btn-check"
-                                                id="selected-check-{{ $game->id }}" value="{{ $game->id }}">
+                                                id="selected-check-{{ $game->id }}" value="{{ $game->id }}" @checked($game->id)>
+
                                             <label class="btn btn-outline-danger p-1 mx-1"
                                                 for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
                                         @endforeach
