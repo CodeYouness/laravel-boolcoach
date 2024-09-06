@@ -64,6 +64,11 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $img_path = $request->file('image')->store('uploads', 'public');
+            $data['img_url'] = $img_path;
+        }
         $user->update($data);
         return redirect()->route('users.show', $user);
     }
@@ -73,7 +78,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-
 
         if (auth()->id() === $user->id) {
             $user->delete();

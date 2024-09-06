@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
             'nickname' => ['required', 'string', 'max:255'],
             'language' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric'],
-            'url_img' => ['nullable', 'string', 'max:2083'],
+            'img_url' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'summary' => ['nullable', 'string', 'max:5000']
         ];
     }
