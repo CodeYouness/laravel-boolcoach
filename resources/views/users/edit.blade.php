@@ -10,12 +10,14 @@
                     <div class="card-header">Edit {{ $user->nickname }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
 
                             {{-- ! NAME INPUT --}}
                             <div class="row mb-3">
-                                <label for="name" class="col-md-2 col-form-label text-md-end">{{ __('Name') }}</label>
+                                <label for="name"
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Name') }}</label>
 
                                 <div class="col-md-9">
                                     <input id="registration-form-name" type="text"
@@ -60,8 +62,8 @@
                                 <div class="col-md-9">
                                     <input id="registration-form-nickname" type="text"
                                         class="form-control @error('nickname') is-invalid @enderror" name="nickname"
-                                        minlength="3" maxlength="20" value="{{ old('nickname', $user->nickname) }}" required
-                                        autocomplete="nickname" autofocus>
+                                        minlength="3" maxlength="20" value="{{ old('nickname', $user->nickname) }}"
+                                        required autocomplete="nickname" autofocus>
                                     <span class="error" id="registration-form-nickname-error"></span>
 
                                     @error('nickname')
@@ -69,6 +71,15 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                            </div>
+
+                            {{-- ! PICTURE --}}
+                            <div class="row mb-3 ">
+                                <label for="img_url" class="col-md-2 col-form-label text-md-end">Image</label>
+                                <div class="col-md-9">
+                                    <input class="form-control" type="file" id="img_url" name="img_url"
+                                        value="{{ old('url', $user->img_url) }}">
                                 </div>
                             </div>
 
@@ -99,7 +110,8 @@
                                 <div class="col-md-9">
                                     <input id="registration-form-language" type="text"
                                         class="form-control @error('language') is-invalid @enderror" name="language"
-                                        value="{{ old('language', $user->language) }}" required autocomplete="language" autofocus>
+                                        value="{{ old('language', $user->language) }}" required autocomplete="language"
+                                        autofocus>
                                     <span class="error" id="registration-form-language-error"></span>
 
                                     @error('language')
@@ -137,7 +149,8 @@
                                         aria-label="Basic checkbox toggle button group">
                                         @foreach ($games as $game)
                                             <input name="games[]" type="checkbox" class="btn-check"
-                                                id="selected-check-{{ $game->id }}" value="{{ $game->id }}" @checked($game->id)>
+                                                id="selected-check-{{ $game->id }}" value="{{ $game->id }}"
+                                                @checked($game->id)>
 
                                             <label class="btn btn-outline-danger p-1 mx-1"
                                                 for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
@@ -152,9 +165,8 @@
                                     class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
 
                                 <div class="col-md-9">
-                                    <textarea id="summary" type="summary"
-                                        class="form-control @error('summary') is-invalid @enderror" name="summary"
-                                        value="{{ old('summary') }}" required autocomplete="summary" rows="5" >
+                                    <textarea id="summary" type="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
+                                        value="{{ old('summary') }}" required autocomplete="summary" rows="5">
                                     </textarea>
 
                                     @error('summary')
