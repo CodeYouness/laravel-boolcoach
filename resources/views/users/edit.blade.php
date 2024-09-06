@@ -1,92 +1,182 @@
 @extends('layouts.users')
 @section('page-title')
-    Edit {{ $user->name }}
+    Edit {{ $user->nickname }}
 @endsection
 @section('main-content')
-    <div class="container-fuild">
+    <div class="container mt-5">
         <div class="row justify-content-center">
-            <h1 class="text-center">Edit {{ $user->name }}</h1>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Edit {{ $user->nickname }}</div>
+
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
+
+                            {{-- ! NAME INPUT --}}
+                            <div class="row mb-3">
+                                <label for="name" class="col-md-2 col-form-label text-md-end">{{ __('Name') }}</label>
+
+                                <div class="col-md-9">
+                                    <input id="registration-form-name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" minlength="3"
+                                        maxlength="20" name="name" value="{{ old('name') }}" required
+                                        autocomplete="name" autofocus>
+                                    <span class="error" id="registration-form-name-error"></span>
+
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert" id="">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- ! SURNAME INPUT --}}
+                            <div class="row mb-3">
+                                <label for="surname"
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Surname') }}</label>
+
+                                <div class="col-md-9">
+                                    <input id="registration-form-surname" type="text"
+                                        class="form-control @error('surname') is-invalid @enderror" minlength="3"
+                                        maxlength="20" name="surname" value="{{ old('surname') }}" required
+                                        autocomplete="surname" autofocus>
+                                    <span class="error" id="registration-form-surname-error"></span>
+
+                                    @error('surname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- ! NICKNAME INPUT --}}
+                            <div class="row mb-3">
+                                <label for="nickname"
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Nickname') }}</label>
+
+                                <div class="col-md-9">
+                                    <input id="registration-form-nickname" type="text"
+                                        class="form-control @error('nickname') is-invalid @enderror" name="nickname"
+                                        minlength="3" maxlength="20" value="{{ old('nickname') }}" required
+                                        autocomplete="nickname" autofocus>
+                                    <span class="error" id="registration-form-nickname-error"></span>
+
+                                    @error('nickname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- ! PRICE INPUT --}}
+                            <div class="row mb-3">
+                                <label for="price"
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Price') }}</label>
+
+                                <div class="col-md-9">
+                                    <input id="registration-form-price" type="text"
+                                        class="form-control @error('price') is-invalid @enderror" name="price"
+                                        value="{{ old('price') }}" required autocomplete="price" autofocus>
+                                    <span class="error" id="registration-form-price-error"></span>
+
+                                    @error('price')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- ! LANGUAGE INPUT --}}
+                            <div class="row mb-3">
+                                <label for="language"
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Language') }}</label>
+
+                                <div class="col-md-9">
+                                    <input id="registration-form-language" type="text"
+                                        class="form-control @error('language') is-invalid @enderror" name="language"
+                                        value="{{ old('language') }}" required autocomplete="language" autofocus>
+                                    <span class="error" id="registration-form-language-error"></span>
+
+                                    @error('language')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- ! EMAIL INPUT --}}
+                            <div class="row mb-3">
+                                <label for="email"
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                                <div class="col-md-9">
+                                    <input id="email" type="email"
+                                        class="form-control @error('email') is-invalid @enderror" name="email"
+                                        value="{{ old('email') }}" required autocomplete="email">
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- ! GAME INPUT --}}
+                            <div class="row mb-3 align-items-center">
+                                <label for="game"
+                                    class="col-md-2 col-form-label text-md-end align-item-center">{{ __('Games') }}</label>
+                                <div class="form-group col-md-9">
+                                    <div class="btn-group d-flex" role="group"
+                                        aria-label="Basic checkbox toggle button group">
+                                        @foreach ($games as $game)
+                                            <input name="games[]" type="checkbox" class="btn-check"
+                                                id="selected-check-{{ $game->id }}" value="{{ $game->id }}">
+                                            <label class="btn btn-outline-danger p-1 mx-1"
+                                                for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- ! SUMMARY --}}
+                            <div class="row mb-3">
+                                <label for="summary"
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
+
+                                <div class="col-md-9">
+                                    <textarea id="summary" type="summary"
+                                        class="form-control @error('summary') is-invalid @enderror" name="summary"
+                                        value="{{ old('summary') }}" required autocomplete="summary" rows="5" >
+                                    </textarea>
+
+                                    @error('summary')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- ! SUBMIT INPUT --}}
+                            <div class="row mb-0">
+                                <div class="col-md-9 offset-md-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Edit') }}
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
-            @endif
-            <form action="{{ route('users.update', $user) }}" method="POST" class="col-6">
-                @csrf
-                @method('PATCH')
-
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input class="form-control" type="text" id="name" name="name"
-                        value="{{ old('name', $user->name) }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="surname">Surname:</label>
-                    <input class="form-control" type="text" id="surname" name="surname"
-                        value="{{ old('surname', $user->surname) }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="nickname">Nickname:</label>
-                    <input class="form-control" type="text" id="nickname" name="nickname"
-                        value="{{ old('nickname', $user->nickname) }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="language">Language:</label>
-                    <input class="form-control" type="text" id="language" name="language"
-                        value="{{ old('language', $user->language) }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input class="form-control" type="number" id="price" name="price"
-                        value="{{ old('price', $user->price) }}" required>
-                </div>
-
-{{--                 <div class="form-group">
-                    <label for="type_id">Type:</label>
-                    <select class="form-select" aria-label="Default select example" name="type_id">
-                        @foreach ($types as $type)
-                            <option value="{{ $type->id }}">{{ $type->name }}</option>
-                        @endforeach
-                    </select>
-                </div> --}}
-
- {{--                <div class="form-group">
-                    <label class="d-block" for="technology">Tech:</label>
-                    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                        @foreach ($technologies as $technology)
-                        <input name="technologies[]" type="checkbox" class="btn-check" id="selected-check-{{ $technology->id }}" value="{{ $technology->id }}">
-                        <label class="btn btn-outline-primary" for="selected-check-{{ $technology->id }}">{{ $technology->name }}</label>
-
-                        @endforeach
-
-
-                      </div>
-                </div> --}}
-
-                <div class="form-group">
-                    <label for="img_url">URL Immagine:</label>
-                    <input class="form-control" type="img_url" id="img_url" name="img_url"
-                        value="{{ old('url', $user->img_url) }}">
-                </div>
-
-                <div class="form-group mb-3">
-                    <label for="summary">Summary:</label>
-                    <textarea class="form-control" tech="text-area" id="summary" name="summary" rows="10">{{ old('summary', $user->summary) }}</textarea>
-                </div>
-
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Edit {{ $user->name }}</button>
-                </div>
-            </form>
-
+            </div>
         </div>
     </div>
 @endsection
