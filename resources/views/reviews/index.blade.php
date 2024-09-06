@@ -10,15 +10,15 @@
                 <h1 class="h2 text-white mb-4">Your reviews</h1>
                 <div class="reviews-container">
                     @foreach ($reviews as $index=>$review)
-                    <div class="card mb-5">
-                        <div class="card-body">
-                            <h4 class="card-title mb-3">Review no. {{$index+1}}</h4>
-                            <h5 class="card-title">left by: <em>{{$review->username}}</em></h5>
-                            <h6 class="card-title mb-2 text-black">on {{$review->created_at->toFormattedDayDateString()}}</h6>
-                            <p class="card-text">{{$review->description}}</p>
-                            <a href="#" class="card-link">Contact user</a>
+                        <div class="card mb-5">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Review no. {{$index+1}}</h4>
+                                <h5 class="card-title">left by: <em>{{$review->username}}</em></h5>
+                                <h6 class="card-title mb-2 text-black">on {{$review->created_at->toFormattedDayDateString()}}</h6>
+                                <p class="card-text">{{$review->description}}</p>
+                                <a href="#" class="card-link">Contact user</a>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
