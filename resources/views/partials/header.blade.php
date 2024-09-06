@@ -4,10 +4,10 @@
         <div class="d-flex justify-content-end align-items-center">
             <ul class="list-unstyled d-flex mb-0">
                 <li class="mx-2">
-                    i
+                    <i class="fa-solid fa-bell"></i>
                 </li>
             </ul>
-            <div class="ms-3"><i class="fa-regular fa-circle-user"></i></div>
+            <div class="ms-3 p-4 bg-white rounded-circle"></div>
         </div>
     </div>
 </header>

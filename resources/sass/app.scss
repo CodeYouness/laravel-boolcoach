@@ -9,9 +9,7 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 // Fontawesome
-$fa-font-path: "../../node_modules/@fortawesome/fontawesome-free/WebFonts" !default;
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
-@import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
 .fa,.fas,.far,.fal,.fab {
     font-family: "Font Awesome 5 Free";
@@ -47,6 +45,11 @@ body{
         text-transform: capitalize;
         text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
         text-decoration: none;
+    }
+
+    .menu-icon{
+        width: 35px;
+        cursor: pointer;
     }
 }
 
