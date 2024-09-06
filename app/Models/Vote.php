@@ -12,6 +12,6 @@ class Vote extends Model
     protected $fillable = ['lable', 'value'];
 
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_vote', 'vote_id', 'user_id')->withPivot('user_id', 'vote_id');
     }
 }
