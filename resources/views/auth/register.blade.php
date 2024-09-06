@@ -11,25 +11,29 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+                        {{-- ! NAME INPUT --}}
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="registration-form-name" type="text" class="form-control @error('name') is-invalid @enderror" minlength="3" maxlength="20" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <span class="error" id="registration-form-name-error"></span>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback" role="alert" id="">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
 
+                        {{-- ! SURNAME INPUT --}}
                         <div class="row mb-3">
                             <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('Surname') }}</label>
 
                             <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+                                <input id="registration-form-surname" type="text" class="form-control @error('surname') is-invalid @enderror" minlength="3" maxlength="20" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
+                                <span class="error" id="registration-form-surname-error"></span>
 
                                 @error('surname')
                                     <span class="invalid-feedback" role="alert">
@@ -39,11 +43,13 @@
                             </div>
                         </div>
 
+                        {{-- ! NICKNAME INPUT --}}
                         <div class="row mb-3">
                             <label for="nickname" class="col-md-4 col-form-label text-md-end">{{ __('Nickname') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nickname" type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname" value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
+                                <input id="registration-form-nickname" type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname" minlength="3" maxlength="20" value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
+                                <span class="error" id="registration-form-nickname-error"></span>
 
                                 @error('nickname')
                                     <span class="invalid-feedback" role="alert">
@@ -53,11 +59,13 @@
                             </div>
                         </div>
 
+                        {{-- ! PRICE INPUT --}}
                         <div class="row mb-3">
                             <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
+                                <input id="registration-form-price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
+                                <span class="error" id="registration-form-price-error"></span>
 
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
@@ -67,11 +75,13 @@
                             </div>
                         </div>
 
+                        {{-- ! LANGUAGE INPUT --}}
                         <div class="row mb-3">
                             <label for="language" class="col-md-4 col-form-label text-md-end">{{ __('Language') }}</label>
 
                             <div class="col-md-6">
-                                <input id="language" type="text" class="form-control @error('language') is-invalid @enderror" name="language" value="{{ old('language') }}" required autocomplete="language" autofocus>
+                                <input id="registration-form-language" type="text" class="form-control @error('language') is-invalid @enderror" name="language" value="{{ old('language') }}" required autocomplete="language" autofocus>
+                                <span class="error" id="registration-form-language-error"></span>
 
                                 @error('language')
                                     <span class="invalid-feedback" role="alert">
@@ -81,7 +91,7 @@
                             </div>
                         </div>
 
-
+                        {{-- ! EMAIL INPUT --}}
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
@@ -118,7 +128,6 @@
                             </div>
                         </div>
 
-
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -126,10 +135,12 @@
                                 </button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

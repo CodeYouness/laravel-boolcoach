@@ -9,9 +9,10 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
+
 body{
     background-color: #121922;
-    font-family: "Mukta", sans-serif;;
+    font-family: "Mukta", sans-serif;
 }
 
 #app-header{
@@ -28,11 +29,32 @@ body{
 
     a.my_logo{
         font-family: "Jaro", system-ui;
+    }
+}
+
+nav {
+    background-color: #FF204E;
+
+
+
+    img {
+        height: 2.5rem;
+        margin-right: 1rem;
+        transform: rotate(20deg);
+    }
+
+    .logo {
+
         color: #FFF;
         text-align: center;
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: #000;
+
         font-size: 2.8rem;
+
+        font-family: Jaro;
+        font-size: 24px;
+
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -40,8 +62,51 @@ body{
         text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
         text-decoration: none;
     }
+
 }
 
 #page-main-section{
     width: calc(100% - $side-nav-width);
+}
+
+.nav-link {
+    color: white;
+    font-weight: bold;
+
+    &:hover {
+        scale: 1.05;
+        color: #121922;
+    }
+}
+
+
+.card {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 20px;
+
+    .card-header {
+        border-bottom: 1px solid white;
+    }
+
+    .form-check-input:checked {
+        background-color: #7E3CC1;
+        border-color: #7E3CC1;
+    }
+
+    button {
+        background-color: transparent;
+        border: 1px solid white;
+
+        &:hover {
+            background-color: #7E3CC1;
+            border: 1px solid white;
+            scale: 1.05;
+        }
+    }
+
+    .btn-link {
+        color: #FF204E;
+    }
 }
