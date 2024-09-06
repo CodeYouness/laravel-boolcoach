@@ -1,5 +1,7 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
 
 // Variables
 @import 'variables';
@@ -9,6 +11,7 @@
 
 body{
     background-color: #121922;
+    font-family: "Mukta", sans-serif;;
 }
 
 #app-header{
@@ -22,6 +25,21 @@ body{
     height: 100vh;
     background: rgb(126,60,193);
     background: linear-gradient(145deg, rgba(126,60,193,1) 0%, rgba(214,41,115,1) 75%, rgba(255,32,78,1) 100%);
+
+    a.my_logo{
+        font-family: "Jaro", system-ui;
+        color: #FFF;
+        text-align: center;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #000;
+        font-size: 2.8rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: capitalize;
+        text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+        text-decoration: none;
+    }
 }
 
 #page-main-section{
