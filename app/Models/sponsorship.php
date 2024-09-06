@@ -16,6 +16,6 @@ class sponsorship extends Model
     ];
 
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('start_date', 'end_date');
     }
 }

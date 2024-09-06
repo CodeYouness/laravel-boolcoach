@@ -106,12 +106,25 @@
                             </div>
                         </div>
 
+                        {{-- ! GAME INPUT --}}
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="game" class="col-md-4 col-form-label text-md-end">{{ __('Games') }}</label>
+                            <div class="form-group">
+                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                    @foreach ($games as $game)
+                                    <input name="games[]" type="checkbox" class="btn-check" id="selected-check-{{ $game->id }}" value="{{ $game->id }}">
+                                    <label class="btn btn-outline-primary my-2 mx-1" for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- ! PASSWORD INPUT --}}
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end my-2 mx-1">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -120,6 +133,7 @@
                             </div>
                         </div>
 
+                        {{-- ! CONFIRM PASSWORD INPUT --}}
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
@@ -128,6 +142,7 @@
                             </div>
                         </div>
 
+                        {{-- ! SUBMIT INPUT --}}
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -144,3 +159,15 @@
 </div>
 
 @endsection
+
+
+{{--
+<div class="form-group">
+    <label class="d-block" for="game">Tech:</label>
+    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        @foreach ($games as $game)
+        <input name="games[]" type="checkbox" class="btn-check" id="selected-check-{{ $game->id }}" value="{{ $game->id }}">
+        <label class="btn btn-outline-primary" for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
+        @endforeach
+    </div>
+</div> --}}

@@ -8,8 +8,7 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
-
-// Font Awesome
+// Fontawesome
 $fa-font-path: "../../node_modules/@fortawesome/fontawesome-free/WebFonts" !default;
 @import "../../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
 @import "../../node_modules/@fortawesome/fontawesome-free/scss/regular";
@@ -17,7 +16,6 @@ $fa-font-path: "../../node_modules/@fortawesome/fontawesome-free/WebFonts" !defa
 .fa,.fas,.far,.fal,.fab {
     font-family: "Font Awesome 5 Free";
 }
-
 
 body{
     background-color: #121922;
