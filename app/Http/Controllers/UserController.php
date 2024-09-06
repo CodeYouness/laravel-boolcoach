@@ -48,10 +48,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(User $user, Game $games)
     {
         if (auth()->id() === $user->id) {
-            return view('users.edit', compact('user'));
+            $games = Game::all();
+            return view('users.edit', compact('user', 'games'));
         } else {
             return 'Non puoi modificare gli account di altri utenti';
         }

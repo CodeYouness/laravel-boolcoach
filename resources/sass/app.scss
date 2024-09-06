@@ -8,48 +8,21 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
-
 // Fontawesome
 @import "node_modules/@fortawesome/fontawesome-free/css/all.min.css";
 
+.fa,.fas,.far,.fal,.fab {
+    font-family: "Font Awesome 5 Free";
+}
 
 body{
     background-color: #121922;
     font-family: "Mukta", sans-serif;
 }
 
-#app-header{
-    height: $header-height;
-    border-bottom: 1px solid white;
-    color: white;
-}
-
-#side-nav{
-    width: $side-nav-width;
-    height: 100vh;
-    background: rgb(126,60,193);
-    background: linear-gradient(145deg, rgba(126,60,193,1) 0%, rgba(214,41,115,1) 75%, rgba(255,32,78,1) 100%);
-
-    a.my_logo{
-        font-family: "Jaro", system-ui;
-        color: #FFF;
-        text-align: center;
-        -webkit-text-stroke-width: 2px;
-        -webkit-text-stroke-color: #000;
-        font-size: 2.8rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-transform: capitalize;
-        text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
-        text-decoration: none;
-    }
-}
-
+// || GUESTS
 nav {
     background-color: #FF204E;
-
-
 
     img {
         height: 2.5rem;
@@ -72,10 +45,6 @@ nav {
         text-decoration: none;
     }
 
-}
-
-#page-main-section{
-    width: calc(100% - $side-nav-width);
 }
 
 .nav-link {
@@ -119,3 +88,45 @@ nav {
         color: #FF204E;
     }
 }
+
+// || USERS
+#app-header{
+    height: $header-height;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+#side-nav{
+    width: $side-nav-width;
+    height: 100vh;
+    background: rgb(126,60,193);
+    background: linear-gradient(145deg, rgba(126,60,193,1) 0%, rgba(214,41,115,1) 75%, rgba(255,32,78,1) 100%);
+
+    a.my_logo{
+        font-family: "Jaro", system-ui;
+        color: #FFF;
+        text-align: center;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #000;
+        font-size: 2.8rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: capitalize;
+        text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+        text-decoration: none;
+    }
+
+    .menu-icon{
+        width: 35px;
+        cursor: pointer;
+    }
+}
+
+#page-main-section{
+    width: calc(100% - $side-nav-width);
+}
+
+// #dashboard-wrapper{
+
+// }
