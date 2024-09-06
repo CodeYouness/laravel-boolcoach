@@ -11,11 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sponsorships', function (Blueprint $table) {
+        Schema::create('user_vote', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 20);
-            $table->decimal('price', 4, 2);
-            $table->integer('time');
+
+
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('vote_id');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('vote_id')->references('id')->on('votes')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
@@ -25,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sponsorships');
+        Schema::dropIfExists('user_vote');
     }
 };

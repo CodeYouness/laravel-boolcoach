@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\Game;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,7 +14,8 @@ class UserController extends Controller
      */
     public function index(User $users)
     {
-        $users = User::all();
+        $users = $users->all();
+
         return view('users.index', compact('users'));
     }
 
@@ -38,7 +41,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -46,15 +49,21 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        if (auth()->id() === $user->id) {
+            return view('users.edit', compact('user'));
+        } else {
+            return 'Non puoi modificare gli account di altri utenti';
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $data = $request->validated();
+        $user->update($data);
+        return redirect()->route('users.show', $user);
     }
 
     /**
@@ -62,6 +71,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+
+
+        if (auth()->id() === $user->id) {
+            $user->delete();
+            return redirect()->route('users.index');
+        } else {
+            return 'Non puoi cancellare gli account altrui';
+        }
     }
 }
