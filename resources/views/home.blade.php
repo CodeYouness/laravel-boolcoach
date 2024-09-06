@@ -19,7 +19,7 @@
                             <a href="{{route('reviews.index')}}" class="text-decoration-none text-black">Check reviews</a>
                         </li>
                         <li class="mb-3">
-                            <a href="#" class="text-decoration-none text-black">Check sponsorships</a>
+                            <a href="{{route('sponsorships.index')}}" class="text-decoration-none text-black">Check sponsorships</a>
                         </li>
                         <li>
                             <a href="{{route('messages.index')}}" class="text-decoration-none text-black">Check messages</a>
