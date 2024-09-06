@@ -29,6 +29,17 @@ body{
 
     a.my_logo{
         font-family: "Jaro", system-ui;
+        color: #FFF;
+        text-align: center;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #000;
+        font-size: 2.8rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: capitalize;
+        text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+        text-decoration: none;
     }
 }
 
@@ -44,17 +55,12 @@ nav {
     }
 
     .logo {
-
         color: #FFF;
         text-align: center;
         -webkit-text-stroke-width: 2px;
         -webkit-text-stroke-color: #000;
-
-        font-size: 2.8rem;
-
         font-family: Jaro;
         font-size: 24px;
-
         font-style: normal;
         font-weight: 400;
         line-height: normal;
