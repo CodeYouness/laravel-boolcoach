@@ -7,7 +7,7 @@
                     i
                 </li>
             </ul>
-            <div class="ms-3">img</div>
+            <div class="ms-3"><i class="fa-regular fa-circle-user"></i></div>
         </div>
     </div>
 </header>
