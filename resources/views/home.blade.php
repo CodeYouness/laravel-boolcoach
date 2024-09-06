@@ -22,7 +22,7 @@
                             <a href="#" class="text-decoration-none text-black">Check sponsorships</a>
                         </li>
                         <li>
-                            <a href="#" class="text-decoration-none text-black">Check messages</a>
+                            <a href="{{route('messages.index')}}" class="text-decoration-none text-black">Check messages</a>
                         </li>
                     </ul>
                 </div>
