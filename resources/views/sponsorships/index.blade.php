@@ -16,11 +16,12 @@
                         <div class="reviews-container">
                             <div class="card mb-5">
                                 <div class="card-body">
-                                    <h4 class="card-title mb-3">Plan: {{$sponsorship->name}}</h4>
-                                    <h6 class="card-title mb-2 text-black">
+                                    <h3 class="card-title">Plan: {{$sponsorship->name}}</h3>
+                                    <h4 class="card-subtitle mb-2 text-black">{{$sponsorship->price}}€</h4>
+                                    <h6 class="card-title mb-2">
                                         Buyed on {{ \Carbon\Carbon::parse($sponsorship->pivot->start_date)->format('j F Y, \a\t H:i:s') }}
                                     </h6>
-                                    <h6 class="card-title mb-2 text-black">
+                                    <h6 class="card-title mb-2">
                                         It ends {{ \Carbon\Carbon::parse($sponsorship->pivot->end_date)->format('j F Y, \a\t H:i:s') }}
                                     </h6>
                                 </div>
