@@ -10,7 +10,7 @@
                 <h1 class="h2 text-white mb-4">Your reviews</h1>
                 <div class="reviews-container">
                     @foreach ($reviews as $index=>$review)
-                    <div class="card mb-5" style="width: 100%;">
+                    <div class="card mb-5">
                         <div class="card-body">
                             <h4 class="card-title mb-3">Review no. {{$index+1}}</h4>
                             <h5 class="card-title">left by: <em>{{$review->username}}</em></h5>
