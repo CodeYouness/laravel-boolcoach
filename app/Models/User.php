@@ -65,10 +65,10 @@ class User extends Authenticatable
     }
 
     public function sponsorships(){
-        return $this->belongsToMany(Sponsorship::class);
+        return $this->belongsToMany(Sponsorship::class)->withPivot('start_date', 'end_date');
     }
 
     public function votes(){
-        return $this->belongsToMany(Vote::class);
+        return $this->belongsToMany(Vote::class, 'user_vote', 'user_id', 'vote_id')->withTimestamps()->withPivot('user_id', 'vote_id');
     }
 }
