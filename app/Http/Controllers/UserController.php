@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index(User $users)
     {
-        $users = $users->all();
+        $users = $users->all()->where('id', 'Auth::id()');
 
         return view('users.index', compact('users'));
     }
@@ -57,6 +58,7 @@ class UserController extends Controller
     }
 
     /**
+     *
      * Update the specified resource in storage.
      */
     public function update(UpdateUserRequest $request, User $user)
