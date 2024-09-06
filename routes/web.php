@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
+    if (Auth::check()) {
+        return view('users.index');
+    }
     return view('auth.login');
 });
 
