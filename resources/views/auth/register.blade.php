@@ -106,6 +106,19 @@
                             </div>
                         </div>
 
+                        {{-- ! GAME INPUT --}}
+                        <div class="row mb-3">
+                            <label for="game" class="col-md-4 col-form-label text-md-end">{{ __('Games') }}</label>
+                            <div class="col-md-6">
+                                <div class="btn-group" role="group" aria-label="Multiple selection">
+                                    @foreach ($games as $game)
+                                    <button type="button" class="btn btn-outline-primary select-button" value="{{$game->id}}">{{$game->name}}</button>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- ! PASSWORD INPUT --}}
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
@@ -120,6 +133,7 @@
                             </div>
                         </div>
 
+                        {{-- ! CONFIRM PASSWORD INPUT --}}
                         <div class="row mb-3">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
 
@@ -128,6 +142,7 @@
                             </div>
                         </div>
 
+                        {{-- ! SUBMIT INPUT --}}
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
