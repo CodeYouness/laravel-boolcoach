@@ -3,15 +3,22 @@
     {{ $user->name }}
 @endsection
 @section('main-content')
+    {{-- @dd($user) --}}
     <div id="profile-wrapper" class="container-fluid d-flex flex-column justify-content-between h-100 px-4 pt-5 pb-3">
         <div class="row justify-content-around mb-4">
             <div class="col-12 col-lg-4 order-lg-1 d-flex justify-content-center align-items-start mb-5">
                 <div class="row w-100">
                     <div class="col-12 mb-5 d-flex justify-content-center">
-                        <div class="profile-img card rounded-circle"></div>
+                        <div class="profile-img card rounded-circle">
+                            <img src="{{ asset('storage/public/' . $user->img_url) }}" alt="{{ $user->name }} profile avatar">
+                        </div>
                     </div>
                     <div class="col-12 card p-3">
-                        <h1>Available</h1>
+                        <h1>@if ($user->is_available)
+                            Available
+                            @else
+                            Not Available
+                        @endif</h1>
                     </div>
                 </div>
             </div>
