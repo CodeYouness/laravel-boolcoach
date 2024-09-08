@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container-fluid d-flex">
+    <div id="users-wrapper" class="container-fluid d-flex p-0">
         @include('partials.side-nav')
         <main id="page-main-section" class="d-flex flex-column">
             @include('partials.header')
