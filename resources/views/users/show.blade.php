@@ -8,14 +8,27 @@
             <div class="col-12 col-lg-4 order-lg-1 d-flex justify-content-center align-items-start mb-5">
                 <div class="row w-100">
                     <div class="col-12 mb-5 d-flex justify-content-center">
-                        <div class="profile-img card rounded-circle"></div>
+                        {{-- ! se non c'è l'immagine, div con la prima lettera del nick --}}
+                        @if ($user->img_url)
+                            <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center">
+                                <img src="{{asset($user->img_url)}}" alt="{{$user->nickname}}" class="h-100">
+                            </div>
+                        @else
+                            <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center" data-nick="{{$user->nickname}}"></div>
+                        @endif
                     </div>
-                    <div class="col-12 card p-3">
-                        <h1>Available</h1>
+                    <div class="col-12 card p-3" >
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h1 class="fs-2 mb-0 {{($user->is_available == true) ? '' : 'text-secondary fw-light'}}">Available</h1>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" {{($user->is_available == true) ? 'checked' : ''}} disabled>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-7 text-white d-flex justify-content-center align-self-start mb-5">
+            <div class="col-12 col-lg-7 d-flex justify-content-center align-self-start mb-5">
                 <div class="row w-100">
                     <div class="col-12 card p-3 mb-5">
                         <h1 class="fs-2 mb-3">Your info:</h1>
@@ -41,25 +54,17 @@
                         </p>
                     </div>
                     <div class="col-12 card p-3">
-                        <h1 class="f2-2 mb-3">Your Games:</h1>
-                        <p>
+                        <h1 class="fs-2 mb-3">Your Games:</h1>
+                        <div class="d-flex flex-wrap justify-content-around align-items-center">
                             @forelse (auth()->user()->games as $game)
                                 <button class="fs-4 badge text-bg-light rounded-pill border-0 mx-2 mb-2">{{ $game->name }}</button>
                             @empty
                                 <span>No Games setted</span>
                             @endforelse
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-
-            {{-- <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID Number: {{ $user->id }}</li>
-                <li class="list-group-item">{{ $user->name }}</li>
-            </ul> --}}
-
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-around align-items-center mb-3">
@@ -73,4 +78,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom-script')
+    @vite('resources/js/altPropic.js');
 @endsection

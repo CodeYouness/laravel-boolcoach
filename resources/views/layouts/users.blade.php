@@ -18,6 +18,8 @@
             @include('partials.footer')
         </main>
     </div>
+
+    @yield('custom-script')
 </body>
 
 </html>

@@ -8,7 +8,15 @@
                     <i class="fa-solid fa-bell"></i>
                 </li>
             </ul>
-            <div class="ms-3 p-4 bg-white rounded-circle"></div>
+            <div class="ms-3 profile-img rounded-circle d-flex justify-content-center align-items-center">
+                @if (Auth::user()->img_url)
+                    <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center">
+                        <img src="{{asset(Auth::user()->img_url)}}" alt="{{Auth::user()->nickname}}" class="h-100">
+                    </div>
+                @else
+                    <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center" data-nick="{{Auth::user()->nickname}}"></div>
+                @endif
+            </div>
         </div>
     </div>
 </header>
