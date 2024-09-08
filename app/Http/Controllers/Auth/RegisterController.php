@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'nickname' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'img_url' =>['nullable'],
             'games' => ['required', 'array'],
             'language' => ['nullable', 'string', 'max:255'],
             'price' => ['nullable', 'numeric'],
