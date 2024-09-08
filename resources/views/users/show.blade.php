@@ -18,10 +18,37 @@
             <div class="col-12 col-lg-7 text-white d-flex justify-content-center align-self-start mb-5">
                 <div class="row w-100">
                     <div class="col-12 card p-3 mb-5">
-                        <h2>Your info</h2>
+                        <h1 class="fs-2 mb-3">Your info:</h1>
+                        <p class="fs-4 mb-1">
+                            <span class="me-3" title="Visible only to you">Your real name:</span>
+                            {{$user->name}} {{$user->surname}}
+                        </p>
+                        <p class="fs-4 mb-1">
+                            <span class="me-3" title="This is the name the other users will see">Your visible name: </span>
+                            {{$user->nickname}}
+                        </p>
+                        <p class="fs-4 mb-1">
+                            <span class="me-3">Price/hour: </span>&euro;
+                            {{$user->price}}
+                        </p>
+                        <p class="fs-4 mb-1">
+                            <span class="me-3">Language: </span>
+                            {{$user->language}}
+                        </p>
+                        <p class="fs-4 mb-0">
+                            <span class="me-3">Summary: </span>
+                            {{$user->summary}}
+                        </p>
                     </div>
                     <div class="col-12 card p-3">
-                        <h1>Your Games</h1>
+                        <h1 class="f2-2 mb-3">Your Games:</h1>
+                        <p>
+                            @forelse (auth()->user()->games as $game)
+                                <button class="fs-4 badge text-bg-light rounded-pill border-0 mx-2 mb-2">{{ $game->name }}</button>
+                            @empty
+                                <span>No Games setted</span>
+                            @endforelse
+                        </p>
                     </div>
                 </div>
             </div>
