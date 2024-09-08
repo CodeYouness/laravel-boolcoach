@@ -74,12 +74,19 @@
                                 </div>
                             </div>
 
-                            {{-- ! PICTURE --}}
-                            <div class="row mb-3 ">
+                            {{-- ! PICTURE INPUT--}}
+                            <div class="row mb-3">
                                 <label for="img_url" class="col-md-2 col-form-label text-md-end">Image</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="file" id="img_url" name="img_url"
-                                        value="{{ old('url', $user->img_url) }}">
+                                    <!-- Visualizzazione dell'immagine esistente -->
+                                    @if($user->img_url)
+                                        <div class="mb-2">
+                                            <img src="{{ asset($user->img_url) }}" alt="Current Image" style="max-width: 200px;">
+                                        </div>
+                                    @endif
+
+                                    <!-- Input per caricare una nuova immagine -->
+                                    <input class="form-control" type="file" id="img_url" name="image_url">
                                 </div>
                             </div>
 
@@ -150,7 +157,8 @@
                                         @foreach ($games as $game)
                                             <input name="games[]" type="checkbox" class="btn-check"
                                                 id="selected-check-{{ $game->id }}" value="{{ $game->id }}"
-                                                @checked($game->id)>
+                                                @checked($user->games->contains($game->id))
+                                                >
                                             <label class="btn btn-outline-danger p-1 mx-1"
                                                 for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
                                         @endforeach
@@ -167,7 +175,6 @@
                                     <textarea id="summary" type="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
                                         value="{{ old('summary') }}" required autocomplete="summary" rows="5">
                                     </textarea>
-
                                     @error('summary')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
