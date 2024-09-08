@@ -3,9 +3,28 @@
     users {{ $user->name }}
 @endsection
 @section('main-content')
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <article class="card w-50 p-0" style="width: 18rem;">
+    <div id="profile-wrapper" class="container-fluid px-4 py-5">
+        <div class="row justify-content-around">
+            <div class="col-7 text-white align-self-start ms-3">
+                <div class="row">
+                    <div class="col-12 card p-3 mb-5">
+                        <h1>Info</h1>
+                    </div>
+                    <div class="col-12 card p-3">
+                        <h1>Your Games</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4 d-flex justify-content-center align-items-start">
+                <div class="row">
+                    <div class="col-12 profile-img card rounded-circle mb-5">
+                    </div>
+                    <div class="col-12 card p-3">
+                        <h1>Available</h1>
+                    </div>
+                </div>
+            </div>
+            {{-- <article class="card w-50 p-0" style="width: 18rem;">
 
                 <div class="card-body">
                     <h5 class="card-title">{{ $user->name }}</h5>
@@ -25,7 +44,7 @@
                         <input type="submit" class="btn btn-danger " value="Delete">
                     </form>
                 </div>
-            </article>
+            </article> --}}
         </div>
     </div>
 @endsection

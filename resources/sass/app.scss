@@ -61,7 +61,7 @@ nav {
 .card {
     background-color: transparent;
     color: white;
-    border: 2px solid white;
+    border: 1.5px solid white;
     border-radius: 20px;
 
     .card-header {
@@ -130,3 +130,10 @@ nav {
 // #dashboard-wrapper{
 
 // }
+
+#profile-wrapper{
+    .profile-img{
+        width: 300px;
+        aspect-ratio: 1;
+    }
+}
