@@ -74,19 +74,12 @@
                                 </div>
                             </div>
 
-                            {{-- ! PICTURE INPUT--}}
-                            <div class="row mb-3">
+
+                            {{-- ! PICTURE --}}
+                            <div class="row mb-3 ">
                                 <label for="img_url" class="col-md-2 col-form-label text-md-end">Image</label>
                                 <div class="col-md-9">
-                                    <!-- Visualizzazione dell'immagine esistente -->
-                                    @if($user->img_url)
-                                        <div class="mb-2">
-                                            <img src="{{ asset($user->img_url) }}" alt="Current Image" style="max-width: 200px;">
-                                        </div>
-                                    @endif
-
-                                    <!-- Input per caricare una nuova immagine -->
-                                    <input class="form-control" type="file" id="img_url" name="image_url">
+                                    <input class="form-control" type="file" id="img_url" name="img_url">
                                 </div>
                             </div>
 

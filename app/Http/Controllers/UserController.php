@@ -64,14 +64,22 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        // dd($request->all());
         $data = $request->validated();
 
-        if ($request->hasFile('image')) {
-            $img_path = $request->file('image')->store('uploads', 'public');
-            $data['img_url'] = $img_path;
+        if ($request->hasFile('img_url')) {
+
+            $file = $request->file('img_url');
+
+            $imageName = time() . '.' . $file->extension();
+
+            $file->storeAs('public/images', $imageName);
+
+            $data['img_url'] = 'images/' . $imageName;
         }
 
-        // dd($data);
+        // dd($request->file('image_url')->store('images'));
+
         $user->update($data);
 
         if (isset($data['games'])) {
