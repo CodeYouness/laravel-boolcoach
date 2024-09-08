@@ -3,6 +3,7 @@
     BoolCoach
 @endsection
 @section('main-content')
+<<<<<<< HEAD
     <div id="dashboard-wrapper" class="container py-4">
         <div class="row mb-3">
             <div class="col-12">
@@ -37,6 +38,9 @@
         </div>
     </div>
     {{-- <table class="table table-dark table-striped table-hover text-center">
+=======
+    <table class="table table-dark table-striped table-hover text-center">
+>>>>>>> 405590c63cec81c816e4653d48feb8aa2b0b0258
         <thead>
             <tr>
                 <th>ID</th>
@@ -97,7 +101,7 @@
                 @endif
             @endforeach
         </tbody>
-    </table> --}}
+    </table>
     <div class="container-fluid d-flex">
 
 
