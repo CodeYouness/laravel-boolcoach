@@ -70,7 +70,14 @@ class UserController extends Controller
             $img_path = $request->file('image')->store('uploads', 'public');
             $data['img_url'] = $img_path;
         }
+
+        // dd($data);
         $user->update($data);
+
+        if (isset($data['games'])) {
+            $user->games()->sync($data['games']);
+        }
+
         return redirect()->route('users.show', $user);
     }
 

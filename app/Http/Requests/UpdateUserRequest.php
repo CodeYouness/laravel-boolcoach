@@ -29,6 +29,7 @@ class UpdateUserRequest extends FormRequest
             'language' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric'],
             'img_url' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'games' => ['required', 'array' ],
             'summary' => ['nullable', 'string', 'max:5000']
         ];
     }
