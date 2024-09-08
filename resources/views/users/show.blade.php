@@ -3,8 +3,8 @@
     {{ $user->name }}
 @endsection
 @section('main-content')
-    <div id="profile-wrapper" class="container-fluid px-4 pt-5">
-        <div class="row justify-content-around">
+    <div id="profile-wrapper" class="container-fluid d-flex flex-column justify-content-between h-100 px-4 pt-5 pb-3">
+        <div class="row justify-content-around mb-4">
             <div class="col-12 col-lg-4 order-lg-1 d-flex justify-content-center align-items-start mb-5">
                 <div class="row w-100">
                     <div class="col-12 mb-5 d-flex justify-content-center">
@@ -53,27 +53,24 @@
                 </div>
             </div>
 
-            {{-- <article class="card w-50 p-0" style="width: 18rem;">
 
-                <div class="card-body">
-                    <h5 class="card-title">{{ $user->name }}</h5>
-                    <p class="card-text">{{ $user->nickname }}</p>
-                    <img src="{{ asset('storage/' . $user->img_url) }}" alt="">
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID Number: {{ $user->id }}</li>
-                    <li class="list-group-item">{{ $user->name }}</li>
-                </ul>
-                <div class="card-body">
-                    <a href="{{ route('users.index') }}" class="btn btn-primary">Back to index</a>
-                    <a href="{{ route('users.edit', $user) }}" class="btn btn-warning">Edit</a>
-                    <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline-block">
-                        @csrf
-                        @method('DELETE')
-                        <input type="submit" class="btn btn-danger " value="Delete">
-                    </form>
-                </div>
-            </article> --}}
+
+            {{-- <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID Number: {{ $user->id }}</li>
+                <li class="list-group-item">{{ $user->name }}</li>
+            </ul> --}}
+
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-around align-items-center mb-3">
+                <a href="{{ route('users.index') }}" class="btn btn-outline-light btn-lg fw-bold">Back to index</a>
+                <a href="{{ route('users.edit', $user) }}" class="btn btn-outline-warning btn-lg fw-bold">Edit</a>
+                <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" class="btn btn-outline-danger btn-lg fw-bold" value="Delete">
+                </form>
+            </div>
         </div>
     </div>
 @endsection
