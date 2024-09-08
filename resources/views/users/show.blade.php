@@ -1,29 +1,31 @@
 @extends('layouts.users')
 @section('page-title')
-    users {{ $user->name }}
+    {{ $user->name }}
 @endsection
 @section('main-content')
-    <div id="profile-wrapper" class="container-fluid px-4 py-5">
+    <div id="profile-wrapper" class="container-fluid px-4 pt-5">
         <div class="row justify-content-around">
-            <div class="col-7 text-white align-self-start ms-3">
-                <div class="row">
-                    <div class="col-12 card p-3 mb-5">
-                        <h1>Info</h1>
-                    </div>
-                    <div class="col-12 card p-3">
-                        <h1>Your Games</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4 d-flex justify-content-center align-items-start">
-                <div class="row">
-                    <div class="col-12 profile-img card rounded-circle mb-5">
+            <div class="col-12 col-lg-4 order-lg-1 d-flex justify-content-center align-items-start mb-5">
+                <div class="row w-100">
+                    <div class="col-12 mb-5 d-flex justify-content-center">
+                        <div class="profile-img card rounded-circle"></div>
                     </div>
                     <div class="col-12 card p-3">
                         <h1>Available</h1>
                     </div>
                 </div>
             </div>
+            <div class="col-12 col-lg-7 text-white d-flex justify-content-center align-self-start mb-5">
+                <div class="row w-100">
+                    <div class="col-12 card p-3 mb-5">
+                        <h2>Your info</h2>
+                    </div>
+                    <div class="col-12 card p-3">
+                        <h1>Your Games</h1>
+                    </div>
+                </div>
+            </div>
+
             {{-- <article class="card w-50 p-0" style="width: 18rem;">
 
                 <div class="card-body">

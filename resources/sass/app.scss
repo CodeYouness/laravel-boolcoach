@@ -90,6 +90,11 @@ nav {
 }
 
 // || USERS
+#users-wrapper{
+    width: 100vw;
+    height: 100vh;
+}
+
 #app-header{
     height: $header-height;
     border-bottom: 2px solid white;
@@ -125,6 +130,8 @@ nav {
 
 #page-main-section{
     width: calc(100% - $side-nav-width);
+    height: 100vh;
+    overflow-y: auto;
 }
 
 // #dashboard-wrapper{
@@ -137,3 +144,5 @@ nav {
         aspect-ratio: 1;
     }
 }
+
+
