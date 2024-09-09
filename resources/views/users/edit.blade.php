@@ -161,13 +161,11 @@
 
                             {{-- ! SUMMARY --}}
                             <div class="row mb-3">
-                                <label for="summary"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
-
+                                <label for="summary" class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
                                 <div class="col-md-9">
-                                    <textarea id="summary" type="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
-                                        value="{{ old('summary') }}" required autocomplete="summary" rows="5">
-                                    </textarea>
+                                    <textarea id="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
+                                            required autocomplete="summary" rows="5"
+                                            placeholder="Tell us more about yourself">{{ old('summary', $user->summary) }}</textarea>
                                     @error('summary')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
