@@ -54,6 +54,8 @@ class RegisterController extends Controller
             'nickname' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'img_url' =>['nullable'],
+            'games' => ['required', 'array'],
             'language' => ['nullable', 'string', 'max:255'],
             'price' => ['nullable', 'numeric'],
         ]);
@@ -67,17 +69,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
-            'surname'=> $data['surname'],
-            'nickname'=> $data['nickname'],
+            'surname' => $data['surname'],
+            'nickname' => $data['nickname'],
             'email' => $data['email'],
-            'language'=> $data['language'],
+            'language' => $data['language'],
             'password' => Hash::make($data['password']),
-            'summary'=> null,
-            'img_url'=> null,
-            'price'=> $data['price'],
-            'is_available'=> true
+            'summary' => null,
+            'img_url' => null,
+            'price' => $data['price'],
+            'is_available' => true
         ]);
+
+        if (isset($data['games'])) {
+            $user->games()->attach($data['games']);
+        }
+
+        return $user;
     }
 }

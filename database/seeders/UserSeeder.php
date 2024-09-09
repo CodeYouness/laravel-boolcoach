@@ -41,12 +41,13 @@ class UserSeeder extends Seeder
             'email' => 'federico@gmail.com',
             'language' => 'italian',
             "password"=> Hash::make('12345678'),
-            'summary'=> 'blablablablablabla',
+            'summary'=> 'sono il coach federico e questo è il sommario di prova',
             'img_url'=> 'https://cdn.shopify.com/s/files/1/0533/2089/files/img-url-filter.jpg?v=1515074624',
             'price'=> 9.99,
-            'is_available'=> true
+            'is_available'=> false
         ];
 
         User::create($customData);
     }
 }
+

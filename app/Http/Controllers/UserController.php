@@ -48,10 +48,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(User $user, Game $games)
     {
         if (auth()->id() === $user->id) {
-            return view('users.edit', compact('user'));
+            $games = Game::all();
+            return view('users.edit', compact('user', 'games'));
         } else {
             return 'Non puoi modificare gli account di altri utenti';
         }
@@ -63,8 +64,22 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        // dd($request->all());
         $data = $request->validated();
+
+        if ($request->hasFile('img_url')) {
+            $file = $request->file('img_url');
+            $imageName = time() . '.' . $file->extension();
+            $file->storeAs('images', $imageName, 'public');
+            $data['img_url'] = 'images/' . $imageName;
+        }
+
         $user->update($data);
+
+        if (isset($data['games'])) {
+            $user->games()->sync($data['games']);
+        }
+
         return redirect()->route('users.show', $user);
     }
 
@@ -73,7 +88,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-
 
         if (auth()->id() === $user->id) {
             $user->delete();
