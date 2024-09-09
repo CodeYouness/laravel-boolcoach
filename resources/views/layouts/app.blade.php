@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/register_form_validation.js', 'resources/sass/navbar-hover-links.scss'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/register_form_validation.js', 'resources/sass/navbar-hover-links.scss', 'resources/js/altPropic.js'])
     @yield('custom-scripts')
 </head>
 

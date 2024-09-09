@@ -94,10 +94,18 @@
             <li class="nav-item d-flex align-items-center">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon d-flex text-center align-items-center">
-                        <a href="">
+                        <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
                             <i class="fa-solid fa-arrow-right-from-bracket mx-2"></i>
                         </a>
-                        <a href="" class="text-decoration-none flex-grow-1 ms-2">Logout</a>
+                        <a href="{{ route('logout') }}" class="text-decoration-none flex-grow-1 ms-2" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                     <div class="bold-line"></div>
                 </div>

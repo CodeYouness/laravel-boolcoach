@@ -113,7 +113,7 @@
                                 <div class="btn-group d-flex" role="group" aria-label="Basic checkbox toggle button group">
                                     @foreach ($games as $game)
                                     <input name="games[]" type="checkbox" class="btn-check" id="selected-check-{{ $game->id }}" value="{{ $game->id }}">
-                                    <label class="btn btn-outline-danger p-1 mx-1" for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
+                                    <label class="btn btn-outline-danger p-1 mx-1 rounded" for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
                                     @endforeach
                                 </div>
                             </div>
