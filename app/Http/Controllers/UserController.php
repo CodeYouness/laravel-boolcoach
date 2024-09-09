@@ -68,17 +68,11 @@ class UserController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('img_url')) {
-
             $file = $request->file('img_url');
-
             $imageName = time() . '.' . $file->extension();
-
-            $file->storeAs('public/images', $imageName);
-
+            $file->storeAs('images', $imageName, 'public');
             $data['img_url'] = 'images/' . $imageName;
         }
-
-        // dd($request->file('image_url')->store('images'));
 
         $user->update($data);
 
