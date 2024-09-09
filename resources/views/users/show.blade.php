@@ -3,8 +3,6 @@
     {{ $user->name }}
 @endsection
 @section('main-content')
-    {{-- @dd($user) --}}
-    @dump($user->img_url)
     <div id="profile-wrapper" class="container-fluid d-flex flex-column justify-content-between h-100 px-4 pt-5 pb-3">
         <div class="row justify-content-around mb-4">
             <div class="col-12 col-lg-4 order-lg-1 d-flex justify-content-center align-items-start mb-5">
