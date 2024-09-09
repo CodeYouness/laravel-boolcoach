@@ -64,7 +64,6 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        // dd($request->all());
         $data = $request->validated();
 
         if ($request->hasFile('img_url')) {

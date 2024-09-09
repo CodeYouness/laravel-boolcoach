@@ -9,7 +9,14 @@
                     <i class="fa-solid fa-bell"></i>
                 </li>
             </ul>
-            <div class="ms-3 p-4 bg-white rounded-circle"></div>
+            <div class="profile-img rounded-circle d-flex justify-content-center align-items-center" data-name="{{Auth::user()->nickname}}" >
+                @if (Auth::user()->img_url)
+                    <img src="{{asset('storage/' .Auth::user()->img_url)}}" alt="{{Auth::user()->nickname}} profile avatar" class="h-100" >
+                    <span class="d-none"></span>
+                @else
+                    <span></span>
+                @endif
+            </div>
         </div>
     </div>
 </header>
