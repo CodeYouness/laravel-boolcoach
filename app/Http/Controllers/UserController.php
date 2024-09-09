@@ -64,8 +64,28 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        // dd($request->all());
         $data = $request->validated();
+
+        if ($request->hasFile('img_url')) {
+
+            $file = $request->file('img_url');
+
+            $imageName = time() . '.' . $file->extension();
+
+            $file->storeAs('public/images', $imageName);
+
+            $data['img_url'] = 'images/' . $imageName;
+        }
+
+        // dd($request->file('image_url')->store('images'));
+
         $user->update($data);
+
+        if (isset($data['games'])) {
+            $user->games()->sync($data['games']);
+        }
+
         return redirect()->route('users.show', $user);
     }
 
@@ -74,7 +94,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-
 
         if (auth()->id() === $user->id) {
             $user->delete();

@@ -3,6 +3,7 @@
     {{ $user->name }}
 @endsection
 @section('main-content')
+    {{-- @dd($user) --}}
     <div id="profile-wrapper" class="container-fluid d-flex flex-column justify-content-between h-100 px-4 pt-5 pb-3">
         <div class="row justify-content-around mb-4">
             <div class="col-12 col-lg-4 order-lg-1 d-flex justify-content-center align-items-start mb-5">
@@ -11,7 +12,7 @@
                         {{-- ! se non c'è l'immagine, div con la prima lettera del nick --}}
                         <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center" data-nick="{{$user->nickname}}">
                             @if (!$user->img_url)
-                                <img src="{{asset($user->img_url)}}" alt="{{$user->nickname}}" class="h-100">
+                                <img src="{{asset(('storage/public/' .$user->img_url)}}" alt="{{$user->nickname}} profile avatar" class="h-100">
                                 <span class="d-none"></span>
                             @else
                                 <span></span>
