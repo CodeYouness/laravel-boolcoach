@@ -37,7 +37,7 @@
                             {{$user->name}} {{$user->surname}}
                         </p>
                         <p class="fs-4 mb-1">
-                            <span class="me-3" title="This is the name the other users will see">Your visible name: </span>
+                            <span class="me-3" title="Visible to the other users">Your visible name: </span>
                             {{$user->nickname}}
                         </p>
                         <p class="fs-4 mb-1">
