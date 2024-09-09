@@ -81,6 +81,3 @@
         </div>
     </div>
 @endsection
-
-
-public\storage\images\1725869854.png
