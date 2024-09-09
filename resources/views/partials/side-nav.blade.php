@@ -24,7 +24,7 @@
                         <i class="fa-solid fa-chart-line text-white fs-4"></i>
                     </a>
                 </div>
-                <a href="#" class="text-decoration-none text-white fs-4  flex-grow-1 ms-2">Statistics</a>
+                <a href="{{ route('statistics.index') }}" class="text-decoration-none text-white fs-4  flex-grow-1 ms-2">Statistics</a>
             </li>
             <li class="nav-item d-flex align-items-center justify-content-around mb-2">
                 <div class="menu-icon text-center">
