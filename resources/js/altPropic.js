@@ -1,8 +1,12 @@
-const profilePropicEl = document.querySelector('#profile-wrapper div.alt-propic');
-const spanEl = document.querySelector('.profile-img > span');
+const profilePropicEl = document.querySelector('#profile-wrapper div.profile-img');
+const profileSpanEl = document.querySelector('#profile-wrapper .profile-img > span');
+const headerPropicEl = document.querySelector('#app-header div.profile-img');
+const headerSpanEl = document.querySelector('#app-header .profile-img > span');
+console.log(headerPropicEl);
 
 const getAlternatePropic = function(name){
     return name.toUpperCase().charAt(0);
 }
 
-spanEl.append(getAlternatePropic(profilePropicEl.getAttribute('data-nick')));
+profileSpanEl.append(getAlternatePropic(profilePropicEl.getAttribute('data-nick')));
+headerSpanEl.append(getAlternatePropic(profilePropicEl.getAttribute('data-nick')));

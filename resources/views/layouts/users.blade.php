@@ -20,6 +20,7 @@
     </div>
 
     @yield('custom-script')
+    @vite(['resources/js/altPropic.js'])
 </body>
 
 </html>

@@ -104,6 +104,12 @@ nav {
         width: 48px;
         aspect-ratio: 1;
         overflow: clip;
+        background-color: #028a8a;
+
+        span{
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
     }
 }
 
@@ -149,6 +155,12 @@ nav {
         width: 300px;
         aspect-ratio: 1;
         overflow: clip;
+        background-color: #028a8a;
+
+        span{
+            font-weight: bold;
+            font-size: 3.2rem;
+        }
     }
 }
 

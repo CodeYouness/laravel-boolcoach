@@ -10,13 +10,15 @@
                 </li>
             </ul>
             <div class="ms-3 profile-img rounded-circle d-flex justify-content-center align-items-center">
-                @if (Auth::user()->img_url)
-                    <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center">
-                        <img src="{{asset(Auth::user()->img_url)}}" alt="{{Auth::user()->nickname}}" class="h-100">
-                    </div>
-                @else
-                    <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center" data-nick="{{Auth::user()->nickname}}"></div>
-                @endif
+                <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center">
+                    @if (!Auth::user()->img_url)
+                        <img src="{{asset('storage/public/' .Auth::user()->img_url)}}" alt="{{Auth::user()->nickname}} profile avatar" class="h-100">
+                        <span class="d-none"></span>
+                    @else
+                        <span></span>
+                    @endif
+
+                </div>
             </div>
         </div>
     </div>

@@ -81,7 +81,3 @@
         </div>
     </div>
 @endsection
-
-@section('custom-script')
-    @vite('resources/js/altPropic.js');
-@endsection
