@@ -10,8 +10,8 @@
                 <div class="row w-100">
                     <div class="col-12 mb-5 d-flex justify-content-center">
                         {{-- ! se non c'è l'immagine, div con la prima lettera del nick --}}
-                        <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center" data-nick="{{$user->nickname}}">
-                            @if (!$user->img_url)
+                        <div class="profile-img rounded-circle d-flex justify-content-center align-items-center" data-nick="{{$user->nickname}}">
+                            @if ($user->img_url)
                                 <img src="{{asset('storage/public/' .$user->img_url)}}" alt="{{$user->nickname}} profile avatar" class="h-100">
                                 <span class="d-none"></span>
                             @else
@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-12 card p-3" >
                         <div class="d-flex justify-content-between align-items-center">
-                            <h1 class="fs-2 mb-0 {{($user->is_available == true) ? '' : 'text-secondary fw-light'}}">Available</h1>
+                            <h1 class="fs-2 mb-0 {{($user->is_available == true) ? '' : 'text-secondary fw-light'}}">{{($user->is_available == true) ? 'Available' : 'Not Available'}}</h1>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" role="switch" {{($user->is_available == true) ? 'checked' : ''}} disabled>
                             </div>

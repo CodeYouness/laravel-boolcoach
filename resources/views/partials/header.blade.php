@@ -10,8 +10,8 @@
                 </li>
             </ul>
             <div class="ms-3 profile-img rounded-circle d-flex justify-content-center align-items-center">
-                <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center">
-                    @if (!Auth::user()->img_url)
+                <div class="profile-img rounded-circle d-flex justify-content-center align-items-center">
+                    @if (Auth::user()->img_url)
                         <img src="{{asset('storage/public/' .Auth::user()->img_url)}}" alt="{{Auth::user()->nickname}} profile avatar" class="h-100">
                         <span class="d-none"></span>
                     @else
