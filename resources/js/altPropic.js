@@ -1,8 +1,8 @@
-const propicEl = document.querySelectorAll('div.profile-img');
-const nickname = propicEl.getAttribute('data-nick');
+const profilePropicEl = document.querySelector('#profile-wrapper div.alt-propic');
+const spanEl = document.querySelector('.profile-img > span');
 
-const getAlternatePropic = function(username){
-    return username.toUpperCase().charAt(0);
+const getAlternatePropic = function(name){
+    return name.toUpperCase().charAt(0);
 }
 
-propicEl.append(getAlternatePropic(nickname));
+spanEl.append(getAlternatePropic(profilePropicEl.getAttribute('data-nick')));

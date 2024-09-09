@@ -9,13 +9,14 @@
                 <div class="row w-100">
                     <div class="col-12 mb-5 d-flex justify-content-center">
                         {{-- ! se non c'è l'immagine, div con la prima lettera del nick --}}
-                        @if ($user->img_url)
-                            <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center">
+                        <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center" data-nick="{{$user->nickname}}">
+                            @if (!$user->img_url)
                                 <img src="{{asset($user->img_url)}}" alt="{{$user->nickname}}" class="h-100">
-                            </div>
-                        @else
-                            <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center" data-nick="{{$user->nickname}}"></div>
-                        @endif
+                                <span class="d-none"></span>
+                            @else
+                                <span></span>
+                            @endif
+                        </div>
                     </div>
                     <div class="col-12 card p-3" >
                         <div class="d-flex justify-content-between align-items-center">
