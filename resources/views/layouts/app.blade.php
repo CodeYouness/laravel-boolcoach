@@ -31,7 +31,7 @@
             <div class="container">
                 <a class="logo" href="{{ url('/users') }}">
                     <img src="{{ asset('images/Designer.png') }}" alt="Logo Boolcoach">
-                    {{ config('app.name', 'BoolCoach') }}
+                    {{ 'BoolCoach' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
