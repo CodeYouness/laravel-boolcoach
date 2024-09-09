@@ -29,6 +29,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
+    Route::patch('users/{user}/updateIsAvailable', [UserController::class, 'updateIsAvailable'])->name('updateIsAvailable');
     Route::resource('users', UserController::class);
     Route::resource('reviews', ReviewController::class);
     Route::resource('messages', MessageController::class);

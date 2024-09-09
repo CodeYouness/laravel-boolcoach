@@ -170,6 +170,16 @@ nav {
             font-size: 3.2rem;
         }
     }
+
+    i.fa-pencil,
+    i.fa-check {
+        opacity: 0.5;
+        cursor: pointer;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
 }
 
 
