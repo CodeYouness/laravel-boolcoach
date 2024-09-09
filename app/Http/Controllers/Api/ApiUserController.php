@@ -18,4 +18,13 @@ class ApiUserController extends Controller
             'results' => $users
         ]);
     }
+
+    public function show(String $id){
+        $user = User::with(['games', 'votes', 'reviews'])->findOrFail($id);
+
+        return response()->json([
+            'message' => 'success',
+            'results' => $user
+        ]);
+    }
 }
