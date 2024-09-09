@@ -99,6 +99,19 @@ nav {
     height: $header-height;
     border-bottom: 2px solid white;
     color: white;
+
+    .profile-img{
+        width: 48px;
+        aspect-ratio: 1;
+        overflow: clip;
+        background-color: #028a8a;
+        color: white;
+
+        span{
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+    }
 }
 
 #side-nav{
@@ -142,6 +155,14 @@ nav {
     .profile-img{
         width: 300px;
         aspect-ratio: 1;
+        overflow: clip;
+        background-color: #028a8a;
+        color: white;
+
+        span{
+            font-weight: bold;
+            font-size: 3.2rem;
+        }
     }
 }
 
