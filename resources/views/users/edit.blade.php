@@ -166,7 +166,8 @@
 
                                 <div class="col-md-9">
                                     <textarea id="summary" type="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
-                                        value="{{ old('summary') }}" required autocomplete="summary" rows="5">
+                                        value="{{ old('summary', $user->summary) }}" required autocomplete="summary" rows="5"
+                                        placeholder="Tell us more about yourself">
                                     </textarea>
                                     @error('summary')
                                         <span class="invalid-feedback" role="alert">
