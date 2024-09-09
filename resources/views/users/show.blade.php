@@ -12,7 +12,7 @@
                         {{-- ! se non c'è l'immagine, div con la prima lettera del nick --}}
                         <div class="profile-img card rounded-circle d-flex justify-content-center align-items-center" data-nick="{{$user->nickname}}">
                             @if (!$user->img_url)
-                                <img src="{{asset(('storage/public/' .$user->img_url)}}" alt="{{$user->nickname}} profile avatar" class="h-100">
+                                <img src="{{asset('storage/public/' .$user->img_url)}}" alt="{{$user->nickname}} profile avatar" class="h-100">
                                 <span class="d-none"></span>
                             @else
                                 <span></span>
