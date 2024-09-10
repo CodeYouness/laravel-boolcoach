@@ -4,21 +4,32 @@
 @endsection
 @section('main-content')
 
-    <div class="container m-4">
+    <div class="container p-4">
         <div class="row d-flex flex-center my-4">
-            <div class="col-6">
-                <h1 class="h2 text-white mb-4">Your reviews</h1>
-                <div class="reviews-container">
+            <div class="col-12">
+                <h1 class="h2 text-white mb-4 text-center">Your statistics</h1>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <canvas id="barChart"></canvas>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    new Chart(document.querySelector('#barChart'), {
+                                        type: 'bar',
+                                        data: {
+                                            labels:['1 star', '2 star', '3 star', '4 star', '5 star'],
+                                            datasets: [{
+                                                label: 'Voti Ricevuti',
+                                                data: [1,2,3,4,5]
+                                            }]
+                                        }
+                                    })
+                                })
+                            </script>
+                        </div>
+                    </div>
 
                 </div>
-            </div>
-            <div class="col-6">
-                <h1 class="h2 text-white mb-4">Your votes</h1>
-                <ul class="list-unstyled d-flex flex-wrap">
-
-                </ul>
-            </div>
-            </div>
         </div>
     </div>
 @endsection

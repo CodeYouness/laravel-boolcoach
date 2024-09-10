@@ -41,11 +41,11 @@
                         <a href="">
                             <i class="fa-solid fa-chart-line mx-2"></i>
                         </a>
-                        <a href="#" class="text-decoration-none flex-grow-1 ms-2">Statistics</a>
+                        <a href="{{ route('statistics.index') }}" class="text-decoration-none text-white fs-4  flex-grow-1 ms-2">Statistics</a>
                     </div>
                     <div class="bold-line"></div>
                 </div>
-                <a href="{{ route('statistics.index') }}" class="text-decoration-none text-white fs-4  flex-grow-1 ms-2">Statistics</a>
+
             </li>
 
             {{-- ! REVIEWS --}}
