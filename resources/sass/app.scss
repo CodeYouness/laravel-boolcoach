@@ -166,12 +166,15 @@ nav {
         width: 300px;
         aspect-ratio: 1;
         overflow: clip;
+        background-color: #028a8a;
         color: white;
         object-fit: cover;
+
 
         span {
             font-weight: bold;
             font-size: 3.2rem;
+            text-align: center;
         }
     }
 

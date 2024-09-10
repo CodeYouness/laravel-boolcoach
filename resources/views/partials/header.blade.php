@@ -14,7 +14,7 @@
                     <img src="{{asset('storage/' .Auth::user()->img_url)}}" alt="{{Auth::user()->nickname}} profile avatar" class="h-100 w-100 object-fit-cover" >
                     <span class="d-none"></span>
                 @else
-                    <span></span>
+                    <span class="h-100 d-flex justify-content-center align-items-center"></span>
                 @endif
             </div>
         </div>
