@@ -9,9 +9,9 @@
                 <div class="row w-100">
                     <div class="col-12 mb-5 d-flex justify-content-center">
                         {{-- ! se non c'è l'immagine, div con la prima lettera del nick --}}
-                        <div class="profile-img rounded-circle d-flex justify-content-center align-items-center" data-nick="{{$user->nickname}}">
+                        <div class="profile-img rounded-circle" data-nick="{{$user->nickname}}">
                             @if ($user->img_url)
-                                <img src="{{asset('storage/' .$user->img_url)}}" alt="{{$user->nickname}} profile avatar" class="h-100">
+                                <img src="{{asset('storage/' .$user->img_url)}}" alt="{{$user->nickname}} profile avatar" class="h-100 w-100 object-fit-cover">
                                 <span class="d-none"></span>
                             @else
                                 <span></span>
