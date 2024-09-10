@@ -60,6 +60,10 @@ priceInputEl.addEventListener('input', function(){
     if (priceValue.length === 0){
         priceInputElError.innerHTML = ""
     }
+    else if (priceValue === isNaN){
+        priceInputElError.classList.add('text-danger')
+        priceInputElError.innerHTML = "Il prezzo deve essere un numero!"
+    }
     else if(parseInt(priceValue) < 5){
         priceInputElError.classList.add('text-danger')
         priceInputElError.innerHTML = "Prezzo minimo richiesto: 5€"
