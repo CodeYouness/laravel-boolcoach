@@ -19,7 +19,7 @@ class UserVoteSeeder extends Seeder
         $vote_ids = Vote::all()->pluck("id");
 
         foreach ($users as $user) {
-            $random_votes = $faker->randomElements($vote_ids, $faker->numberBetween(2, 5), true);
+            $random_votes = $faker->randomElements($vote_ids, $faker->numberBetween(10, 20), true);
             $user->votes()->sync($random_votes);
         }
     }

@@ -110,7 +110,7 @@ Boolcoach
 
                         {{-- ! GAME INPUT --}}
                         <div class="row mb-3 align-items-center">
-                            <label for="game" class="col-md-2 col-form-label text-md-end align-item-center">{{ __('Games') }}</label>
+                            <label for="game" class="col-md-2 col-form-label text-md-end align-item-center">{{ __('Games') }} <span title="Campo obbligatorio">*</span></label>
                             <div class="form-group col-md-9">
                                 <div class="btn-group d-flex" role="group" aria-label="Basic checkbox toggle button group">
                                     @foreach ($games as $game)

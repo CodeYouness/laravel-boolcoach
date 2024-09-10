@@ -35,7 +35,7 @@
             </li>
 
             {{-- ! STATISTICS --}}
-            <li class="w-100 nav-item d-flex align-items-center mb-2">
+            <li class="w-100 nav-item d-flex align-items-center mb-2 {{Route::is('statistics.index') ? 'active-link' : ''}}">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon text-center d-flex align-items-center">
                         <a href="">
@@ -113,7 +113,7 @@
             </li>
 
             {{-- ! SETTINGS --}}
-            <li class="nav-item d-flex align-items-center">
+            {{-- <li class="nav-item d-flex align-items-center">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon d-flex text-center align-items-center">
                         <a href="" class="text-white">
@@ -123,7 +123,7 @@
                     </div>
                     <div class="bold-line"></div>
                 </div>
-            </li>
+            </li> --}}
         </ul>
 
     </div>
