@@ -17,7 +17,7 @@
                                     new Chart(document.querySelector('#barChart'), {
                                         type: 'bar',
                                         data: {
-                                            labels:['1 star', '2 star', '3 star', '4 star', '5 star'],
+                                            labels:{!! json_encode($labels) !!},
                                             datasets: [{
                                                 label: 'Voti Ricevuti',
                                                 data: {!! json_encode($data) !!},
