@@ -45,7 +45,7 @@ class UserController extends Controller
         if (auth()->id() === $user->id) {
             return view('users.show', compact( 'user'));
         } else {
-            return abort(404);
+            return abort(403);
         }
     }
 
@@ -58,7 +58,7 @@ class UserController extends Controller
             $games = Game::all();
             return view('users.edit', compact('user', 'games'));
         } else {
-            return abort(404);
+            return abort(403);
         }
     }
 
@@ -96,7 +96,7 @@ class UserController extends Controller
             $user->delete();
             return redirect()->route('users.index');
         } else {
-            return 'Non puoi cancellare gli account altrui';
+            return abort(403);;
         }
     }
 
