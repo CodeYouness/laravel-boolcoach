@@ -1,82 +1,76 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const formEl = document.getElementById('registration-form');
 
-const nameInputEl = document.getElementById('registration-form-name')
-const nameInputElError = document.getElementById('registration-form-name-error')
-nameInputEl.addEventListener('input', function() {
-    const nameLength = nameInputEl.value.length;
+    formEl.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    if (nameLength === 0){
-        nameInputElError.innerHTML = '';
-    }else if (nameLength < 3 || nameLength > 20) {
-        nameInputElError.classList.add('text-danger')
-        nameInputElError.innerHTML = 'Il nome deve essere compreso fra 3 e 20 caratteri';
-    }else {
-        nameInputElError.classList.remove('text-danger')
-        nameInputElError.classList.add('text-success')
-        nameInputElError.innerHTML = 'Campo valido!';
-    }
+        let formIsValid = true;
+
+        const nameInput = document.getElementById('registration-form-name');
+        const nameError = document.getElementById('registration-form-name-error');
+        if (nameInput.value.trim().length < 3 || nameInput.value.trim().length > 20) {
+            nameError.textContent = 'Il nome deve essere tra 3 e 20 caratteri.';
+            formIsValid = false;
+        } else {
+            nameError.textContent = '';
+        }
+
+        const surnameInput = document.getElementById('registration-form-surname');
+        const surnameError = document.getElementById('registration-form-surname-error');
+        if (surnameInput.value.trim().length < 3 || surnameInput.value.trim().length > 20) {
+            surnameError.textContent = 'Il cognome deve essere tra 3 e 20 caratteri.';
+            formIsValid = false;
+        } else {
+            surnameError.textContent = '';
+        }
+
+        const nicknameInput = document.getElementById('registration-form-nickname');
+        const nicknameError = document.getElementById('registration-form-nickname-error');
+        if (nicknameInput.value.trim().length < 3 || nicknameInput.value.trim().length > 20) {
+            nicknameError.textContent = 'Il nickname deve essere tra 3 e 20 caratteri.';
+            formIsValid = false;
+        } else {
+            nicknameError.textContent = '';
+        }
+
+        const priceInput = document.getElementById('registration-form-price');
+        const priceError = document.getElementById('registration-form-price-error');
+        if (!/^\d+(\.\d{1,2})?$/.test(priceInput.value)) {
+            priceError.textContent = 'Il prezzo deve essere un numero valido (es. 99.99).';
+            formIsValid = false;
+        } else {
+            priceError.textContent = '';
+        }
+
+        const languageInput = document.getElementById('registration-form-language');
+        const languageError = document.getElementById('registration-form-language-error');
+        if (languageInput.value.trim().length < 2) {
+            languageError.textContent = 'La lingua deve contenere almeno 2 caratteri.';
+            formIsValid = false;
+        } else {
+            languageError.textContent = '';
+        }
+
+            //! GESTISCE GLI ERRORI DELLE PASSWORD
+            document.getElementById('password-error').textContent = '';
+            document.getElementById('password-confirm-error').textContent = '';
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('password-confirm').value;
+
+            if (password !== confirmPassword) {
+                console.log('password non coincide')
+                event.preventDefault();
+                document.getElementById('password-confirm-error').textContent = 'Le password non coincidono.';
+                document.getElementById('password').classList.add('is-invalid');
+                document.getElementById('password-confirm').classList.add('is-invalid');
+            } else {
+                document.getElementById('password').classList.remove('is-invalid');
+                document.getElementById('password-confirm').classList.remove('is-invalid');
+            }
+
+        if (formIsValid) {
+            formEl.submit();
+        }
+    });
 });
-
-const surnameInputEl = document.getElementById('registration-form-surname')
-const surnameInputElError = document.getElementById('registration-form-surname-error')
-surnameInputEl.addEventListener('input', function() {
-    const surnameLength = surnameInputEl.value.length;
-
-    if(surnameLength ===0){
-        surnameInputEl.innerHTML = ''
-    }
-    else if (surnameLength < 3 || surnameLength > 20) {
-        surnameInputElError.classList.add('text-danger')
-        surnameInputElError.innerHTML = 'Il cognome deve essere compreso fra 3 e 20 caratteri';
-    } else {
-        surnameInputElError.classList.remove('text-danger')
-        surnameInputElError.classList.add('text-success')
-        surnameInputElError.innerHTML = 'Campo valido!';
-    }
-});
-
-const nicknameInputEl = document.getElementById('registration-form-nickname')
-const nicknameInputElError = document.getElementById('registration-form-nickname-error')
-nicknameInputEl.addEventListener('input', function() {
-    const nicknameLength = nicknameInputEl.value.length;
-
-    if(nicknameLength === 0){
-        nicknameInputElError.innerHTML = ''
-    }
-    else if (nicknameLength < 3 || nicknameLength > 20) {
-        nicknameInputElError.classList.add('text-danger')
-        nicknameInputElError.innerHTML = 'Il nickname deve essere compreso fra 3 e 20 caratteri';
-    } else {
-        nicknameInputElError.classList.remove('text-danger')
-        nicknameInputElError.classList.add('text-success')
-        nicknameInputElError.innerHTML = 'Campo valido!';
-    }
-});
-
-const priceInputEl = document.getElementById('registration-form-price')
-const priceInputElError = document.getElementById('registration-form-price-error')
-priceInputEl.addEventListener('input', function(){
-    const priceValue = priceInputEl.value
-
-    if (priceValue.length === 0){
-        priceInputElError.innerHTML = ""
-    }
-    else if (priceValue === isNaN){
-        priceInputElError.classList.add('text-danger')
-        priceInputElError.innerHTML = "Il prezzo deve essere un numero!"
-    }
-    else if(parseInt(priceValue) < 5){
-        priceInputElError.classList.add('text-danger')
-        priceInputElError.innerHTML = "Prezzo minimo richiesto: 5€"
-    } else {
-        priceInputElError.classList.remove('text-danger')
-        priceInputElError.classList.add('text-success')
-        priceInputElError.innerHTML = "Campo valido!"
-    }
-})
-
-// const languageInputEl = document.getElementById('registration-form-language')
-// const languageInputElError = document.getElementById('registration-form-language-error')
-// languageInputEl.addEventListener('input', function(){
-//     const languageValue = languageInputEl.value
-// })
-
