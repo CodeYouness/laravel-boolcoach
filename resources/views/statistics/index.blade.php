@@ -20,7 +20,7 @@
                                             labels:['1 star', '2 star', '3 star', '4 star', '5 star'],
                                             datasets: [{
                                                 label: 'Voti Ricevuti',
-                                                data: [1,2,3,4,5]
+                                                data: {!! json_encode($data) !!},
                                             }]
                                         }
                                     })

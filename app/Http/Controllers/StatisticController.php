@@ -16,7 +16,7 @@ class StatisticController extends Controller
         $votesDistribution = DB::table('user_vote')
             ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
             ->join('users', 'user_vote.user_id', '=', 'users.id')
-            ->where('users.coach_id', $coachId)
+            ->where('users.id', $coachId)
             ->select('votes.value', DB::raw('COUNT(votes.value) as vote_count'))
             ->groupBy('votes.value')
             ->orderBy('votes.value', 'asc')
