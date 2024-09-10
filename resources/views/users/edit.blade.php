@@ -10,7 +10,7 @@
                     <div class="card-header">Edit {{ $user->nickname }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data" id="registration-form">
                             @csrf
                             @method('PUT')
 
@@ -85,9 +85,7 @@
 
                             {{-- ! PRICE INPUT --}}
                             <div class="row mb-3">
-                                <label for="price"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Price') }}</label>
-
+                                <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Price') }}</label>
                                 <div class="col-md-9">
                                     <input id="registration-form-price" type="text"
                                         class="form-control @error('price') is-invalid @enderror" name="price"
@@ -164,7 +162,7 @@
                                 <label for="summary" class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
                                 <div class="col-md-9">
                                     <textarea id="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
-                                            required autocomplete="summary" rows="5"
+                                            autocomplete="summary" rows="5"
                                             placeholder="Tell us more about yourself">{{ old('summary', $user->summary) }}</textarea>
                                     @error('summary')
                                         <span class="invalid-feedback" role="alert">
@@ -189,4 +187,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom-script')
+@vite(['resources/js/edit_form_validation.js'])
 @endsection
