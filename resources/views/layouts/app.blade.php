@@ -8,7 +8,6 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'BoolCoach') }}</title>
     <title>
         @yield('page-title', 'Boolcoach')
     </title>
