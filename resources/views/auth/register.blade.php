@@ -61,7 +61,7 @@
 
                         {{-- ! PRICE INPUT --}}
                         <div class="row mb-3">
-                            <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Price') }}</label>
+                            <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Price') }}  <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
@@ -77,7 +77,7 @@
 
                         {{-- ! LANGUAGE INPUT --}}
                         <div class="row mb-3">
-                            <label for="language" class="col-md-2 col-form-label text-md-end">{{ __('Language') }}</label>
+                            <label for="language" class="col-md-2 col-form-label text-md-end">{{ __('Language') }}  <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-language" type="text" class="form-control @error('language') is-invalid @enderror" name="language" value="{{ old('language') }}" required autocomplete="language" autofocus>

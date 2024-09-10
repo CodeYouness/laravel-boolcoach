@@ -95,4 +95,13 @@ class UserController extends Controller
             return 'Non puoi cancellare gli account altrui';
         }
     }
+
+
+    public function updateIsAvailable(Request $request, User $user){
+        $data = $request->input('is_available');
+
+        dd($data);
+        $user->update($data);
+        return redirect()->route('users.show', $user);
+    }
 }
