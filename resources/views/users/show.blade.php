@@ -93,7 +93,7 @@
             <div class="col-12 d-flex justify-content-around align-items-center mb-3">
                 <a href="{{ route('users.index') }}" class="btn btn-outline-light btn-lg fw-bold">Back to index</a>
                 <a href="{{ route('users.edit', $user) }}" class="btn btn-outline-warning btn-lg fw-bold">Edit</a>
-                <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline-block">
+                <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline-block" id="show-page-delete-form">
                     @csrf
                     @method('DELETE')
                     <input type="submit" class="btn btn-outline-danger btn-lg fw-bold" value="Delete">
@@ -101,4 +101,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('custom-script')
+@vite(['resources/js/delete_confirmation.js'])
 @endsection
