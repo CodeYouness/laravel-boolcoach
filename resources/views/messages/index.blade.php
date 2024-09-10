@@ -3,7 +3,7 @@
     Reviews
 @endsection
 @section('main-content')
-    <div class="container m-4">
+    <div class="container m-4 overflow-auto h100">
         @foreach ($messages as $message)
         <div class="card mb-3 me-4">
             <div class="row g-0">
