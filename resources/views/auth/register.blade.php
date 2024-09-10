@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('page-title')
+Boolcoach
+@endsection
 
 @section('content')
 <div class="container">
@@ -8,7 +11,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" id="registration-form">
                         @csrf
 
                         {{-- ! NAME INPUT --}}
@@ -18,7 +21,6 @@
                             <div class="col-md-9">
                                 <input id="registration-form-name" type="text" class="form-control @error('name') is-invalid @enderror" minlength="3" maxlength="20" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                 <span class="error" id="registration-form-name-error"></span>
-
                                 @error('name')
                                     <span class="invalid-feedback" role="alert" id="">
                                         <strong>{{ $message }}</strong>
@@ -130,6 +132,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                <span class="error" id="password-error"></span>
                             </div>
                         </div>
 
@@ -139,6 +142,7 @@
 
                             <div class="col-md-9">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <span class="error" id="password-confirm-error"></span>
                             </div>
                         </div>
 
@@ -158,16 +162,26 @@
     </div>
 </div>
 
+<script>
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+
+        //! GESTISCE GLI ERRORI DELLE PASSWORD
+        document.getElementById('password-error').textContent = '';
+        document.getElementById('password-confirm-error').textContent = '';
+
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('password-confirm').value;
+
+        if (password !== confirmPassword) {
+            console.log('password non coincide')
+            event.preventDefault();
+            document.getElementById('password-confirm-error').textContent = 'Le password non coincidono.';
+            document.getElementById('password').classList.add('is-invalid');
+            document.getElementById('password-confirm').classList.add('is-invalid');
+        } else {
+            document.getElementById('password').classList.remove('is-invalid');
+            document.getElementById('password-confirm').classList.remove('is-invalid');
+        }
+    });
+</script>
 @endsection
-
-
-{{--
-<div class="form-group">
-    <label class="d-block" for="game">Tech:</label>
-    <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-        @foreach ($games as $game)
-        <input name="games[]" type="checkbox" class="btn-check" id="selected-check-{{ $game->id }}" value="{{ $game->id }}">
-        <label class="btn btn-outline-primary" for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
-        @endforeach
-    </div>
-</div> --}}
