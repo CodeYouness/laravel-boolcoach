@@ -21,9 +21,32 @@
                     <div class="col-12 card p-3" >
                         <div class="d-flex justify-content-between align-items-center">
                             <h1 class="fs-2 mb-0 {{($user->is_available == true) ? '' : 'text-secondary fw-light'}}">{{($user->is_available == true) ? 'Available' : 'Not Available'}}</h1>
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" {{($user->is_available == true) ? 'checked' : ''}} disabled>
-                            </div>
+                            {{-- <div class="d-flex align-items-center">
+                                <div class="form-check form-switch">
+                                    <form id="available-form" action="{{ route('updateIsAvailable', $user) }}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+
+                                        <input class="form-check-input" type="checkbox" role="switch" name="is_available"
+                                        value="{{ old('is_available', $user->is_available)}}"
+                                        {{($user->is_available == true) ? 'checked' : ''}}>
+                                    </form>
+                                </div>
+                                <span>
+                                    <i class="fa-solid fa-pencil ms-2"
+                                        onclick="this.classList.add('d-none');
+                                        document.querySelector('i.fa-pencil + i.fa-check').classList.remove('d-none');
+                                        document.querySelector('input.form-check-input').removeAttribute('disabled')">
+                                    </i>
+                                    <i class="fa-solid fa-check ms-2 d-none"
+                                        onclick="event.preventDefault();
+                                        this.classList.add('d-none');
+                                        document.querySelector('i.fa-pencil:has(+ i.fa-check)').classList.remove('d-none');
+                                        document.getElementById('available-form').submit();">
+                                    </i>
+                                </span>
+                            </div> --}}
+
                         </div>
                     </div>
                 </div>
@@ -37,7 +60,7 @@
                             {{$user->name}} {{$user->surname}}
                         </p>
                         <p class="fs-4 mb-1">
-                            <span class="me-3" title="This is the name the other users will see">Your visible name: </span>
+                            <span class="me-3" title="Visible to the other users">Your visible name: </span>
                             {{$user->nickname}}
                         </p>
                         <p class="fs-4 mb-1">

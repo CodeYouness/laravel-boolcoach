@@ -1,6 +1,6 @@
 
 <nav id="side-nav" class="navbar navbar-expand-lg d-flex flex-column">
-    <a class="my_logo text-decoration-none text-white fw-bold p-0 mb-4" href="#">Boolcoach</a>
+    <p class="my_logo text-decoration-none text-white fw-bold p-0 mb-4">Boolcoach</p>
 
     {{-- ! NAVBAR CONTAINER --}}
     <div class="container-fluid d-flex flex-column flex-grow-1 justify-content-between">
@@ -9,7 +9,7 @@
         <ul class="navbar-nav d-flex flex-column w-100">
 
             {{-- ! DASHBOARD --}}
-            <li class="w-100 nav-item d-flex align-items-center mb-2">
+            <li class="w-100 nav-item d-flex align-items-center mb-2 {{Route::is('users.index') ? 'active-link' : ''}}">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon text-center d-flex align-items-center">
                         <a href="{{route('users.index')}}" >
@@ -22,7 +22,7 @@
             </li>
 
             {{-- ! PROFILE --}}
-            <li class="w-100 nav-item d-flex align-items-center mb-2">
+            <li class="w-100 nav-item d-flex align-items-center mb-2 {{Route::is('users.show', auth()->id()) ? 'active-link' : ''}}">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon text-center d-flex align-items-center">
                         <a href="">
@@ -41,14 +41,15 @@
                         <a href="">
                             <i class="fa-solid fa-chart-line mx-2"></i>
                         </a>
-                        <a href="#" class="text-decoration-none flex-grow-1 ms-2">Statistics</a>
+                        <a href="{{ route('statistics.index') }}" class="text-decoration-none text-white fs-4  flex-grow-1 ms-2">Statistics</a>
                     </div>
                     <div class="bold-line"></div>
                 </div>
+
             </li>
 
             {{-- ! REVIEWS --}}
-            <li class="w-100 nav-item d-flex align-items-center mb-2">
+            <li class="w-100 nav-item d-flex align-items-center mb-2 {{Route::is('reviews.index') ? 'active-link' : ''}}">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon text-center d-flex align-items-center">
                         <a href="{{route('reviews.index')}}">
@@ -61,7 +62,7 @@
             </li>
 
             {{-- ! SPONSORSHIPS --}}
-            <li class="w-100 nav-item d-flex align-items-center mb-2">
+            <li class="w-100 nav-item d-flex align-items-center mb-2 {{Route::is('sponsorships.index') ? 'active-link' : ''}}">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon text-center d-flex align-items-center">
                         <a href="{{route('sponsorships.index')}}">
@@ -74,7 +75,7 @@
             </li>
 
             {{-- ! MESSAGES --}}
-            <li class="nav-item d-flex align-items-center">
+            <li class="nav-item d-flex align-items-center {{Route::is('messages.index') ? 'active-link' : ''}}">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon d-flex text-center align-items-center">
                         <a href="{{route('messages.index')}}">
@@ -94,10 +95,18 @@
             <li class="nav-item d-flex align-items-center">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 menu-icon d-flex text-center align-items-center">
-                        <a href="">
+                        <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
                             <i class="fa-solid fa-arrow-right-from-bracket mx-2"></i>
                         </a>
-                        <a href="" class="text-decoration-none flex-grow-1 ms-2">Logout</a>
+                        <a href="{{ route('logout') }}" class="text-decoration-none flex-grow-1 ms-2" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </div>
                     <div class="bold-line"></div>
                 </div>

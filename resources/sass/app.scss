@@ -82,6 +82,12 @@ nav {
             border: 1px solid white;
             scale: 1.05;
         }
+
+        &:focus{
+            background-color: #7E3CC1;
+            border: 1px solid white;
+            scale: 1.05;
+        }
     }
 
     .btn-link {
@@ -120,7 +126,7 @@ nav {
     background: rgb(126,60,193);
     background: linear-gradient(145deg, rgba(126,60,193,1) 0%, rgba(214,41,115,1) 75%, rgba(255,32,78,1) 100%);
 
-    a.my_logo{
+    .my_logo{
         font-family: "Jaro", system-ui;
         color: #FFF;
         text-align: center;
@@ -162,6 +168,16 @@ nav {
         span{
             font-weight: bold;
             font-size: 3.2rem;
+        }
+    }
+
+    i.fa-pencil,
+    i.fa-check {
+        opacity: 0.5;
+        cursor: pointer;
+
+        &:hover{
+            opacity: 1;
         }
     }
 }

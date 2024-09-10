@@ -13,7 +13,7 @@
 
                         {{-- ! NAME INPUT --}}
                         <div class="row mb-3">
-                            <label for="name" class="col-md-2 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-2 col-form-label text-md-end">{{ __('Name') }} <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-name" type="text" class="form-control @error('name') is-invalid @enderror" minlength="3" maxlength="20" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -29,7 +29,7 @@
 
                         {{-- ! SURNAME INPUT --}}
                         <div class="row mb-3">
-                            <label for="surname" class="col-md-2 col-form-label text-md-end">{{ __('Surname') }}</label>
+                            <label for="surname" class="col-md-2 col-form-label text-md-end">{{ __('Surname') }} <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-surname" type="text" class="form-control @error('surname') is-invalid @enderror" minlength="3" maxlength="20" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
@@ -45,7 +45,7 @@
 
                         {{-- ! NICKNAME INPUT --}}
                         <div class="row mb-3">
-                            <label for="nickname" class="col-md-2 col-form-label text-md-end">{{ __('Nickname') }}</label>
+                            <label for="nickname" class="col-md-2 col-form-label text-md-end">{{ __('Nickname') }} <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-nickname" type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname" minlength="3" maxlength="20" value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
@@ -61,7 +61,7 @@
 
                         {{-- ! PRICE INPUT --}}
                         <div class="row mb-3">
-                            <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Price') }}</label>
+                            <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Price') }}  <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
@@ -77,7 +77,7 @@
 
                         {{-- ! LANGUAGE INPUT --}}
                         <div class="row mb-3">
-                            <label for="language" class="col-md-2 col-form-label text-md-end">{{ __('Language') }}</label>
+                            <label for="language" class="col-md-2 col-form-label text-md-end">{{ __('Language') }}  <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-language" type="text" class="form-control @error('language') is-invalid @enderror" name="language" value="{{ old('language') }}" required autocomplete="language" autofocus>
@@ -93,7 +93,7 @@
 
                         {{-- ! EMAIL INPUT --}}
                         <div class="row mb-3">
-                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('Email Address') }} <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -113,7 +113,7 @@
                                 <div class="btn-group d-flex" role="group" aria-label="Basic checkbox toggle button group">
                                     @foreach ($games as $game)
                                     <input name="games[]" type="checkbox" class="btn-check" id="selected-check-{{ $game->id }}" value="{{ $game->id }}">
-                                    <label class="btn btn-outline-danger p-1 mx-1" for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
+                                    <label class="btn btn-outline-danger p-1 mx-1 rounded" for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
                                     @endforeach
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
 
                         {{-- ! PASSWORD INPUT --}}
                         <div class="row mb-3">
-                            <label for="password" class="col-md-2 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-2 col-form-label text-md-end">{{ __('Password') }} <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -135,7 +135,7 @@
 
                         {{-- ! CONFIRM PASSWORD INPUT --}}
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-2 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-2 col-form-label text-md-end">{{ __('Confirm Password') }} <span title="Campo obbligatorio">*</span></label>
 
                             <div class="col-md-9">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">

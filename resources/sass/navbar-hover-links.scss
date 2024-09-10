@@ -21,4 +21,10 @@
         transform: scale(1.10);
     }
     }
+
+    li.active-link {
+        a {
+            opacity: 1;
+        }
+    }
 }

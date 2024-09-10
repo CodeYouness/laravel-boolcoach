@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/register_form_validation.js', 'resources/sass/navbar-hover-links.scss'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/register_form_validation.js', 'resources/sass/navbar-hover-links.scss', 'resources/js/altPropic.js'])
     @yield('custom-scripts')
 </head>
 
@@ -31,7 +31,7 @@
             <div class="container">
                 <a class="logo" href="{{ url('/users') }}">
                     <img src="{{ asset('images/Designer.png') }}" alt="Logo Boolcoach">
-                    {{ config('app.name', 'BoolCoach') }}
+                    {{ 'BoolCoach' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
