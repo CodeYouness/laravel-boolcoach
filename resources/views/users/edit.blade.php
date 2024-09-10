@@ -10,7 +10,7 @@
                     <div class="card-header">Edit {{ $user->nickname }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data" id="registration-form">
                             @csrf
                             @method('PUT')
 
@@ -74,20 +74,18 @@
                                 </div>
                             </div>
 
+
                             {{-- ! PICTURE --}}
                             <div class="row mb-3 ">
                                 <label for="img_url" class="col-md-2 col-form-label text-md-end">Image</label>
                                 <div class="col-md-9">
-                                    <input class="form-control" type="file" id="img_url" name="img_url"
-                                        value="{{ old('url', $user->img_url) }}">
+                                    <input class="form-control" type="file" id="img_url" name="img_url">
                                 </div>
                             </div>
 
                             {{-- ! PRICE INPUT --}}
                             <div class="row mb-3">
-                                <label for="price"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Price') }}</label>
-
+                                <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Price') }}</label>
                                 <div class="col-md-9">
                                     <input id="registration-form-price" type="text"
                                         class="form-control @error('price') is-invalid @enderror" name="price"
@@ -150,8 +148,8 @@
                                         @foreach ($games as $game)
                                             <input name="games[]" type="checkbox" class="btn-check"
                                                 id="selected-check-{{ $game->id }}" value="{{ $game->id }}"
-                                                @checked($game->id)>
-
+                                                @checked($user->games->contains($game->id))
+                                                >
                                             <label class="btn btn-outline-danger p-1 mx-1"
                                                 for="selected-check-{{ $game->id }}">{{ $game->name }}</label>
                                         @endforeach
@@ -161,14 +159,11 @@
 
                             {{-- ! SUMMARY --}}
                             <div class="row mb-3">
-                                <label for="summary"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
-
+                                <label for="summary" class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
                                 <div class="col-md-9">
-                                    <textarea id="summary" type="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
-                                        value="{{ old('summary') }}" required autocomplete="summary" rows="5">
-                                    </textarea>
-
+                                    <textarea id="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
+                                            autocomplete="summary" rows="5"
+                                            placeholder="Tell us more about yourself">{{ old('summary', $user->summary) }}</textarea>
                                     @error('summary')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -192,4 +187,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom-script')
+@vite(['resources/js/edit_form_validation.js'])
 @endsection

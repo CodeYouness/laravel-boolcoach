@@ -42,7 +42,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        if (auth()->id() === $user->id) {
+            return view('users.show', compact( 'user'));
+        } else {
+            return abort(403);
+        }
     }
 
     /**
@@ -54,7 +58,7 @@ class UserController extends Controller
             $games = Game::all();
             return view('users.edit', compact('user', 'games'));
         } else {
-            return 'Non puoi modificare gli account di altri utenti';
+            return abort(403);
         }
     }
 
@@ -65,7 +69,20 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, User $user)
     {
         $data = $request->validated();
+
+        if ($request->hasFile('img_url')) {
+            $file = $request->file('img_url');
+            $imageName = time() . '.' . $file->extension();
+            $file->storeAs('images', $imageName, 'public');
+            $data['img_url'] = 'images/' . $imageName;
+        }
+
         $user->update($data);
+
+        if (isset($data['games'])) {
+            $user->games()->sync($data['games']);
+        }
+
         return redirect()->route('users.show', $user);
     }
 
@@ -75,12 +92,20 @@ class UserController extends Controller
     public function destroy(User $user)
     {
 
-
         if (auth()->id() === $user->id) {
             $user->delete();
-            return redirect()->route('users.index');
+            return redirect()->route('login')->with('message', 'L\'utente è stato cancellato');
         } else {
-            return 'Non puoi cancellare gli account altrui';
+            return abort(403);;
         }
+    }
+
+
+    public function updateIsAvailable(Request $request, User $user){
+        $data = $request->input('is_available');
+
+        dd($data);
+        $user->update($data);
+        return redirect()->route('users.show', $user);
     }
 }
