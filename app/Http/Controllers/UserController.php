@@ -42,7 +42,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        if (auth()->id() === $user->id) {
+            return view('users.show', compact( 'user'));
+        } else {
+            return abort(404);
+        }
     }
 
     /**
@@ -54,7 +58,7 @@ class UserController extends Controller
             $games = Game::all();
             return view('users.edit', compact('user', 'games'));
         } else {
-            return 'Non puoi modificare gli account di altri utenti';
+            return abort(404);
         }
     }
 
