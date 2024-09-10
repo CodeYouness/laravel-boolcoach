@@ -11,6 +11,8 @@
     <title>
         @yield('page-title', 'Boolcoach')
     </title>
+    <link rel="icon" href="{{ asset('images/Designer.png') }}" type="image/png">
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
