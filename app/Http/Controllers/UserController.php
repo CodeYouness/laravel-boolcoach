@@ -94,7 +94,7 @@ class UserController extends Controller
 
         if (auth()->id() === $user->id) {
             $user->delete();
-            return redirect()->route('users.index');
+            return redirect()->route('login')->with('message', 'L\'utente è stato cancellato');
         } else {
             return 'Non puoi cancellare gli account altrui';
         }
