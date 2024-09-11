@@ -20,7 +20,7 @@ class UserVoteSeeder extends Seeder
 
         foreach ($users as $user) {
             $random_votes = $faker->randomElements($vote_ids, $faker->numberBetween(10, 20), true);
-            $user->votes()->sync($random_votes);
+            $user->votes()->attach($random_votes);
         }
     }
 }
