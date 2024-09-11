@@ -1,6 +1,6 @@
 @extends('layouts.users')
 @section('page-title')
-    {{ $user->name }}
+    {{ $user->nickname }}
 @endsection
 @section('main-content')
     <div id="profile-wrapper" class="container-fluid d-flex flex-column justify-content-between h-100 px-4 pt-5 pb-3">

@@ -1,6 +1,6 @@
 @extends('layouts.users')
 @section('page-title')
-    Reviews
+    Statistics
 @endsection
 @section('main-content')
 
