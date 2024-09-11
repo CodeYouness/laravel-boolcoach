@@ -14,11 +14,18 @@ use Hamcrest\Type\IsString;
 class ApiUserController extends Controller
 {
     public function index(){
-        $users = User::with(['games', 'votes', 'reviews'])->get();
+        // $users = User::with(['games', 'votes', 'reviews']);
+
+        $sponsoredUsers = User::join('sponsorship_user', 'users.id', '=', 'sponsorship_user.user_id')
+        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
+        ->select('users.*')
+        ->with('sponsorships')
+        ->orderBy('users.id')
+        ->get();
 
         return response()->json([
             'message'=>'success',
-            'results' => $users,
+            'results' => $sponsoredUsers,
             'apiKey' => 'your-api-key-value'
         ]);
     }
