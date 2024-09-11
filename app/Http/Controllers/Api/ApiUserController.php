@@ -37,7 +37,8 @@ class ApiUserController extends Controller
         $voteString = $request->input('vote_avg');
         $gameId = $request->input('game_id');
 
-        $query = User::with(['games', 'reviews']);
+        $query = User::with(['games', 'reviews'])
+        ->where('is_available', true);
 
         if ($nicknameString) {
             $query->where('users.nickname', 'like', $nicknameString.'%');

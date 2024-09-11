@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Game;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isNull;
+
 class UserController extends Controller
 {
 
@@ -104,8 +106,7 @@ class UserController extends Controller
     public function updateIsAvailable(Request $request, User $user){
         $data = $request->input('is_available');
 
-        dd($data);
-        $user->update($data);
+        $user->update(['is_available' => $data]);
         return redirect()->route('users.show', $user);
     }
 }
