@@ -12,12 +12,11 @@ use App\Models\Review;
 
 class ApiUserController extends Controller
 {
-    public function index(String $id){
-        $users = User::with(['games', 'votes', 'reviews']);
+    public function index(){
+        $users = User::with(['games', 'votes', 'reviews'])->get();
 
         return response()->json([
             'message'=>'success',
-            'message' => 'success',
             'results' => $users,
             'apiKey' => 'your-api-key-value'
         ]);
