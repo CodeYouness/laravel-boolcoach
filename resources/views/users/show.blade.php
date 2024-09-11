@@ -21,6 +21,7 @@
                     <div class="col-12 card p-3" >
                         <div class="d-flex justify-content-between align-items-center">
                             <h1 class="fs-2 mb-0 {{($user->is_available == true) ? '' : 'text-secondary fw-light'}}">{{($user->is_available == true) ? 'Available' : 'Not Available'}}</h1>
+
                             {{-- <div class="d-flex align-items-center">
                                 <div class="form-check form-switch">
                                     <form id="available-form" action="{{ route('updateIsAvailable', $user) }}" method="POST">
