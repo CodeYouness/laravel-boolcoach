@@ -14,11 +14,18 @@ use Hamcrest\Type\IsString;
 class ApiUserController extends Controller
 {
     public function index(){
-        $users = User::with(['games', 'votes', 'reviews'])->get();
+        // $users = User::with(['games', 'votes', 'reviews']);
+
+        $sponsoredUsers = User::join('sponsorship_user', 'users.id', '=', 'sponsorship_user.user_id')
+        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
+        ->select('users.*')
+        ->with('sponsorships')
+        ->orderBy('users.id')
+        ->get();
 
         return response()->json([
             'message'=>'success',
-            'results' => $users,
+            'results' => $sponsoredUsers,
             'apiKey' => 'your-api-key-value'
         ]);
     }
@@ -37,7 +44,8 @@ class ApiUserController extends Controller
         $voteString = $request->input('vote_avg');
         $gameId = $request->input('game_id');
 
-        $query = User::with(['games', 'reviews']);
+        $query = User::with(['games', 'reviews'])
+        ->where('is_available', true);
 
         if ($nicknameString) {
             $query->where('users.nickname', 'like', $nicknameString.'%');
