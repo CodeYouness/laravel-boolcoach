@@ -22,7 +22,7 @@ class GameSeeder extends Seeder
             [
                 "name" => "Tom Clancy's Rainbow Six Siege",
                 "genre" => "Tactical Shooter",
-                "img" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ84F6XVqPPwVdxpBdDjhc87vkizlQNoEhE3g&s"
+                "img" => "https://lh4.googleusercontent.com/proxy/KfJ1ocLrm9YZirEBMfXmhfY0MjKK1-Is3Nq_GHakYP0I82-8cVSquy9z4wyj4g4FKRs942NUY5-v9Z-_OOLuCpQELbjGVOdtSyoPACX9y0m78cpq_JnDCpDaoNG48Qq7pxkYAI0Jig"
             ],
             [
                 "name" => "FIFA 25",
@@ -32,12 +32,12 @@ class GameSeeder extends Seeder
             [
                 "name" => "Overwatch",
                 "genre" => "Hero Shooter",
-                "img" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCJgtZ2lZYNZI7jMS1E-Mh98VZgxb5EkfLtQ&s"
+                "img" => "https://1000logos.net/wp-content/uploads/2018/03/Overwatch-Logo.png"
             ],
             [
                 "name" => "Rocket League",
                 "genre" => "Sports/Car Soccer",
-                "img" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaj4WB0eeIGj68RxccVHG09nAeD0WuVkrBRA&s"
+                "img" => "https://images.squarespace-cdn.com/content/v1/5e7bccc44c932c510af9fc1c/1612802612419-OHNURHWN9TI8PNFADEHU/Rocket_League.png"
             ]
         ];
 
