@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Node\Builder;
 use App\Models\User;
 use App\Models\Game;
@@ -16,17 +18,27 @@ class ApiUserController extends Controller
     public function index(){
         // $users = User::with(['games', 'votes', 'reviews']);
 
-        $sponsoredUsers = User::join('sponsorship_user', 'users.id', '=', 'sponsorship_user.user_id')
-        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
-        ->select('users.*')
-        ->with('sponsorships')
-        ->orderBy('users.id')
+        $sponsoredUsers = User::join('user_vote', 'user_vote.user_id', '=', 'users.id')
+        ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
+        ->join('sponsorship_user', 'sponsorship_user.user_id', '=', 'user_vote.user_id')
+        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
+        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
+        ->groupBy('users.id')
+        ->orderBy('vote_average', 'desc')
         ->get();
+
+        foreach ($sponsoredUsers as $user) {
+            if (Str::startsWith($user->img_url, 'avatars')) {
+                $user->img_url = Storage::url($user->img_url)
+                // Storage::url($user->img_url)
+                ;
+            }
+        }
 
         return response()->json([
             'message'=>'success',
             'results' => $sponsoredUsers,
-            'apiKey' => 'your-api-key-value'
+            'apiKey' => 'your-api-key-value',
         ]);
     }
 
