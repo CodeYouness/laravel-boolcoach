@@ -24,6 +24,7 @@ class ApiUserController extends Controller
         ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
         ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
         ->groupBy('users.id')
+        ->with('games')
         ->orderBy('vote_average', 'desc')
         ->get();
 
