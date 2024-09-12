@@ -80,8 +80,16 @@ class ApiUserController extends Controller
                     ->orderBy('vote_average', 'DESC');
         }
 
+
         $users = $query->get();
 
+        foreach ($users as $user) {
+            if (Str::startsWith($user->img_url, 'avatars')) {
+                $user->img_url = Storage::url($user->img_url);
+                // Storage::url($user->img_url)
+
+            }
+        }
         // ! CODICE PER EVENTUALI DEBUG
         // $sql = $query->toSql();
         // $bindings = $query->getBindings();
