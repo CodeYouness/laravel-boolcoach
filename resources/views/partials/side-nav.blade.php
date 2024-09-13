@@ -1,6 +1,6 @@
 
 <nav id="side-nav" class="navbar navbar-expand-lg d-flex flex-column">
-    <p class="my_logo text-decoration-none text-white fw-bold p-0 mb-4">Boolcoach</p>
+    <a id="boolcoach-logo" href="http://localhost:5174/" class="my_logo text-decoration-none text-white fw-bold p-0 mb-4">Boolcoach</a>
 
     {{-- ! NAVBAR CONTAINER --}}
     <div class="container-fluid d-flex flex-column flex-grow-1 justify-content-between">
