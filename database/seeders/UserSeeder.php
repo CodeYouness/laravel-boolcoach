@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                 'language' => $faker->randomElement($languages),
                 "password"=> Hash::make($faker->password()),
                 'summary'=> $faker->realTextBetween(1000, 4500),
-                'img_url'=> $faker->imageUrl(),
+                'img_url'=> 'https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRk8SKKl8TSgTuEjwFILOIsa6qpjJDIygB5HKjjq62nkme7LMLPyoVob1t0cTDV2YWg6FtfhY9WXjLlbug',
                 'price'=>$faker->randomFloat(2, 9.99, 24.99),
                 'is_available'=>$faker->boolean(100)
             ];
