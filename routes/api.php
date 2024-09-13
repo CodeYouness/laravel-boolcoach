@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ApiGameController;
 use App\Http\Controllers\Api\ApiUserController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,8 @@ Route::name('api')->group(function(){
     //! ROTTE GAMES
     Route::get('games', [ApiGameController::class, 'index'])->name('games.index');
     Route::get('games/{id}', [ApiGameController::class, 'show'])->name('games.show');
+
+    //! ROTTE MESSAGES
+    Route::post('/coaches/{id}', [MessageController::class, 'store'])->name('api.message.store');
 
 });
