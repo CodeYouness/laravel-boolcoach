@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const confirmPassword = document.getElementById('password-confirm').value;
 
             if (password !== confirmPassword) {
-                console.log('password non coincide')
                 event.preventDefault();
+                formIsValid = false
                 document.getElementById('password-confirm-error').textContent = 'Le password non coincidono.';
                 document.getElementById('password').classList.add('is-invalid');
                 document.getElementById('password-confirm').classList.add('is-invalid');
