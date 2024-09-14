@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApiGameController;
+use App\Http\Controllers\Api\ApiMessageController;
 use App\Http\Controllers\Api\ApiUserController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Http\Request;
@@ -33,6 +34,5 @@ Route::name('api')->group(function(){
     Route::get('games/{id}', [ApiGameController::class, 'show'])->name('games.show');
 
     //! ROTTE MESSAGES
-    Route::post('/coaches/{id}', [MessageController::class, 'store'])->name('api.message.store');
-
+    Route::post('/coaches/{id}', [ApiMessageController::class, 'create'])->name('message.store');
 });

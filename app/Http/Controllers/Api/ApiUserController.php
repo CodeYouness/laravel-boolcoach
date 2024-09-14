@@ -17,14 +17,20 @@ class ApiUserController extends Controller
 {
     public function index()
     {
-        $users = User::with(['games', 'votes', 'reviews'])->get();
+        $users = User::with(['games', 'votes', 'reviews'])
+        ->join('user_vote', 'user_vote.user_id', '=', 'users.id')
+        ->join('votes', 'votes.id', '=', 'user_vote.vote_id')
+        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
+        ->groupBy('users.id')
+        //eventuale orderBy va inserito qui
+        ->get();
 
         $sponsoredUsers = User::join('user_vote', 'user_vote.user_id', '=', 'users.id')
             ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
             ->join('sponsorship_user', 'sponsorship_user.user_id', '=', 'user_vote.user_id')
             ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
-            ->select('users.id', 'users.name', 'users.img_url', DB::raw('AVG(votes.value) as vote_average'))
-            ->groupBy('users.id', 'users.name', 'users.img_url')
+            ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
+            ->groupBy('users.id')
             ->orderBy('vote_average', 'desc')
             ->get();
 

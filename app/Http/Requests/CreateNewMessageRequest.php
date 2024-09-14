@@ -22,6 +22,7 @@ class CreateNewMessageRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'coach_id'=> 'required|integer',
             'username' => 'required|string|min:3|max:50',
             'email' => 'required|email|min:3',
             'title' => 'required|string|min:3|max:50',
