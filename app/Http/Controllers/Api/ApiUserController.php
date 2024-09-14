@@ -15,8 +15,15 @@ use Hamcrest\Type\IsString;
 
 class ApiUserController extends Controller
 {
-    public function index(){
-        // $users = User::with(['games', 'votes', 'reviews']);
+    public function index()
+    {
+        $users = User::with(['games', 'votes', 'reviews'])
+        ->join('user_vote', 'user_vote.user_id', '=', 'users.id')
+        ->join('votes', 'votes.id', '=', 'user_vote.vote_id')
+        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
+        ->groupBy('users.id')
+        //eventuale orderBy va inserito qui
+        ->get();
 
         $sponsoredUsers = User::join('user_vote', 'user_vote.user_id', '=', 'users.id')
         ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
@@ -32,25 +39,30 @@ class ApiUserController extends Controller
         foreach ($sponsoredUsers as $user) {
             if (Str::startsWith($user->img_url, 'avatars')) {
                 $user->img_url = Storage::url($user->img_url);
-                // Storage::url($user->img_url)
-
             }
         }
 
         return response()->json([
-            'message'=>'success',
-            'results' => $sponsoredUsers,
+            'message' => 'success',
+            'results' => [
+                'users' => $users,
+                'sponsoredUsers' => $sponsoredUsers,
+            ],
             'apiKey' => 'your-api-key-value',
         ]);
     }
 
     public function show(String $id){
-        $user = User::with(['games', 'votes', 'reviews'])->findOrFail($id);
+        $user = User::with(['games', 'votes', 'reviews'])
+        ->join('user_vote', 'user_vote.user_id', '=', 'users.id')
+        ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
+        ->where('users.id', '=', $id)
+        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
+        ->groupBy('users.id')
+        ->first();
 
         if (Str::startsWith($user->img_url, 'avatars')) {
             $user->img_url = Storage::url($user->img_url);
-            // Storage::url($user->img_url)
-
         }
 
         return response()->json([

@@ -18,12 +18,4 @@ class MessageController extends Controller
         $messages = Message::where('coach_id', Auth::id())->orderBy('created_at', 'desc')->get();
         return view('messages.index', compact('messages'));
     }
-
-    public function store(CreateNewMessageRequest $request)
-    {
-        $data = $request->validated();
-        $newMessage = Message::create($data);
-
-        return redirect()->away('http://localhost:5173/?message=sent');
-    }
 }
