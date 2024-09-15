@@ -69,7 +69,7 @@ nav {
 
 
 .card {
-    background-color: transparent;
+    // background-color: transparent;
     background-color: #161e29;
     opacity: 1;
     background-image:  linear-gradient(135deg, #121922 25%, transparent 25%), linear-gradient(225deg, #121922 25%, transparent 25%), linear-gradient(45deg, #121922 25%, transparent 25%), linear-gradient(315deg, #121922 25%, #161e29 25%);
@@ -83,6 +83,12 @@ nav {
 
     .card-header {
         border-bottom: 1px solid white;
+    }
+
+    input,
+    input:focus {
+        background-color: transparent;
+        color: white;
     }
 
     .form-check-input:checked {
@@ -119,8 +125,17 @@ nav {
 }
 
 #app-header {
-    height: $header-height;
-    border-bottom: 2px solid white;
+    // height: $header-height;
+    padding: 10px 5px;
+    background-color: #161e29;
+    opacity: 1;
+    background-image:  linear-gradient(135deg, #121922 25%, transparent 25%), linear-gradient(225deg, #121922 25%, transparent 25%), linear-gradient(45deg, #121922 25%, transparent 25%), linear-gradient(315deg, #121922 25%, #161e29 25%);
+    background-position:  4px 0, 4px 0, 0 0, 0 0;
+    background-size: 4px 4px;
+    background-repeat: repeat;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5), 0px -1px 4px rgba(255, 255, 255, 0.5) inset;
+    color: white;
+    // border-bottom: 2px solid white;
     color: white;
 
     .profile-img {
