@@ -15,8 +15,15 @@ use Hamcrest\Type\IsString;
 
 class ApiUserController extends Controller
 {
-    public function index(){
-        // $users = User::with(['games', 'votes', 'reviews']);
+    public function index()
+    {
+        $users = User::with(['games', 'votes', 'reviews'])
+        ->join('user_vote', 'user_vote.user_id', '=', 'users.id')
+        ->join('votes', 'votes.id', '=', 'user_vote.vote_id')
+        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
+        ->groupBy('users.id')
+        //eventuale orderBy va inserito qui
+        ->get();
 
         $sponsoredUsers = User::join('user_vote', 'user_vote.user_id', '=', 'users.id')
         ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
@@ -24,31 +31,38 @@ class ApiUserController extends Controller
         ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
         ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
         ->groupBy('users.id')
+        ->with('games')
         ->orderBy('vote_average', 'desc')
+        ->with('games')
         ->get();
 
         foreach ($sponsoredUsers as $user) {
             if (Str::startsWith($user->img_url, 'avatars')) {
                 $user->img_url = Storage::url($user->img_url);
-                // Storage::url($user->img_url)
-
             }
         }
 
         return response()->json([
-            'message'=>'success',
-            'results' => $sponsoredUsers,
+            'message' => 'success',
+            'results' => [
+                'users' => $users,
+                'sponsoredUsers' => $sponsoredUsers,
+            ],
             'apiKey' => 'your-api-key-value',
         ]);
     }
 
     public function show(String $id){
-        $user = User::with(['games', 'votes', 'reviews'])->findOrFail($id);
+        $user = User::with(['games', 'votes', 'reviews'])
+        ->join('user_vote', 'user_vote.user_id', '=', 'users.id')
+        ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
+        ->where('users.id', '=', $id)
+        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
+        ->groupBy('users.id')
+        ->first();
 
         if (Str::startsWith($user->img_url, 'avatars')) {
             $user->img_url = Storage::url($user->img_url);
-            // Storage::url($user->img_url)
-
         }
 
         return response()->json([
@@ -62,8 +76,12 @@ class ApiUserController extends Controller
         $voteString = $request->input('vote_avg');
         $gameId = $request->input('game_id');
 
-        $query = User::with(['games', 'reviews'])
-        ->where('is_available', true);
+        $query = User::with(['games', 'reviews', 'votes'])
+            ->leftJoin('user_vote', 'users.id', '=', 'user_vote.user_id')
+            ->leftJoin('votes', 'user_vote.vote_id', '=', 'votes.id')
+            ->select('users.*', DB::raw('COALESCE(AVG(votes.value), 0) as vote_average'))
+            ->groupBy('users.id')
+            ->where('is_available', true);
 
         if ($nicknameString) {
             $query->where('users.nickname', 'like', $nicknameString.'%');
@@ -71,28 +89,20 @@ class ApiUserController extends Controller
 
         if ($gameId) {
             $query->join('game_user', 'users.id', '=', 'game_user.user_id')
-                ->select('users.*')
-                ->groupBy('users.id')
                 ->where('game_user.game_id', $gameId);
         }
 
         if ($voteString) {
-            $query->join('user_vote', 'users.id', '=', 'user_vote.user_id')
-                    ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
-                    ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
-                    ->groupBy('users.id')
-                    ->having('vote_average', '>=', $voteString)
-                    ->orderBy('vote_average', 'DESC');
+            $query->having(DB::raw('AVG(votes.value)'), '>=', $voteString);
         }
 
+        $query->orderBy('vote_average', 'DESC');
 
         $users = $query->get();
 
         foreach ($users as $user) {
             if (Str::startsWith($user->img_url, 'avatars')) {
                 $user->img_url = Storage::url($user->img_url);
-                // Storage::url($user->img_url)
-
             }
         }
         // ! CODICE PER EVENTUALI DEBUG
