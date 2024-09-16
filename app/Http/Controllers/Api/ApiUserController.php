@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\Game;
 use App\Models\Message;
 use App\Models\Review;
+use App\Models\Vote;
 use Hamcrest\Type\IsString;
 
 use function PHPUnit\Framework\isNan;
@@ -134,9 +135,6 @@ class ApiUserController extends Controller
     {
         $data = $request->all();
 
-
-
-
         //! STORE DEI MESSAGGI
         if(!empty($data['messages'])) {
             foreach ($data['messages'] as $singleData) {
@@ -153,5 +151,12 @@ class ApiUserController extends Controller
             }
         }
 
+        //! STORE DEI VOTI
+        if(!empty($data['votes'])) {
+            foreach ($data['votes'] as $voteData) {
+                $user = User::findOrFail($voteData['user_id']);
+                $user->votes()->attach($data['votes']);
+            }
+        }
     }
 }
