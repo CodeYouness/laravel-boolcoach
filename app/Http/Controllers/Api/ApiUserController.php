@@ -14,6 +14,9 @@ use App\Models\Message;
 use App\Models\Review;
 use Hamcrest\Type\IsString;
 
+use function PHPUnit\Framework\isNan;
+use function PHPUnit\Framework\isNull;
+
 class ApiUserController extends Controller
 {
     public function index()
@@ -62,7 +65,9 @@ class ApiUserController extends Controller
         ->groupBy('users.id')
         ->first();
 
-        if (Str::startsWith($user->img_url, 'avatars')) {
+        dd($user);
+
+        if (!isNull($user->img_url) && Str::startsWith($user->img_url, 'avatars')) {
             $user->img_url = Storage::url($user->img_url);
         }
 

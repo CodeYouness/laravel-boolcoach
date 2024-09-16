@@ -79,6 +79,7 @@ class RegisterController extends Controller
             'summary' => null,
             'img_url' => null,
             'price' => $data['price'],
+            'deleted_at' => null,
             'is_available' => true
         ]);
 
