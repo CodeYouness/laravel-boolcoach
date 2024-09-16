@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Game;
+use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use function PHPUnit\Framework\isNull;
 
@@ -18,8 +20,9 @@ class UserController extends Controller
     public function index(User $users)
     {
         $users = $users->all()->where('id', 'Auth::id()');
+        $lastReviews = Review::where('coach_id', Auth::id())->lazyByIdDesc(5, $column= 'id');
 
-        return view('users.index', compact('users'));
+        return view('users.index', compact('users', 'lastReviews'));
     }
 
     /**

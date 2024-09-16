@@ -92,7 +92,7 @@
                 <form action="{{ route('users.destroy', $user) }}" method="POST" class="d-inline-block" id="show-page-delete-form">
                     @csrf
                     @method('DELETE')
-                    <input type="submit" class="btn btn-outline-danger btn-lg fw-bold" value="Elimina pofilo">
+                    <input type="submit" class="btn btn-outline-danger btn-lg fw-bold" value="Elimina profilo">
                 </form>
             </div>
         </div>

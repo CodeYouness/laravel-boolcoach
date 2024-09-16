@@ -196,9 +196,19 @@ nav {
     overflow-y: auto;
 }
 
-// #dashboard-wrapper{
+#dashboard-wrapper{
+    .games {
+        flex-direction: row;
 
-// }
+
+        img {
+            width: 100%;
+            // max-width: 200px;
+            // height: auto;
+            display: inline-block;
+        }
+    }
+}
 
 #profile-wrapper {
     .profile-img {
