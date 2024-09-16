@@ -133,7 +133,7 @@ nav {
     background-position:  4px 0, 4px 0, 0 0, 0 0;
     background-size: 4px 4px;
     background-repeat: repeat;
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5), 0px -1px 4px rgba(255, 255, 255, 0.5) inset;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5), 1px 1px 4px rgba(255, 255, 255, 0.5) inset;
     color: white;
     // border-bottom: 2px solid white;
     color: white;
@@ -155,8 +155,12 @@ nav {
 #side-nav {
     width: $side-nav-width;
     height: 100vh;
-    background: rgb(126, 60, 193);
-    background: linear-gradient(145deg, rgba(126, 60, 193, 1) 0%, rgba(214, 41, 115, 1) 75%, rgba(255, 32, 78, 1) 100%);
+    // background: rgb(126, 60, 193);
+    // background: linear-gradient(145deg, rgba(126, 60, 193, 1) 0%, rgba(214, 41, 115, 1) 75%, rgba(255, 32, 78, 1) 100%);
+    background: rgb(126,60,193);
+    background: linear-gradient(155deg, rgba(126,60,193,1) 0%, rgba(126,60,193,1) 75%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 76%, rgba(255,32,78,1) 76%, rgba(255,32,78,1) 100%);
+    box-shadow: 5px 0px 5px rgba(0, 0, 0, 0.5), 1px 1px 4px rgba(255, 255, 255, 0.5) inset;
+
     a{
         opacity: 1;
     }
