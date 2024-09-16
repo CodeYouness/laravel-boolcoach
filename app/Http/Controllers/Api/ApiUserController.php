@@ -131,5 +131,14 @@ class ApiUserController extends Controller
                 $message->save();
             }
         }
+
+        //! STORE DELLE RECENSIONI
+        if(!empty($data['reviews'])) {
+            foreach ($data['reviews'] as $data) {
+                $review = Review::create($data);
+                $review->save();
+            }
+        }
+
     }
 }
