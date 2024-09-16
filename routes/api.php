@@ -34,5 +34,5 @@ Route::name('api')->group(function(){
     Route::get('games/{id}', [ApiGameController::class, 'show'])->name('games.show');
 
     //! ROTTE MESSAGES
-    Route::post('/coaches/{id}', [ApiMessageController::class, 'create'])->name('message.store');
+    Route::post('/coaches/{id}', [ApiUserController::class, 'store'])->name('message.store');
 });

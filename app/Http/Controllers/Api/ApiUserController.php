@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Node\Builder;
 use App\Models\User;
 use App\Models\Game;
+use App\Models\Message;
 use App\Models\Review;
 use Hamcrest\Type\IsString;
 
@@ -115,5 +116,31 @@ class ApiUserController extends Controller
             'results' => $users,
             'apiKey' => 'your-api-key-value'
         ]);
+    }
+
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+
+
+
+        //! STORE DEI MESSAGGI
+        if(!empty($data['messages'])) {
+            foreach ($data['messages'] as $singleData) {
+                $message = Message::create($singleData);
+                $message->save();
+            }
+        }
+
+        //! STORE DELLE RECENSIONI
+        if(!empty($data['reviews'])) {
+            foreach ($data['reviews'] as $data) {
+                $review = Review::create($data);
+                $review->save();
+            }
+        }
+
     }
 }
