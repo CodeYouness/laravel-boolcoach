@@ -77,6 +77,12 @@ class ApiUserController extends Controller
             $user->img_url = Storage::url($user->img_url);
         }
 
+        if (Str::startsWith($user->img_url, 'avatars')) {
+            $user->img_url = Storage::url($user->img_url);
+            // Storage::url($user->img_url)
+
+        }
+        
         return response()->json([
             'message' => 'success',
             'results' => $user
