@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Node\Builder;
 use App\Models\User;
 use App\Models\Game;
+use App\Models\Message;
 use App\Models\Review;
 use Hamcrest\Type\IsString;
+
+use function PHPUnit\Framework\isNan;
+use function PHPUnit\Framework\isNull;
 
 class ApiUserController extends Controller
 {
@@ -26,13 +30,15 @@ class ApiUserController extends Controller
         ->get();
 
         $sponsoredUsers = User::join('user_vote', 'user_vote.user_id', '=', 'users.id')
-            ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
-            ->join('sponsorship_user', 'sponsorship_user.user_id', '=', 'user_vote.user_id')
-            ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
-            ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
-            ->groupBy('users.id')
-            ->orderBy('vote_average', 'desc')
-            ->get();
+        ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
+        ->join('sponsorship_user', 'sponsorship_user.user_id', '=', 'user_vote.user_id')
+        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
+        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
+        ->groupBy('users.id')
+        ->with('games')
+        ->orderBy('vote_average', 'desc')
+        ->with('games')
+        ->get();
 
         foreach ($sponsoredUsers as $user) {
             if (Str::startsWith($user->img_url, 'avatars')) {
@@ -66,7 +72,9 @@ class ApiUserController extends Controller
             ], 404);
         }
 
-        if (Str::startsWith($user->img_url, 'avatars')) {
+        dd($user);
+
+        if (!isNull($user->img_url) && Str::startsWith($user->img_url, 'avatars')) {
             $user->img_url = Storage::url($user->img_url);
         }
 
@@ -121,5 +129,31 @@ class ApiUserController extends Controller
             'results' => $users,
             'apiKey' => 'your-api-key-value'
         ]);
+    }
+
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+
+
+
+        //! STORE DEI MESSAGGI
+        if(!empty($data['messages'])) {
+            foreach ($data['messages'] as $singleData) {
+                $message = Message::create($singleData);
+                $message->save();
+            }
+        }
+
+        //! STORE DELLE RECENSIONI
+        if(!empty($data['reviews'])) {
+            foreach ($data['reviews'] as $data) {
+                $review = Review::create($data);
+                $review->save();
+            }
+        }
+
     }
 }
