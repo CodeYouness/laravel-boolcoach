@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
     {
         //
         $languages = ['italian', 'english', 'spanish', 'german', 'russian', 'corean', 'chinese', 'japanese'];
+
         for ($i=0; $i < 10; $i++) {
             $data = [
                 'name' => $faker->firstName(),
