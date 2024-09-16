@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
     {
         //
         $languages = ['italian', 'english', 'spanish', 'german', 'russian', 'corean', 'chinese', 'japanese'];
+
         for ($i=0; $i < 10; $i++) {
             $data = [
                 'name' => $faker->firstName(),
@@ -34,7 +35,7 @@ class UserSeeder extends Seeder
         }
 
         //! DATI CUSTOM PER TESTARE l'APPLICAZIONE
-        $customData = [
+        $customData =
             [
                 'name' => 'federico',
                 'surname'=>  'toscano',
@@ -46,12 +47,8 @@ class UserSeeder extends Seeder
                 // 'img_url'=> 'https://cdn.shopify.com/s/files/1/0533/2089/files/img-url-filter.jpg?v',
                 'price'=> 9.99,
                 'is_available'=> true
-            ],
-        ];
+            ];
 
-
-        foreach ($customData as $data) {
-            User::create($data);
-        }
+            User::create($customData);
     }
 }

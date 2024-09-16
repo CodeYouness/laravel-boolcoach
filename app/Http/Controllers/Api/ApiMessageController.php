@@ -9,19 +9,15 @@ use App\Models\Message;
 
 class ApiMessageController extends Controller
 {
-    public function store(CreateNewMessageRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
-        dd($data);
-        $newMessage = new Message([
-            'coach_id' => $request->coach_id,
-            'username' => $request->username,
-            'email' => $request->email,
-            'title' => $request->title,
-            'content' => $request->content,
-        ]);
-        dd($newMessage);
-        return redirect()->away('http://localhost:5173/?message=sent');
+        $data = $request->all();
+        if(!empty($data)) {
+            foreach ($data as $singleData) {
+                $message = Message::create($singleData);
+                $message->save();
+            }
+        }
     }
 
     public function create(Request $request){
