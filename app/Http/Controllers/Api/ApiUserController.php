@@ -72,8 +72,6 @@ class ApiUserController extends Controller
             ], 404);
         }
 
-        dd($user);
-
         if (!isNull($user->img_url) && Str::startsWith($user->img_url, 'avatars')) {
             $user->img_url = Storage::url($user->img_url);
         }
