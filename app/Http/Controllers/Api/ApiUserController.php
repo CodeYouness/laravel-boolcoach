@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Node\Builder;
 use App\Models\User;
 use App\Models\Game;
+use App\Models\Message;
 use App\Models\Review;
 use Hamcrest\Type\IsString;
+
+use function PHPUnit\Framework\isNan;
+use function PHPUnit\Framework\isNull;
 
 class ApiUserController extends Controller
 {
@@ -52,16 +56,23 @@ class ApiUserController extends Controller
         ]);
     }
 
-    public function show(String $id){
+    public function show(String $id) {
         $user = User::with(['games', 'votes', 'reviews'])
-        ->join('user_vote', 'user_vote.user_id', '=', 'users.id')
-        ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
-        ->where('users.id', '=', $id)
-        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
-        ->groupBy('users.id')
-        ->first();
+            ->where('users.id', '=', $id)
+            ->select('users.*', DB::raw('COALESCE(AVG(votes.value), 0) as vote_average'))
+            ->leftJoin('user_vote', 'user_vote.user_id', '=', 'users.id')
+            ->leftJoin('votes', 'user_vote.vote_id', '=', 'votes.id')
+            ->groupBy('users.id')
+            ->first();
 
-        if (Str::startsWith($user->img_url, 'avatars')) {
+        if (!$user) {
+            return response()->json([
+                'message' => 'User not found',
+                'results' => null
+            ], 404);
+        }
+
+        if (!isNull($user->img_url) && Str::startsWith($user->img_url, 'avatars')) {
             $user->img_url = Storage::url($user->img_url);
         }
 
@@ -76,6 +87,7 @@ class ApiUserController extends Controller
             'results' => $user
         ]);
     }
+
 
     public function search(Request $request){
         $nicknameString = $request->input('nickname');
@@ -121,5 +133,31 @@ class ApiUserController extends Controller
             'results' => $users,
             'apiKey' => 'your-api-key-value'
         ]);
+    }
+
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+
+
+
+        //! STORE DEI MESSAGGI
+        if(!empty($data['messages'])) {
+            foreach ($data['messages'] as $singleData) {
+                $message = Message::create($singleData);
+                $message->save();
+            }
+        }
+
+        //! STORE DELLE RECENSIONI
+        if(!empty($data['reviews'])) {
+            foreach ($data['reviews'] as $data) {
+                $review = Review::create($data);
+                $review->save();
+            }
+        }
+
     }
 }
