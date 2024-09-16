@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
                 'email' => $faker->unique()->email(),
                 'language' => $faker->randomElement($languages),
                 "password"=> Hash::make($faker->password()),
-                'summary'=> $faker->realTextBetween(1000, 4500),
+                'summary'=> $faker->realTextBetween(200, 1000),
                 'img_url'=> 'https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRk8SKKl8TSgTuEjwFILOIsa6qpjJDIygB5HKjjq62nkme7LMLPyoVob1t0cTDV2YWg6FtfhY9WXjLlbug',
                 'price'=>$faker->randomFloat(2, 9.99, 24.99),
                 'is_available'=>$faker->boolean(100)
@@ -35,18 +35,23 @@ class UserSeeder extends Seeder
 
         //! DATI CUSTOM PER TESTARE l'APPLICAZIONE
         $customData = [
-            'name' => 'federico',
-            'surname'=>  'toscano',
-            'nickname' => 'toscaf',
-            'email' => 'federico@gmail.com',
-            'language' => 'italian',
-            "password"=> Hash::make('12345678'),
-            'summary'=> 'sono il coach federico e questo è il sommario di prova',
-            // 'img_url'=> 'https://cdn.shopify.com/s/files/1/0533/2089/files/img-url-filter.jpg?v',
-            'price'=> 9.99,
-            'is_available'=> true
+            [
+                'name' => 'federico',
+                'surname'=>  'toscano',
+                'nickname' => 'toscaf',
+                'email' => 'federico@gmail.com',
+                'language' => 'italian',
+                "password"=> Hash::make('12345678'),
+                'summary'=> 'sono il coach federico e questo è il sommario di prova',
+                // 'img_url'=> 'https://cdn.shopify.com/s/files/1/0533/2089/files/img-url-filter.jpg?v',
+                'price'=> 9.99,
+                'is_available'=> true
+            ],
         ];
 
-        User::create($customData);
+
+        foreach ($customData as $data) {
+            User::create($data);
+        }
     }
 }
