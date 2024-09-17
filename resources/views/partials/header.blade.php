@@ -1,11 +1,10 @@
 <header id="app-header" class="d-flex align-items-end">
     <div class="d-flex justify-content-between align-items-center w-100 px-4">
 
-        <h3 class="mb-0 d-lg-none"> Welcome back, {{ Auth::user()->nickname}}</h3>
-        <h2 class="mb-0 d-none d-lg-block"> Welcome back, {{ Auth::user()->nickname}}</h2>
+        <h3 class="mb-0 "> Ciao, {{ Auth::user()->nickname}}</h3>
         <div class="d-flex justify-content-end align-items-center">
             <ul class="list-unstyled d-flex mb-0">
-                <li class="mx-2">
+                <li class="mx-3">
                     <i class="fa-solid fa-bell"></i>
                 </li>
             </ul>

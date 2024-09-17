@@ -1,7 +1,6 @@
 
 <nav id="side-nav" class="navbar navbar-expand-lg d-flex flex-column">
     <a id="boolcoach-logo" href="http://localhost:5174/" class="my_logo text-decoration-none text-white fw-bold p-0 mb-4 d-none d-lg-block">Boolcoach
-        {{-- <img src="../../../public/images/BoolCoach Logo.png" alt="BoolCoach Logo"> --}}
     </a>
     <a id="boolcoach-logo" href="http://localhost:5174/" class="my_logo text-decoration-none p-0 mb-4 d-lg-none">
         <img src="{{ asset('images/BoolCoach Logo.png') }}" alt="BoolCoach Logo">
@@ -33,7 +32,7 @@
                         <a href="{{ route('users.show', auth()->id())}}" class="menu-icon">
                             <i class="fa-solid fa-user mx-2"></i>
                         </a>
-                        <a href="{{ route('users.show', auth()->id())}}" class="text-decoration-none  flex-grow-1 ms-3 d-none d-lg-block">Profile</a>
+                        <a href="{{ route('users.show', auth()->id())}}" class="text-decoration-none  flex-grow-1 ms-3 d-none d-lg-block">Profilo</a>
                     </div>
                     <div class="bold-line"></div>
                 </div>
@@ -46,7 +45,7 @@
                         <a href=" {{ route('statistics.index') }}" class="menu-icon">
                             <i class="fa-solid fa-chart-line mx-2" ></i>
                         </a>
-                        <a href="{{ route('statistics.index') }}" class="text-decoration-none text-white fs-4 flex-grow-1 ms-3 d-none d-lg-block">Statistics</a>
+                        <a href="{{ route('statistics.index') }}" class="text-decoration-none text-white fs-4 flex-grow-1 ms-3 d-none d-lg-block">Statistiche</a>
                     </div>
                     <div class="bold-line"></div>
                 </div>
@@ -60,7 +59,7 @@
                         <a href="{{route('reviews.index')}}" class="menu-icon">
                             <i class="fa-solid fa-star mx-2"></i>
                         </a>
-                        <a href="{{route('reviews.index')}}" class="text-decoration-none flex-grow-1 ms-3 d-none d-lg-block">Reviews</a>
+                        <a href="{{route('reviews.index')}}" class="text-decoration-none flex-grow-1 ms-3 d-none d-lg-block">Recensioni</a>
                     </div>
                     <div class="bold-line"></div>
                 </div>
@@ -73,7 +72,7 @@
                         <a href="{{route('sponsorships.index')}}" class="menu-icon">
                             <i class="fa-solid fa-money-bills mx-2"></i>
                         </a>
-                        <a href="{{route('sponsorships.index')}}" class="text-decoration-none flex-grow-1 ms-3 d-none d-lg-block">Sponsorships</a>
+                        <a href="{{route('sponsorships.index')}}" class="text-decoration-none flex-grow-1 ms-3 d-none d-lg-block">Sponsorizzazioni</a>
                     </div>
                     <div class="bold-line"></div>
                 </div>
@@ -86,7 +85,7 @@
                         <a href="{{route('messages.index')}}" class="menu-icon">
                             <i class="fa-solid fa-message mx-2"></i>
                         </a>
-                        <a href="{{route('messages.index')}}" class="text-decoration-none  flex-grow-1 ms-3 d-none d-lg-block">Messages</a>
+                        <a href="{{route('messages.index')}}" class="text-decoration-none  flex-grow-1 ms-3 d-none d-lg-block">Messaggi</a>
                     </div>
                         <div class="bold-line"></div>
                 </div>
