@@ -124,6 +124,7 @@ nav {
     height: 100vh;
 }
 
+// ! HEADER
 #app-header {
     // height: $header-height;
     padding: 10px 5px;
@@ -152,6 +153,7 @@ nav {
     }
 }
 
+// ! SIDE-NAV
 #side-nav {
     width: $side-nav-width;
     height: 100vh;
@@ -200,13 +202,14 @@ nav {
     overflow-y: auto;
 }
 
+// ! DASHBOARD
 #dashboard-wrapper{
     .games {
         flex-direction: row;
 
 
         img {
-            width: 100%;
+            width: 50%;
             // max-width: 200px;
             // height: auto;
             display: inline-block;
@@ -214,6 +217,7 @@ nav {
     }
 }
 
+// ! PROFILE
 #profile-wrapper {
     .profile-img {
         width: 300px;
@@ -242,6 +246,7 @@ nav {
     }
 }
 
+// || MEDIA QUERY
 @media (min-width: 500px) and (max-width: 991px){
     #side-nav{
         width: $side-nav-width-sm;

@@ -10,7 +10,7 @@
                     <section class="games col-12 col-lg-7 card p-3 mb-3">
                         {{-- <h1 class="text-white">Giochi</h1> --}}
                         @forelse (auth()->user()->games as $game)
-                            <button class="btn btn-lg bg-transparent mx-2 mb-2 border-0">
+                            <button class="btn bg-transparent mx-2 mb-2 border-0">
                                 <img  src="{{$game->img}}" alt="{{$game->name}}">
                             </button>
                         @empty
