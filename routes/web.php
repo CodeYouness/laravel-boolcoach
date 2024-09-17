@@ -36,4 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('messages', MessageController::class);
     Route::resource('statistics', StatisticController::class);
     Route::resource('sponsorships', SponsorshipController::class);
+
+    //! ROTTA CUSTOM PER ACQUISTARE LE SPONSORSHIP
+    Route::get('sponsorship/buy', [SponsorshipController::class, 'buySponsorship'])->name('sponsorship.buy');
 });

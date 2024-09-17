@@ -27,6 +27,7 @@ class ApiGameController extends Controller
     }
 
     public function show(String $id){
+
     $game = Game::join('game_user', 'games.id', '=', 'game_user.game_id')
     ->leftJoin('users', 'users.id', '=', 'game_user.user_id')
     ->leftJoin('user_vote', 'user_vote.user_id', '=', 'users.id')

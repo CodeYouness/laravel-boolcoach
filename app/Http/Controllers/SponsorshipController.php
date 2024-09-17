@@ -15,4 +15,8 @@ class SponsorshipController extends Controller
 
         return view('sponsorships.index', compact('user'));
     }
+
+    public function buySponsorship(){
+        return view('sponsorships.buy');
+    }
 }

@@ -8,7 +8,7 @@
             <div class="col">
                 <div class="d-flex justify-content-between">
                     <h1 class="h2 text-white mb-4">Your sponsorship</h1>
-                    <a href="#" class="card-link">Buy sponsorship</a>
+                    <a href="{{route('sponsorship.buy')}}" class="card-link">Buy sponsorship</a>
                 </div>
 
                 @if($user->sponsorships->isNotEmpty())
