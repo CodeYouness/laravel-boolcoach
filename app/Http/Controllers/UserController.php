@@ -20,7 +20,8 @@ class UserController extends Controller
     public function index(User $users)
     {
         $users = $users->all()->where('id', 'Auth::id()');
-        $lastReviews = Review::where('coach_id', Auth::id())->lazyByIdDesc(5, $column= 'id');
+        $lastReviews = Review::where('coach_id', Auth::id())
+        ->lazyByIdDesc(5, $column= 'id');
 
         return view('users.index', compact('users', 'lastReviews'));
     }

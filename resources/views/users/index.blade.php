@@ -40,12 +40,14 @@
                     </div>
                     <section class="col-12 col-lg-4 card p-3 align-self-start">
                         <h4>Recensioni</h4>
-                        @forelse ($lastReviews as $review)
-                            <p>{{$review->username}}</p>
-                            <p class="mb-3">{{$review->description}}</p>
+                        {{-- @forelse ($lastReviews as $review)
+                            <div class="px-3 py-2 my-2">
+                                <p class="mb-1">{{$review->username}}</p>
+                                <p class="mb-0 ms-1">{{$review->description}}</p>
+                            </div>
                         @empty
                             <p class="text-secondary mb-0">Non ci sono recensioni</p>
-                        @endforelse
+                        @endforelse --}}
                     </section>
                 </div>
             </div>

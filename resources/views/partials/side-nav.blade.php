@@ -106,7 +106,7 @@
                         </a>
                         <a href="{{ route('logout') }}" class="text-decoration-none flex-grow-1 ms-3 d-none d-lg-block" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                            Logout
+                            Disconnettiti
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
