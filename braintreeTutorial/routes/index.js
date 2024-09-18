@@ -1,3 +1,8 @@
+const dotenv = require('dotenv').config();
+if (dotenv.error) {
+    console.error('Errore nel caricamento di dotenv:', dotenv.error);
+}
+
 var express = require('express');
 var router = express.Router();
 

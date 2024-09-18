@@ -55,10 +55,10 @@ Acquista una sponsorship
                 </div>
             </div>
         </div>
-        <div class="text-center mt-4">
-            <button class="btn btn-success" id="buy-sponsorship-btn">Acquista Sponsorship</button>
-        </div>
     </form>
+    <div class="text-center mt-4">
+        <a href="http://localhost:3000" class="btn btn-success" id="buy-sponsorship-btn">Acquista Sponsorship</a>
+    </div>
 </div>
 @endsection
 

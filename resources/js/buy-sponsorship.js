@@ -13,10 +13,13 @@ function getSelectedSponsorship() {
 }
 
 function buySponsorship(event) {
-    event.preventDefault();
+    // event.preventDefault();
     const selectedSponsorshipValue = getSelectedSponsorship();
 
+
     if (selectedSponsorshipValue) {
+        let priceAmount
+
         console.log('Acquisto sponsorship con valore:', selectedSponsorshipValue);
     } else {
         console.log('Nessuna sponsorship selezionata.');
