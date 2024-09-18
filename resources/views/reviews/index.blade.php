@@ -4,9 +4,9 @@
 @endsection
 @section('main-content')
 
-    <div class="container m-4">
-        <div class="row d-flex flex-center my-4">
-            <div class="col-6">
+    <div class="container-fluid">
+        <div class="row d-flex flex-center m-4">
+            <div class="col-12 col-md-6">
                 <h1 class="h2 text-white mb-4">Le tue recensioni</h1>
                 <div class="reviews-container">
                     @foreach ($reviews as $index=>$review)
@@ -22,11 +22,11 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <h1 class="h2 text-white mb-4">I tuoi voti</h1>
                 <ul class="list-unstyled d-flex flex-wrap">
                 @foreach ($userVotes as $vote)
-                        <li class="mb-3 w-25 mx-2">
+                        <li class="mb-3 w-100 mx-2">
                             <div class="card shadow-sm">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$vote->lable}}</h5>
