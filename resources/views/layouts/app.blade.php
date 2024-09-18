@@ -28,7 +28,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm">
+        <nav id="app-header" class="navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="logo" href="{{ url('/users') }}">
                     <img src="{{ asset('images/Designer.png') }}" alt="Logo Boolcoach">
