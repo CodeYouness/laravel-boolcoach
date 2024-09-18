@@ -4,8 +4,8 @@
 @endsection
 @section('main-content')
 
-    <div class="container m-4">
-        <div class="row d-flex flex-center my-4">
+    <div class="container-fluid">
+        <div class="row d-flex flex-center m-4">
             <div class="col-6">
                 <h1 class="h2 text-white mb-4">Le tue recensioni</h1>
                 <div class="reviews-container">
