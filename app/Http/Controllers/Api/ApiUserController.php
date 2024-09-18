@@ -34,11 +34,11 @@ class ApiUserController extends Controller
         ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
         ->join('sponsorship_user', 'sponsorship_user.user_id', '=', 'user_vote.user_id')
         ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
-        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'))
-        ->groupBy('users.id')
-        ->with('games')
+        ->select('users.*', DB::raw('AVG(votes.value) as vote_average'), 'sponsorship_user.end_date')
+        ->where('sponsorship_user.end_date', '>', now())
+        ->groupBy('users.id', 'sponsorship_user.end_date')
+        ->with('games', 'votes')
         ->orderBy('vote_average', 'desc')
-        ->with('games')
         ->get();
 
         foreach ($sponsoredUsers as $user) {
@@ -82,7 +82,7 @@ class ApiUserController extends Controller
             // Storage::url($user->img_url)
 
         }
-        
+
         return response()->json([
             'message' => 'success',
             'results' => $user
