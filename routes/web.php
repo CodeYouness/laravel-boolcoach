@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\StatisticController;
@@ -36,4 +37,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('messages', MessageController::class);
     Route::resource('statistics', StatisticController::class);
     Route::resource('sponsorships', SponsorshipController::class);
+    route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+    Route::post('/checkout', [PaymentController::class, 'processPayment'])->name('payment.checkout');
 });
