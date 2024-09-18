@@ -14,9 +14,8 @@
                             <div class="card-body">
                                 <h4 class="card-title mb-3">Recensione num. {{$index+1}}</h4>
                                 <h5 class="card-title">lasciata da: <em>{{$review->username}}</em></h5>
-                                <h6 class="card-title mb-2 text-black">il {{$review->created_at->toFormattedDayDateString()}}</h6>
+                                <h6 class="card-title mb-2">il {{$review->created_at->toFormattedDayDateString()}}</h6>
                                 <p class="card-text">{{$review->description}}</p>
-                                <a href="#" class="card-link">Contatta utente</a>
                             </div>
                         </div>
                     @endforeach
