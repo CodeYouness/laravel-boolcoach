@@ -6,6 +6,7 @@ use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,9 @@ Route::middleware('auth')->group(function () {
 
     //! ROTTA CUSTOM PER ACQUISTARE LE SPONSORSHIP
     Route::get('sponsorship/buy', [SponsorshipController::class, 'buySponsorship'])->name('sponsorship.buy');
+
+    //! ROTTE PER GESTIRE I PAGAMENTI
+    Route::get('/payment/token', [PaymentController::class, 'getToken']);
+
+    Route::post('/payment/checkout', [PaymentController::class, 'processPayment']);
 });
