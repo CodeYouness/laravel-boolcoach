@@ -18,7 +18,6 @@
                         @endforelse
                     </section>
                     <section class="col-12 col-lg-4 card px-3 py-4 mb-3 order-lg-1 align-self-start">
-                        <p class="fs-4 ">Lingua: <span>{{auth()->user()->language}}</span></p>
                         <p class="fs-4 ">Prezzo/ora: <span>&euro; {{auth()->user()->price}}</span></p>
                         <p class="fs-4">Sei:  {{(auth()->user()->is_available == true) ? 'disponibile' : 'non disponibile'}}</p>
                     </section>
