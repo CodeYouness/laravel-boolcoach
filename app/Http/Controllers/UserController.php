@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Game;
+use App\Models\Message;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +23,16 @@ class UserController extends Controller
         $users = $users->all()->where('id', 'Auth::id()');
         $lastReviews = Review::where('coach_id', Auth::id())
         ->lazyByIdDesc(5, $column= 'id');
+        $todayReviews = Review::where('coach_id', Auth::id())
+        ->where('created_at', now())
+        ->orderBy('created_at', 'DESC')
+        ->get();
+        $todayMessages = Message::where('coach_id', Auth::id())
+        ->where('created_at', today())
+        ->orderBy('created_at', 'DESC')
+        ->get();
 
-        return view('users.index', compact('users', 'lastReviews'));
+        return view('users.index', compact('users', 'lastReviews', 'todayReviews', 'todayMessages'));
     }
 
     /**

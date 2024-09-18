@@ -4,6 +4,7 @@
 @endsection
 @section('main-content')
     <div id="dashboard-wrapper" class="container py-4">
+        {{-- @dd($lastReviews); --}}
         <div class="row justify-content-center">
             <div class="col-10 col-lg-12">
                 <div class="row justify-content-around">
@@ -20,6 +21,8 @@
                     <section class="col-12 col-lg-4 card px-3 py-4 mb-3 order-lg-1 align-self-start">
                         <p class="fs-4 ">Prezzo/ora: <span>&euro; {{auth()->user()->price}}</span></p>
                         <p class="fs-4">Sei:  {{(auth()->user()->is_available == true) ? 'disponibile' : 'non disponibile'}}</p>
+                        <p class="fs-4"><span class="fs-3">{{count($todayReviews)}}</span> recensioni ricevute oggi.</p>
+                        <p class="fs-4"><span class="fs-3">{{count($todayMessages)}}</span> messaggi ricevuti oggi.</p>
                     </section>
                 </div>
             </div>
