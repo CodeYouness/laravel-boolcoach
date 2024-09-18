@@ -3,8 +3,8 @@
     Sponsorships
 @endsection
 @section('main-content')
-    <div class="container m-4">
-        <div class="row d-flex flex-center my-4 me-4">
+    <div class="container">
+        <div class="row d-flex flex-center m-4 me-4">
             <div class="col">
                 <div class="d-flex justify-content-between">
                     <h1 class="h2 text-white mb-4">Your sponsorship</h1>
