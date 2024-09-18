@@ -36,12 +36,12 @@
                                 <h1>Statistiche</h1>
                             </section>
                             <section class="col-12 card p-3 mb-3">
-                                <h1>Sponsorizzazioni</h1>
+                                <h4>Sponsorizzazione attiva</h4>
                             </section>
                         </div>
                     </div>
                     <section class="col-12 col-lg-4 card p-3 align-self-start">
-                        <h4>Recensioni</h4>
+                        <h4>Ultime recensioni</h4>
                         @forelse ($lastReviews as $review)
                             <div class="px-3 py-2 my-2">
                                 <p class="mb-1">Mittente: {{$review->username}}</p>
