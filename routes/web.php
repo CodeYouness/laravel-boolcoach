@@ -3,6 +3,7 @@
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SponsorshipController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -38,11 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('statistics', StatisticController::class);
     Route::resource('sponsorships', SponsorshipController::class);
 
+
+
+    Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('checkout');
+    Route::post('/checkout', [CheckoutController::class, 'processPayment'])->name('checkout.process');
+
     //! ROTTA CUSTOM PER ACQUISTARE LE SPONSORSHIP
     Route::get('sponsorship/buy', [SponsorshipController::class, 'buySponsorship'])->name('sponsorship.buy');
-
-    //! ROTTE PER GESTIRE I PAGAMENTI
-    Route::get('/payment/token', [PaymentController::class, 'getToken']);
-
-    Route::post('/payment/checkout', [PaymentController::class, 'processPayment']);
 });
