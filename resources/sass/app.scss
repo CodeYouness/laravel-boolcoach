@@ -230,13 +230,16 @@ nav#app-header {
     .games {
         flex-direction: row;
 
+        button {
+            align-self: start;
 
-        img {
-            width: 50%;
-            // max-width: 200px;
-            // height: auto;
-            display: inline-block;
+            img {
+                width: 50%;
+                display: inline-block;
+            }
         }
+
+
     }
 }
 
