@@ -273,7 +273,7 @@ nav#app-header {
 }
 
 // || MEDIA QUERY
-@media (min-width: 500px) and (max-width: 991px){
+@media (max-width: 991px){
     #side-nav{
         width: $side-nav-width-sm;
     }
