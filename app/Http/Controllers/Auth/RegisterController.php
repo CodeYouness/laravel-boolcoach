@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'language' => $data['language'],
             'password' => Hash::make($data['password']),
             'summary' => null,
-            'img_url' =>' https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRk8SKKl8TSgTuEjwFILOIsa6qpjJDIygB5HKjjq62nkme7LMLPyoVob1t0cTDV2YWg6FtfhY9WXjLlbug',
+            'img_url' => null,
             'price' => $data['price'],
             'deleted_at' => null,
             'is_available' => true
