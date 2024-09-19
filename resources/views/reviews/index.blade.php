@@ -9,7 +9,7 @@
             <div class="col-12 col-md-6">
                 <h1 class="h2 text-white mb-4">Le tue recensioni</h1>
                 <div class="reviews-container">
-                    @if ($user->reviews)
+                    @if (count($user->reviews) > 0)
                         @foreach ($reviews as $index => $review)
                             <div class="card mb-5">
                                 <div class="card-body">

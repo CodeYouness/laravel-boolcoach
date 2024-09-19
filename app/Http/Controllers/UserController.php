@@ -23,31 +23,33 @@ class UserController extends Controller
     public function index(User $users)
     {
         $users = $users->all()->where('id', Auth::id());
+        $price = User::where('id', Auth::id())->pluck('price');
+        $priceFormatted = number_format(floatval($price[0]), 2, ',', '.');
         $lastReviews = Review::where('coach_id', Auth::id())
-        ->lazyByIdDesc(5, $column= 'id');
+            ->lazyByIdDesc(5, $column = 'id');
 
 
         $today = Carbon::today()->toDateString();
         $review = Review::where('coach_id', Auth::id())
-        ->whereDate('created_at', '=', $today)
-        ->get();
+            ->whereDate('created_at', '=', $today)
+            ->get();
 
 
         $messages = Message::where('coach_id', Auth::id())
-        ->whereDate('created_at', '=', $today)
-        ->get();
+            ->whereDate('created_at', '=', $today)
+            ->get();
 
         $sponsorship = User::join('sponsorship_user', 'sponsorship_user.user_id', '=', 'users.id')
-        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
-        ->select('users.*', 'sponsorship_user.end_date')
-        ->where('users.id', Auth::id())
-        ->where('sponsorship_user.end_date', '>', now())
-        ->groupBy('users.id', 'sponsorship_user.end_date')
-        ->get();
+            ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
+            ->select('users.*', 'sponsorship_user.end_date')
+            ->where('users.id', Auth::id())
+            ->where('sponsorship_user.end_date', '>', now())
+            ->groupBy('users.id', 'sponsorship_user.end_date')
+            ->get();
 
         $endDate = $sponsorship->pluck('end_date');
 
-        return view('users.index', compact('users', 'lastReviews', 'review', 'messages', 'sponsorship', 'endDate'));
+        return view('users.index', compact('users', 'price', 'lastReviews', 'review', 'messages', 'sponsorship', 'endDate',  'priceFormatted'));
     }
 
     /**
@@ -73,7 +75,9 @@ class UserController extends Controller
     public function show(User $user)
     {
         if (auth()->id() === $user->id) {
-            return view('users.show', compact( 'user'));
+            $price = User::where('id', Auth::id())->pluck('price');
+            $priceFormatted = number_format(floatval($price[0]), 2, ',', '.');
+            return view('users.show', compact('user', 'priceFormatted'));
         } else {
             return abort(403);
         }
@@ -131,7 +135,8 @@ class UserController extends Controller
     }
 
 
-    public function updateIsAvailable(Request $request, User $user){
+    public function updateIsAvailable(Request $request, User $user)
+    {
         $data = $request->input('is_available');
 
         $user->update(['is_available' => $data]);
