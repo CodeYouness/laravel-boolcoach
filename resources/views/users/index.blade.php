@@ -4,7 +4,7 @@
 @endsection
 @section('main-content')
     <div id="dashboard-wrapper" class="container py-4">
-        {{-- @dd(count($sponsorship)) --}}
+        {{-- @dd(count($review)) --}}
         <div class="row justify-content-center">
             <div class="col-10 col-lg-12">
                 <div class="row justify-content-around">
@@ -22,10 +22,10 @@
                         <p class="fs-4 ">Prezzo/ora: <span>&euro; {{auth()->user()->price}}</span></p>
                         <p class="fs-4">Sei:  {{(auth()->user()->is_available == true) ? 'disponibile' : 'non disponibile'}}</p>
                         @auth
-                            <p class="fs-4"><span class="fs-3">{{count($todayReviews)}}</span> recensioni ricevute oggi</p>
+                            <p class="fs-4"><span class="fs-3">{{count($review)}}</span> recensioni ricevute oggi</p>
                         @endauth
                         @auth
-                            <p class="fs-4"><span class="fs-3">{{count($todayMessages)}}</span> messaggi ricevuti oggi</p>
+                            <p class="fs-4"><span class="fs-3">{{count($messages)}}</span> messaggi ricevuti oggi</p>
                         @endauth
                     </section>
                 </div>
@@ -42,7 +42,7 @@
                             <section class="col-12 card p-3 mb-3">
                                 @if (count($sponsorship) != 0)
                                     <h4 class="mb-1">Hai una sponsorizzazione attiva</p>
-                                    <p class="fs-5">Fine della sponsorizzazione: {{$endDate[0]}}</p>
+                                    <p class="fs-5 mb-0">Fine della sponsorizzazione: {{$endDate[0]}}</p>
                                 @else
                                     <h5 class="text-secondary mb-0">Non hai sponsorizzazione attive</h5>
                                 @endif
