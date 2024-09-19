@@ -23,16 +23,28 @@ class UserController extends Controller
         $users = $users->all()->where('id', 'Auth::id()');
         $lastReviews = Review::where('coach_id', Auth::id())
         ->lazyByIdDesc(5, $column= 'id');
+
         $todayReviews = Review::where('coach_id', Auth::id())
         ->where('created_at', now())
         ->orderBy('created_at', 'DESC')
         ->get();
+
         $todayMessages = Message::where('coach_id', Auth::id())
         ->where('created_at', today())
         ->orderBy('created_at', 'DESC')
         ->get();
 
-        return view('users.index', compact('users', 'lastReviews', 'todayReviews', 'todayMessages'));
+        $sponsorship = User::join('sponsorship_user', 'sponsorship_user.user_id', '=', 'users.id')
+        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
+        ->select('users.*', 'sponsorship_user.end_date')
+        ->where('users.id', Auth::id())
+        ->where('sponsorship_user.end_date', '>', now())
+        ->groupBy('users.id', 'sponsorship_user.end_date')
+        ->get();
+
+        $endDate = $sponsorship->pluck('end_date');
+
+        return view('users.index', compact('users', 'lastReviews', 'todayReviews', 'todayMessages', 'sponsorship', 'endDate'));
     }
 
     /**
