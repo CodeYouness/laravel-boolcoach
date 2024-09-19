@@ -33,7 +33,7 @@ class ApiUserController extends Controller
         $sponsoredUsers = User::join('user_vote', 'user_vote.user_id', '=', 'users.id')
         ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
         ->join('sponsorship_user', 'sponsorship_user.user_id', '=', 'user_vote.user_id')
-        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
+        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
         ->select('users.*', DB::raw('AVG(votes.value) as vote_average'), 'sponsorship_user.end_date')
         ->where('sponsorship_user.end_date', '>', now())
         ->groupBy('users.id', 'sponsorship_user.end_date')
