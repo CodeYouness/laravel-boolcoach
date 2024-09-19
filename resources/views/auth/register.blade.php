@@ -8,15 +8,14 @@ Boolcoach
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+                <div class="card-header">{{ __('Registrati') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}" id="registration-form">
                         @csrf
 
                         {{-- ! NAME INPUT --}}
                         <div class="row mb-3">
-                            <label for="name" class="col-md-2 col-form-label text-md-end">{{ __('Name') }} </label>
+                            <label for="name" class="col-md-2 col-form-label text-md-end">{{ __('Nome') }} </label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-name" type="text" class="form-control @error('name') is-invalid @enderror" minlength="3" maxlength="20" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -31,7 +30,7 @@ Boolcoach
 
                         {{-- ! SURNAME INPUT --}}
                         <div class="row mb-3">
-                            <label for="surname" class="col-md-2 col-form-label text-md-end">{{ __('Surname') }} </label>
+                            <label for="surname" class="col-md-2 col-form-label text-md-end">{{ __('Cognome') }} </label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-surname" type="text" class="form-control @error('surname') is-invalid @enderror" minlength="3" maxlength="20" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
@@ -63,7 +62,7 @@ Boolcoach
 
                         {{-- ! PRICE INPUT --}}
                         <div class="row mb-3">
-                            <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Price') }}  </label>
+                            <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Prezzo €') }}  </label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
@@ -79,7 +78,7 @@ Boolcoach
 
                         {{-- ! LANGUAGE INPUT --}}
                         <div class="row mb-3">
-                            <label for="language" class="col-md-2 col-form-label text-md-end">{{ __('Language') }}  </label>
+                            <label for="language" class="col-md-2 col-form-label text-md-end">{{ __('Lingua') }}  </label>
 
                             <div class="col-md-9">
                                 <input id="registration-form-language" type="text" class="form-control @error('language') is-invalid @enderror" name="language" value="{{ old('language') }}" required autocomplete="language" autofocus>
@@ -95,7 +94,7 @@ Boolcoach
 
                         {{-- ! EMAIL INPUT --}}
                         <div class="row mb-3">
-                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('Email Address') }} </label>
+                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('Email') }} </label>
 
                             <div class="col-md-9">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -110,7 +109,7 @@ Boolcoach
 
                         {{-- ! GAME INPUT --}}
                         <div class="row mb-3 align-items-center">
-                            <label for="game" class="col-md-2 col-form-label text-md-end align-item-center">{{ __('Games') }} </label>
+                            <label for="game" class="col-md-2 col-form-label text-md-end align-item-center">{{ __('Giochi') }} </label>
                             <div class="form-group col-md-9">
                                 <div class="btn-group d-flex" role="group" aria-label="Basic checkbox toggle button group">
                                     @foreach ($games as $game)
@@ -138,9 +137,9 @@ Boolcoach
 
                         {{-- ! CONFIRM PASSWORD INPUT --}}
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-2 col-form-label text-md-end">{{ __('Confirm Password') }} </label>
+                            <label for="password-confirm" class="col-md-2 col-form-label text-md-end">{{ __('Conferma Password') }} </label>
 
-                            <div class="col-md-9">
+                            <div class="col-md-9 align-self-center">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 <span class="error" id="password-confirm-error"></span>
                             </div>
@@ -150,7 +149,7 @@ Boolcoach
                         <div class="row mb-0">
                             <div class="col-md-9 offset-md-2">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrati') }}
                                 </button>
                             </div>
                         </div>
