@@ -7,8 +7,10 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Game;
 use App\Models\Message;
 use App\Models\Review;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use function PHPUnit\Framework\isNull;
 
@@ -23,16 +25,29 @@ class UserController extends Controller
         $users = $users->all()->where('id', Auth::id());
         $lastReviews = Review::where('coach_id', Auth::id())
         ->lazyByIdDesc(5, $column= 'id');
-        $todayReviews = Review::where('coach_id', Auth::id())
-        ->where('created_at', now())
-        ->orderBy('created_at', 'DESC')
-        ->get();
-        $todayMessages = Message::where('coach_id', Auth::id())
-        ->where('created_at', today())
-        ->orderBy('created_at', 'DESC')
+
+
+        $today = Carbon::today()->toDateString();
+        $review = Review::where('coach_id', Auth::id())
+        ->whereDate('created_at', '=', $today)
         ->get();
 
-        return view('users.index', compact('users', 'lastReviews', 'todayReviews', 'todayMessages'));
+
+        $messages = Message::where('coach_id', Auth::id())
+        ->whereDate('created_at', '=', $today)
+        ->get();
+
+        $sponsorship = User::join('sponsorship_user', 'sponsorship_user.user_id', '=', 'users.id')
+        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
+        ->select('users.*', 'sponsorship_user.end_date')
+        ->where('users.id', Auth::id())
+        ->where('sponsorship_user.end_date', '>', now())
+        ->groupBy('users.id', 'sponsorship_user.end_date')
+        ->get();
+
+        $endDate = $sponsorship->pluck('end_date');
+
+        return view('users.index', compact('users', 'lastReviews', 'review', 'messages', 'sponsorship', 'endDate'));
     }
 
     /**
