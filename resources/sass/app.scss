@@ -31,8 +31,8 @@ body {
 }
 
 // || GUESTS
-nav {
-    background-color: #FF204E;
+nav#app-header {
+    background: linear-gradient(155deg, rgba(126,60,193,1) 0%, rgba(126,60,193,1) 35%, rgba(0,0,0,1) 35%, rgba(0,0,0,1) 36%, rgba(255,32,78,1) 36%, rgba(255,32,78,1) 100%);
 
     img {
         height: 2.5rem;
@@ -55,17 +55,40 @@ nav {
         text-decoration: none;
     }
 
-}
+    .nav-item {
+        background-color: #7E3CC1;
+        margin: 0 .5rem;
+        border-radius: 24px;
+        border: 3px solid black;
+        padding: 0 1rem;
+        // color: white;
 
-.nav-link {
-    color: white;
-    font-weight: bold;
+        .nav-link {
+            color: white;
+            font-weight: bold;
 
-    &:hover {
-        scale: 1.05;
-        color: #121922;
+            &:hover {
+                scale: 1.05;
+            }
+        }
+
+        &:hover {
+            scale: 1.05;
+        }
     }
 }
+
+    .nav-link {
+        color: white;
+        font-weight: bold;
+
+        &:hover {
+            scale: 1.05;
+        }
+    }
+
+
+
 
 
 .card {
@@ -207,13 +230,16 @@ nav {
     .games {
         flex-direction: row;
 
+        button {
+            align-self: start;
 
-        img {
-            width: 50%;
-            // max-width: 200px;
-            // height: auto;
-            display: inline-block;
+            img {
+                width: 50%;
+                display: inline-block;
+            }
         }
+
+
     }
 }
 
@@ -247,7 +273,7 @@ nav {
 }
 
 // || MEDIA QUERY
-@media (min-width: 500px) and (max-width: 991px){
+@media (max-width: 991px){
     #side-nav{
         width: $side-nav-width-sm;
     }

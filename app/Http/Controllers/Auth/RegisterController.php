@@ -51,7 +51,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'nickname' => ['nullable', 'string', 'max:255'],
+            'nickname' => ['nullable', 'string', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'img_url' =>['nullable'],
@@ -69,6 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -77,7 +78,7 @@ class RegisterController extends Controller
             'language' => $data['language'],
             'password' => Hash::make($data['password']),
             'summary' => null,
-            'img_url' =>' https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRk8SKKl8TSgTuEjwFILOIsa6qpjJDIygB5HKjjq62nkme7LMLPyoVob1t0cTDV2YWg6FtfhY9WXjLlbug',
+            'img_url' => null,
             'price' => $data['price'],
             'deleted_at' => null,
             'is_available' => true
