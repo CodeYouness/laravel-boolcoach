@@ -10,10 +10,10 @@
                     <h1 class="h2 text-white mb-4">Le tue sponsorizzazioni attive</h1>
                 </div>
 
-                @if ('message')
-                    <div class="alert">
-                        <p class="text-error fs-3 text-danger">{{$message}}</p>
-                    </div>
+                @if (session('error'))
+                <div class="alert alert-danger">
+                    <p class="text-danger fs-3">{{ session('error') }}</p>
+                </div>
                 @endif
 
                 @if($user->sponsorships->isNotEmpty())

@@ -27,17 +27,18 @@ class CheckoutController extends Controller
         };
 
         if($userHasSponsorship){
-            return view('sponsorships.index', compact('user'))->with('message', 'Non puoi acquistare una Sponsorship se ne hai una attiva!');
-        }else {
-            $braintreeService = new BraintreeService();
-            $clientToken = $braintreeService->clientToken();
-            $amount = $request->query('amount');
-            $sponsorshipId = $request->query('sponsorship_id');
+            // dd(session()->all());
+            return redirect()->route('sponsorships.index')->with('error', 'Non puoi acquistare una Sponsorship se ne hai una attiva!');
+            } else {
+                $braintreeService = new BraintreeService();
+                $clientToken = $braintreeService->clientToken();
+                $amount = $request->query('amount');
+                $sponsorshipId = $request->query('sponsorship_id');
 
-            $selectedSponsorship = Sponsorship::findOrFail($sponsorshipId);
-            $sponsorshipDuration = $selectedSponsorship->time;
+                $selectedSponsorship = Sponsorship::findOrFail($sponsorshipId);
+                $sponsorshipDuration = $selectedSponsorship->time;
 
-            return view('checkout', compact('clientToken', 'amount', 'selectedSponsorship', 'sponsorshipDuration'));
+                return view('checkout', compact('clientToken', 'amount', 'selectedSponsorship', 'sponsorshipDuration'));
         }
     }
 
