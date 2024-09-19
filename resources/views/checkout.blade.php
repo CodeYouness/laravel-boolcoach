@@ -1,6 +1,16 @@
 @extends('layouts.users')
 
 @section('main-content')
+<div class="sponsorship-info text-white m-4">
+    <h2>I dettagli del tuo acquisto</h2>
+
+    <div class="sub-details-list">
+        <p>Sponsorship selezionata: {{$selectedSponsorship->name}}</p>
+        <p>Inizio sponsorship: {{ Carbon\Carbon::now()->locale('it_IT')->timezone('Europe/Rome')->isoFormat('dddd D MMMM YYYY, H:mm') }}</p>
+        <p>Fine sponsorship: {{ Carbon\Carbon::now()->copy()->addHours($sponsorshipDuration)->locale('it_IT')->timezone('Europe/Rome')->isoFormat('dddd D MMMM YYYY, H:mm') }}</p>
+    </div>
+</div>
+
 <div id="dropin-container"></div>
 
 <form id="payment-form" action="{{ route('checkout.process') }}" method="POST">
