@@ -16,7 +16,7 @@
                             <div class="card mb-5">
                                 <div class="card-body">
                                     <h3 class="card-title">Piano: {{ $sponsorship->name }}</h3>
-                                    <h4 class="card-subtitle mb-2 text-black">{{ $sponsorship->price }}€</h4>
+                                    <h4 class="card-subtitle mb-2">{{ $sponsorship->price }}€</h4>
                                     <h6 class="card-title mb-2">
                                         Comprato il
                                         {{ \Carbon\Carbon::parse($sponsorship->pivot->start_date)->format('j F Y, \a\t H:i:s') }}
