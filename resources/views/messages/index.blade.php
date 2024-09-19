@@ -1,6 +1,6 @@
 @extends('layouts.users')
 @section('page-title')
-    Messages
+    Messaggi
 @endsection
 @section('main-content')
     <div class="container-fluid p-4 overflow-auto h100">

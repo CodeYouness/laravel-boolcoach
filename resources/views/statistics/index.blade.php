@@ -1,6 +1,6 @@
 @extends('layouts.users')
 @section('page-title')
-    Statistics
+    Statistiche
 @endsection
 @section('main-content')
 <h1 class="text-center m-4 text-white">Statistiche Recensioni e Messaggi</h1>
