@@ -10,7 +10,13 @@
                     <h1 class="h2 text-white mb-4">Le tue sponsorizzazioni attive</h1>
                 </div>
 
-                @if ($user->sponsorships->isNotEmpty())
+                @if (session('error'))
+                <div class="alert alert-danger">
+                    <p class="text-danger fs-3">{{ session('error') }}</p>
+                </div>
+                @endif
+
+                @if($user->sponsorships->isNotEmpty())
                     @foreach ($user->sponsorships as $sponsorship)
                         <div class="reviews-container">
                             <div class="card mb-5">
