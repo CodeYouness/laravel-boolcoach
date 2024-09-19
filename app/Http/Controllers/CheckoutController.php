@@ -31,26 +31,17 @@ class CheckoutController extends Controller
 
         if ($result->success) {
 
-            // dd($request);
-            //! AGGIORNARE LA TABELLA PIVOT
             $user = auth()->user();
-
-            // dd($user->sponsorships());
             $sponsorship = Sponsorship::findOrFail($request->input('sponsorship_id'));
-
             $startDate = Carbon::now();
             $endDate = $startDate->copy()->addHours($sponsorship->time);
 
-            try {
-                $user->sponsorships()->attach($sponsorship->id, [
-                    'start_date' => $startDate,
-                    'end_date' => $endDate
-                ]);
-            } catch (\Exception $e) {
-                dd('Errore nell\'aggiunta della sponsorship:', $e->getMessage());
-            }
+            $user->sponsorships()->attach($sponsorship->id, [
+                'start_date' => $startDate,
+                'end_date' => $endDate
+            ]);
 
-            return redirect()->route('users.index');
+            return redirect()->route('users.index')->with('message', 'Adesso sei un utente sponsorizzato!');
         } else {
             return back()->withErrors('Payment failed.');
         }
