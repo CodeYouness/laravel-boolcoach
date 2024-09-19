@@ -20,6 +20,6 @@ class ReviewController extends Controller
         $user = Auth::user();
         $userVotes = $user->votes()->orderBy('created_at', 'desc')->get();
 
-        return view('reviews.index', compact('reviews', 'userVotes'));
+        return view('reviews.index', compact('user', 'reviews', 'userVotes'));
     }
 }

@@ -49,8 +49,8 @@
                             </div>
                         @empty
                             <p class="text-secondary mb-0">Non ci sono recensioni</p>
-                        @endforelse --}}
-                    </section>
+                        </section>
+                        @endforelse
                 </div>
             </div>
         </div>

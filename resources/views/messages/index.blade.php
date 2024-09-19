@@ -4,6 +4,7 @@
 @endsection
 @section('main-content')
     <div class="container-fluid p-4 overflow-auto h100">
+        @if (count($messages) > 0)
         @foreach ($messages as $message)
             <div class="card mb-3 py-3">
                 <div class="col-12 mb-3 pt-3 px-4 pt-md-0">
@@ -29,5 +30,9 @@
                 </div>
             </div>
         @endforeach
+
+        @else <span class="text-white">Non ci sono messaggi</span>
+        @endif
+
     </div>
 @endsection
