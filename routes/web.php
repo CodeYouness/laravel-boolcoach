@@ -8,7 +8,6 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
