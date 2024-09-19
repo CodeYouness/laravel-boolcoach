@@ -1,6 +1,6 @@
 @extends('layouts.users')
 @section('page-title')
-Acquista una sponsorship
+Acquista una sponsorizzazione
 @endsection
 
 @section('main-content')

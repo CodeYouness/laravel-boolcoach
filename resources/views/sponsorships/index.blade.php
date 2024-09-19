@@ -1,6 +1,6 @@
 @extends('layouts.users')
 @section('page-title')
-    Sponsorships
+    Sponsorizzazioni
 @endsection
 @section('main-content')
     <div class="container">
@@ -15,14 +15,14 @@
                         <div class="reviews-container">
                             <div class="card mb-5">
                                 <div class="card-body">
-                                    <h3 class="card-title">Plan: {{ $sponsorship->name }}</h3>
+                                    <h3 class="card-title">Piano: {{ $sponsorship->name }}</h3>
                                     <h4 class="card-subtitle mb-2 text-black">{{ $sponsorship->price }}€</h4>
                                     <h6 class="card-title mb-2">
-                                        Buyed on
+                                        Comprato il
                                         {{ \Carbon\Carbon::parse($sponsorship->pivot->start_date)->format('j F Y, \a\t H:i:s') }}
                                     </h6>
                                     <h6 class="card-title mb-2">
-                                        It ends
+                                        Termina il
                                         {{ \Carbon\Carbon::parse($sponsorship->pivot->end_date)->format('j F Y, \a\t H:i:s') }}
                                     </h6>
                                 </div>
@@ -33,7 +33,7 @@
                     <div class="reviews-container">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title text-center">Nothing to see there...</h4>
+                                <h4 class="card-title text-center">Niente da vedere qua...</h4>
                             </div>
                         </div>
                     </div>
