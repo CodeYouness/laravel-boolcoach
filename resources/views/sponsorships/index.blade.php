@@ -11,6 +11,12 @@
                     <a href="{{route('sponsorship.buy')}}" class="card-link">Buy sponsorship</a>
                 </div>
 
+                @if ('message')
+                    <div class="alert">
+                        <p class="text-error fs-3 text-danger">{{$message}}</p>
+                    </div>
+                @endif
+
                 @if($user->sponsorships->isNotEmpty())
                     @foreach ($user->sponsorships as $sponsorship)
                         <div class="reviews-container">
