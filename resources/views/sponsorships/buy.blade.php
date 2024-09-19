@@ -7,7 +7,7 @@ Acquista una sponsorship
 <form id="sponsorship-form" method="GET" action="{{ route('checkout') }}">
     @csrf
 
-    <div class="row d-flex justify-content-around">
+    <div class="row d-flex justify-content-around mt-5">
         <!-- Card Basic -->
         <div class="card py-5" style="width: 20rem;">
             <div class="card-body text-center">

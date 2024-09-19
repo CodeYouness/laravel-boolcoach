@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div id="dropin-container"></div>
+<div id="dropin-container" class="mx-4"></div>
 
 <form id="payment-form" action="{{ route('checkout.process') }}" method="POST">
     @csrf
@@ -19,7 +19,7 @@
     <input type="hidden" id="nonce" name="payment_method_nonce">
     <input type="hidden" name="amount" value="{{ $amount }}">
     <input type="hidden" name="sponsorship_id" value="{{ $selectedSponsorship->id }}">
-    <button id="submit-button">Paga</button>
+    <button id="submit-button" class="btn btn-success ms-4 w-25">Paga</button>
 </form>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.33.4/js/dropin.min.js"></script>
