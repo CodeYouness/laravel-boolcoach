@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 @endif
-                <div class="col col-sm-5 col-md-3 col-l-4 col-xl-2">
+                <div class="col col-sm-5 col-md-3 col-l-4 col-xl-2 mt-4">
                     <a href="{{ route('sponsorship.buy') }}"
                         class="btn btn-success  fs-5 fw-bold d-flex align-items-center justify-content-center">Compra una
                         sponsorizzazione</a>

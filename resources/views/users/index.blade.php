@@ -18,14 +18,19 @@
                             <span>Non hai ancora settato alcun gioco</span>
                         @endforelse
                     </section>
-                    <section class="col-12 col-lg-4 card px-3 py-4 mb-3 order-lg-1 align-self-start">
-                        <p class="fs-4 ">Prezzo/ora: <span>&euro; {{auth()->user()->price}}</span></p>
-                        <p class="fs-4">Sei:  {{(auth()->user()->is_available == true) ? 'disponibile' : 'non disponibile'}}</p>
+                   <section class="col-12 col-lg-4 card px-3 py-4 mb-3 order-lg-1 align-self-start">
+                        <p class="fs-4 ">Prezzo/ora: <span>&euro; {{ auth()->user()->price }}</span></p>
+                        <p class="fs-4">Sei:
+                            {{ auth()->user()->is_available == true ? 'disponibile' : 'non disponibile' }}</p>
                         @auth
-                            <p class="fs-4"><span class="fs-3">{{count($review)}}</span> recensioni ricevute oggi</p>
+
+                                <p class="fs-4"><span class="fs-3">{{ count($review) }}</span> recensioni ricevute oggi</p>
+
                         @endauth
                         @auth
-                            <p class="fs-4"><span class="fs-3">{{count($messages)}}</span> messaggi ricevuti oggi</p>
+                            @if ($messages !== null)
+                                <p class="fs-4"><span class="fs-3">{{ count($messages) }}</span> messaggi ricevuti oggi</p>
+                            @endif
                         @endauth
                     </section>
                 </div>
@@ -39,27 +44,27 @@
                             <section class="col-12 card p-3 mb-3">
                                 <h1>Statistiche</h1>
                             </section>
-                            <section class="col-12 card p-3 mb-3">
-                                @if (count($sponsorship) != 0)
+{{--                             <section class="col-12 card p-3 mb-3">
+                     @if (count($sponsorship) != 0)
                                     <h4 class="mb-1">Hai una sponsorizzazione attiva</p>
-                                    <p class="fs-5 mb-0">Fine della sponsorizzazione: {{$endDate[0]}}</p>
-                                @else
-                                    <h5 class="text-secondary mb-0">Non hai sponsorizzazione attive</h5>
+                                        <p class="fs-5 mb-0">Fine della sponsorizzazione: {{ $endDate[0] }}</p>
+                                    @else
+                                        <h5 class="text-secondary mb-0">Non hai sponsorizzazione attive</h5>
                                 @endif
-                            </section>
+                            </section> --}}
                         </div>
                     </div>
-                    <section class="col-12 col-lg-4 card p-3 align-self-start">
+{{--                     <section class="col-12 col-lg-4 card p-3 align-self-start">
                         <h4>Ultime recensioni</h4>
-{{--                         @forelse ($lastReviews as $review)
+                      @forelse ($lastReviews as $review)
                             <div class="px-3 py-2 my-2">
                                 <p class="mb-1">Mittente: {{ $review->username }}</p>
                                 <p class="mb-0 ms-1">"{{ $review->description }}"</p>
                             </div>
                         @empty
                             <p class="text-secondary mb-0">Non ci sono recensioni</p>
-                        @endforelse --}}
-                    </section>
+                        @endforelse
+                    </section> --}}
                 </div>
             </div>
         </div>
