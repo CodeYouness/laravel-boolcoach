@@ -3,6 +3,7 @@
     BoolCoach
 @endsection
 @section('main-content')
+
     <div id="dashboard-wrapper" class="container py-4">
         {{-- @dd(count($review)) --}}
         <div class="row justify-content-center">
@@ -19,7 +20,7 @@
                         @endforelse
                     </section>
                    <section class="col-12 col-lg-4 card px-3 py-4 mb-3 order-lg-1 align-self-start">
-                        <p class="fs-4 ">Prezzo/ora: <span>&euro; {{ auth()->user()->price }}</span></p>
+                        <p class="fs-4 ">Prezzo/ora: <span>&euro; {{ $priceFormatted }}</span></p>
                         <p class="fs-4">Sei:
                             {{ auth()->user()->is_available == true ? 'disponibile' : 'non disponibile' }}</p>
                         @auth
