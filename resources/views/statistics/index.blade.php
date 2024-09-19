@@ -3,33 +3,21 @@
     Statistics
 @endsection
 @section('main-content')
+<h1>Statistiche Recensioni e Messaggi</h1>
 
-    <div class="container p-4">
-        <div class="row d-flex flex-center my-4">
-            <div class="col-12">
-                <h1 class="h2 text-white mb-4 text-center">Your statistics</h1>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <canvas id="barChart"></canvas>
-                            <script>
-                                document.addEventListener("DOMContentLoaded", () => {
-                                    new Chart(document.querySelector('#barChart'), {
-                                        type: 'bar',
-                                        data: {
-                                            labels:{!! json_encode($labels) !!},
-                                            datasets: [{
-                                                label: 'Voti Ricevuti',
-                                                data: {!! json_encode($data) !!},
-                                            }]
-                                        }
-                                    })
-                                })
-                            </script>
-                        </div>
-                    </div>
+    <h2>Voti per Mese</h2>
+    <canvas id="voteChart"></canvas>
 
-                </div>
-        </div>
+    <h2>Messaggi per Mese</h2>
+    <canvas id="messageChart"></canvas>
+
+    <div id="data"
+        data-message-labels="{{ json_encode($messageLabels) }}"
+        data-review-data="{{ json_encode($reviewData) }}"
+        data-message-data="{{ json_encode($messageData) }}"
+        data-vote-labels="{{ json_encode($voteLabels) }}"
+        data-vote-data="{{ json_encode($voteData)}}">
     </div>
+
+    @vite('resources/js/Statistics.js')
 @endsection
