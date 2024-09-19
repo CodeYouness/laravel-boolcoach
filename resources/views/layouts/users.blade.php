@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>@yield('page-title')</title>
-    @vite(['resources/sass/app.scss', 'resources/sass/navbar-hover-links.scss', 'resources/js/app.js', 'resources/js/altPropic.js'])
+    @vite(['resources/sass/app.scss', 'resources/sass/navbar-hover-links.scss', 'resources/sass/buy-sponsorship.scss', 'resources/js/app.js', 'resources/js/altPropic.js'])
 </head>
 
 <body>
