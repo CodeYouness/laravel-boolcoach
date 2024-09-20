@@ -23,7 +23,8 @@ const voteChart = new Chart(voteCtx, {
             y: {
                 beginAtZero: true
             }
-        }
+        },
+
     }
 });
 
@@ -36,19 +37,19 @@ const messageChart = new Chart(messageCtx, {
         datasets: [{
             label: 'Numero di Messaggi',
             data: messageData,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            backgroundColor: 'rgba(75, 192, 192, 1)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 2,
-            fill: true,
+            fill: false,
             tension: 0.3
         },
         {
             label: 'Numero di Recensioni',
             data: reviewData,
-            backgroundColor: 'rgba(0, 0, 0, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(128, 0, 128, 1)',
+            borderColor: 'rgba(128, 0, 128, 1)',
             borderWidth: 2,
-            fill: true,
+            fill: false,
             tension: 0.3
         }]
     },
@@ -56,6 +57,28 @@ const messageChart = new Chart(messageCtx, {
         scales: {
             y: {
                 beginAtZero: true
+            }
+        },
+        transitions: {
+            show: {
+                animations: {
+                    x: {
+                        from: 0
+                    },
+                    y: {
+                        from: 0
+                    }
+                }
+            },
+            hide: {
+                animations: {
+                    x: {
+                        to: 0
+                    },
+                    y: {
+                        to: 0
+                    }
+                }
             }
         }
     }
