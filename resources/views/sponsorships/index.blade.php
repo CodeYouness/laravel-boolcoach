@@ -7,7 +7,7 @@
         <div class="row d-flex flex-center m-4 me-4">
             <div class="col">
                 <div class="d-flex justify-content-between">
-                    <h1 class="h2 text-white mb-4">Le tue sponsorizzazioni attive</h1>
+                    <h1 class="h2 text-white mb-4">Le tue sponsorizzazioni</h1>
                 </div>
 
                 @if (session('error'))
