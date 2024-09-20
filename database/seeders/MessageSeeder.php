@@ -23,7 +23,8 @@ class MessageSeeder extends Seeder
                 'username' => $faker->userName(),
                 'title'=> $faker->sentence(rand(2, 5)),
                 'content' => $faker->realText(500),
-                'email'=> $faker->email()
+                'email'=> $faker->email(),
+                'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ];
 
             Message::create($data);

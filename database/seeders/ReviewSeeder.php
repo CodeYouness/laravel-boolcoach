@@ -23,7 +23,8 @@ class ReviewSeeder extends Seeder
                 'coach_id' => $faker->randomElement($coaches_id),
                 'username' => $faker->name(),
                 'email' => $faker->email(),
-                'description' => $faker->paragraph()
+                'description' => $faker->paragraph(),
+                'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ];
             Review::create($data);
         }

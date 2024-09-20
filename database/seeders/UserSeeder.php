@@ -49,6 +49,20 @@ class UserSeeder extends Seeder
                 'is_available'=> true
             ];
 
+        $richmarty = [
+            'name' => 'riccardo',
+            'surname'=>  'martignago',
+            'nickname' => 'theking',
+            'email' => 'riccardo@gmail.com',
+            'language' => 'italian',
+            "password"=> Hash::make('12345678'),
+            'summary'=> 'sono il coach riccardo, passato a miglior vita per overdose in un orgia gay',
+            'img_url'=> 'https://a.pinatafarm.com/2160x1080/2970ab2263/dance-funeral.jpg',
+            'price'=> 9.99,
+            'is_available'=> true
+        ];
+
             User::create($customData);
+            User::create($richmarty);
     }
 }
