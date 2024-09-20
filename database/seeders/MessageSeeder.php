@@ -17,7 +17,7 @@ class MessageSeeder extends Seeder
     {
         $coaches_id = User::all()->pluck('id');
 
-        for ($i=0; $i < 50; $i++) {
+        for ($i=0; $i < 100; $i++) {
             $data = [
                 'coach_id' => $faker->randomElement($coaches_id),
                 'username' => $faker->userName(),
