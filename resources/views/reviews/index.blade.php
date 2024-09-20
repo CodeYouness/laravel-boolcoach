@@ -1,14 +1,15 @@
 @extends('layouts.users')
 @section('page-title')
-    Reviews
+    Recensioni
 @endsection
 @section('main-content')
+{{-- @dd($user->reviews) --}}
     <div class="container-fluid">
         <div class="row d-flex flex-center m-4">
             <div class="col-12 col-md-6">
                 <h1 class="h2 text-white mb-4">Le tue recensioni</h1>
                 <div class="reviews-container">
-                    @if ($user->review)
+                    @if (count($user->reviews) > 0)
                         @foreach ($reviews as $index => $review)
                             <div class="card mb-5">
                                 <div class="card-body">

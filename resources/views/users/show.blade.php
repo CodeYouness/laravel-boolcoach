@@ -61,7 +61,7 @@
                         </p>
                         <p class="fs-4 mb-1">
                             <span class="me-3">Prezzo/ora: </span>&euro;
-                            {{$user->price}}
+                            {{$priceFormatted}}
                         </p>
                         <p class="fs-4 mb-1">
                             <span class="me-3">Lingua: </span>
