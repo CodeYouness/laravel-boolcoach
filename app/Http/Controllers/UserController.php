@@ -28,7 +28,6 @@ class UserController extends Controller
         $lastReviews = Review::where('coach_id', Auth::id())
             ->lazyByIdDesc(5, $column = 'id');
 
-
         $today = Carbon::today()->toDateString();
         $review = Review::where('coach_id', Auth::id())
             ->whereDate('created_at', '=', $today)
