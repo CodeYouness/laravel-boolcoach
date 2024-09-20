@@ -46,6 +46,7 @@ class ApiUserController extends Controller
         ->where('sponsorship_user.end_date', '>', Carbon::now()->timezone('Europe/Rome'))
         ->groupBy('users.id', 'sponsorship_user.end_date')
         ->orderBy('vote_average', 'desc')
+        ->where('is_available', true)
         ->get();
 
         foreach ($sponsoredUsers as $user) {
