@@ -16,12 +16,10 @@ class CheckoutController extends Controller
         $user = Auth()->user();
         $sponsorships = $user->sponsorships;
 
-        // dd($sponsorships);
         foreach ($sponsorships as $sponsorship) {
             if($sponsorship->pivot_end_date > today()){
                 $userHasSponsorship = false;
             }else{
-                // dd('HAHA NON PUOI AVERE SPONSORSHIPS');
                 $userHasSponsorship = true;
             }
         };
@@ -46,7 +44,6 @@ class CheckoutController extends Controller
     {
         $braintreeService = new BraintreeService();
         $result = $braintreeService->processPayment($request->amount, $request->payment_method_nonce);
-
 
         if ($result->success) {
 

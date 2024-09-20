@@ -1,13 +1,30 @@
 @extends('layouts.users')
 
+@section('page-title')
+Acquista una sponsorizzazione
+@endsection
+
 @section('main-content')
-<div class="sponsorship-info text-white m-4">
-    <h2>I dettagli del tuo acquisto</h2>
+<div class="sponsorship-info text-white m-4 d-flex justify-content-evenly align-items-center">
 
     <div class="sub-details-list">
+        <h2 class="mb-5">I dettagli del tuo acquisto</h2>
         <p>Sponsorship selezionata: {{$selectedSponsorship->name}}</p>
-        <p>Inizio sponsorship: {{ Carbon\Carbon::now()->locale('it_IT')->timezone('Europe/Rome')->isoFormat('dddd D MMMM YYYY, H:mm') }}</p>
-        <p>Fine sponsorship: {{ Carbon\Carbon::now()->copy()->addHours($sponsorshipDuration)->locale('it_IT')->timezone('Europe/Rome')->isoFormat('dddd D MMMM YYYY, H:mm') }}</p>
+        <p>Inizio sponsorship: {{ Carbon\Carbon::now()->locale('it_IT')->timezone('Europe/Rome')->isoFormat('dddd D MMMM YYYY') }}</p>
+        <p>Fine sponsorship: {{ Carbon\Carbon::now()->copy()->addHours($sponsorshipDuration)->locale('it_IT')->timezone('Europe/Rome')->isoFormat('dddd D MMMM YYYY') }}</p>
+        <p>ATTENZIONE: hai 5 minuti di tempo per effettuare il pagamento! Dopodiché sarai reindirizzato</p>
+    </div>
+
+    <div class="timer d-flex">
+        <div class="countdown-el mins-c">
+            <p class="fs-2" id="mins">0</p>
+        </div>
+        <div class="fs-2">
+            <p>:</p>
+        </div>
+        <div class="countdown-el seconds-c">
+            <p class="fs-2" id="seconds">0</p>
+        </div>
     </div>
 </div>
 
@@ -55,6 +72,38 @@
             });
         });
     });
+
+    const minsEl = document.getElementById('mins');
+    const secondsEl = document.getElementById('seconds');
+
+    let totalSeconds = 5 * 60; // 5 minuti in secondi
+
+    function countdown() {
+        const mins = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+
+        minsEl.innerHTML = formatTime(mins);
+        secondsEl.innerHTML = formatTime(seconds);
+
+        if (totalSeconds > 0) {
+            totalSeconds--;
+        } else {
+            clearInterval(interval);
+            window.alert('Timer scaduto! Sarai reindirizzato')
+            window.location.href = 'http://127.0.0.1:8000/sponsorships'
+        }
+    }
+
+    const interval = setInterval(countdown, 1000);
+
+    countdown();
+
+    function formatTime(time) {
+        return time < 10 ? `0${time}` : time;
+    }
+
+
+
 </script>
 @endsection
 
