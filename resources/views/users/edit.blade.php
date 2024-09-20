@@ -1,13 +1,13 @@
 @extends('layouts.users')
 @section('page-title')
-    Edit {{ $user->nickname }}
+    Edita {{ $user->nickname }}
 @endsection
 @section('main-content')
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Edit {{ $user->nickname }}</div>
+                    <div class="card-header">Edita {{ $user->nickname }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('users.update', $user) }}" enctype="multipart/form-data" id="registration-form">
@@ -17,7 +17,7 @@
                             {{-- ! NAME INPUT --}}
                             <div class="row mb-3">
                                 <label for="name"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Name') }}</label>
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Nome') }}</label>
 
                                 <div class="col-md-9">
                                     <input id="registration-form-name" type="text"
@@ -37,7 +37,7 @@
                             {{-- ! SURNAME INPUT --}}
                             <div class="row mb-3">
                                 <label for="surname"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Surname') }}</label>
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Cognome') }}</label>
 
                                 <div class="col-md-9">
                                     <input id="registration-form-surname" type="text"
@@ -77,7 +77,7 @@
 
                             {{-- ! PICTURE --}}
                             <div class="row mb-3 ">
-                                <label for="img_url" class="col-md-2 col-form-label text-md-end">Image</label>
+                                <label for="img_url" class="col-md-2 col-form-label text-md-end">Immagine</label>
                                 <div class="col-md-9">
                                     <input class="form-control" type="file" id="img_url" name="img_url">
                                 </div>
@@ -85,7 +85,7 @@
 
                             {{-- ! PRICE INPUT --}}
                             <div class="row mb-3">
-                                <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Price') }}</label>
+                                <label for="price" class="col-md-2 col-form-label text-md-end">{{ __('Prezzo') }}</label>
                                 <div class="col-md-9">
                                     <input id="registration-form-price" type="text"
                                         class="form-control @error('price') is-invalid @enderror" name="price"
@@ -103,7 +103,7 @@
                             {{-- ! LANGUAGE INPUT --}}
                             <div class="row mb-3">
                                 <label for="language"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Language') }}</label>
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Lingua') }}</label>
 
                                 <div class="col-md-9">
                                     <input id="registration-form-language" type="text"
@@ -123,7 +123,7 @@
                             {{-- ! EMAIL INPUT --}}
                             <div class="row mb-3">
                                 <label for="email"
-                                    class="col-md-2 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                    class="col-md-2 col-form-label text-md-end">{{ __('Email') }}</label>
 
                                 <div class="col-md-9">
                                     <input id="email" type="email"
@@ -141,7 +141,7 @@
                             {{-- ! GAME INPUT --}}
                             <div class="row mb-3 align-items-center">
                                 <label for="game"
-                                    class="col-md-2 col-form-label text-md-end align-item-center">{{ __('Games') }}</label>
+                                    class="col-md-2 col-form-label text-md-end align-item-center">{{ __('Giochi') }}</label>
                                 <div class="form-group col-md-9">
                                     <div class="btn-group d-flex" role="group"
                                         aria-label="Basic checkbox toggle button group">
@@ -159,7 +159,7 @@
 
                             {{-- ! SUMMARY --}}
                             <div class="row mb-3">
-                                <label for="summary" class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
+                                <label for="summary" class="col-md-2 col-form-label text-md-end">{{ __('Sommario') }}</label>
                                 <div class="col-md-9">
                                     <textarea id="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
                                             autocomplete="summary" rows="5"
@@ -176,7 +176,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-9 offset-md-2">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Edit') }}
+                                        {{ __('Edita') }}
                                     </button>
                                 </div>
                             </div>

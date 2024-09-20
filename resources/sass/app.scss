@@ -104,12 +104,18 @@ nav#app-header {
     // border: 1.5px solid white;
     border-radius: 20px;
 
+    .my_text-gray{
+        color: gray;
+    }
+
     .card-header {
         border-bottom: 1px solid white;
     }
 
     input,
-    input:focus {
+    input:focus,
+    textarea,
+    textarea:focus {
         background-color: transparent;
         color: white;
     }
