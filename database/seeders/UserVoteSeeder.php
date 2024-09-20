@@ -19,8 +19,12 @@ class UserVoteSeeder extends Seeder
         $vote_ids = Vote::all()->pluck("id");
 
         foreach ($users as $user) {
-            $random_votes = $faker->randomElements($vote_ids, $faker->numberBetween(10, 20), true);
-            $user->votes()->attach($random_votes);
+            $random_votes = $faker->randomElements($vote_ids, $faker->numberBetween(20, 30), true);
+            foreach ($random_votes as $vote_id) {
+                $user->votes()->attach($vote_id, [
+                    'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
+                ]);
+            }
         }
     }
 }
