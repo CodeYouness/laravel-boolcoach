@@ -45,17 +45,17 @@
                             <section class="col-12 card p-3 mb-3">
                                 <h1>Statistiche</h1>
                             </section>
-{{--                             <section class="col-12 card p-3 mb-3">
+                            <section class="col-12 card p-3 mb-3">
                      @if (count($sponsorship) != 0)
                                     <h4 class="mb-1">Hai una sponsorizzazione attiva</p>
                                         <p class="fs-5 mb-0">Fine della sponsorizzazione: {{ $endDate[0] }}</p>
                                     @else
                                         <h5 class="text-secondary mb-0">Non hai sponsorizzazione attive</h5>
                                 @endif
-                            </section> --}}
+                            </section>
                         </div>
                     </div>
-{{--                     <section class="col-12 col-lg-4 card p-3 align-self-start">
+                    <section class="col-12 col-lg-4 card p-3 align-self-start">
                         <h4>Ultime recensioni</h4>
                       @forelse ($lastReviews as $review)
                             <div class="px-3 py-2 my-2">
@@ -65,7 +65,7 @@
                         @empty
                             <p class="text-secondary mb-0">Non ci sono recensioni</p>
                         @endforelse
-                    </section> --}}
+                    </section>
                 </div>
             </div>
         </div>
