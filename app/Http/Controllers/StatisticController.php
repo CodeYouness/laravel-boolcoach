@@ -14,18 +14,58 @@ class StatisticController extends Controller
         $user = Auth::user();
         $coachId = $user->id;
 
-        $votesDistribution = DB::table('user_vote')
+        // voti ricevuti per mese
+        $votes = DB::table('user_vote')
             ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
             ->join('users', 'user_vote.user_id', '=', 'users.id')
             ->where('users.id', $coachId)
-            ->select('votes.value', DB::raw('COUNT(votes.value) as vote_count'))
-            ->groupBy('votes.value')
-            ->orderBy('votes.value', 'asc')
+            ->select(
+                DB::raw('YEAR(user_vote.created_at) as year'),
+                DB::raw('MONTH(user_vote.created_at) as month'),
+                DB::raw('COUNT(votes.value) as vote_count')
+            )
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
             ->get();
 
-        $labels = $votesDistribution->pluck('value')->toArray();
-        $data = $votesDistribution->pluck('vote_count')->toArray();
+        // Statistiche per mese
+        $messages = DB::table('messages')
+            ->where('messages.coach_id', $coachId)
+            ->select(
+                DB::raw('YEAR(messages.created_at) as year'),
+                DB::raw('MONTH(messages.created_at) as month'),
+                DB::raw('COUNT(messages.id) as message_count')
+            )
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'desc')
+            ->orderBy('month', 'desc')
+            ->get();
 
-        return view('statistics.index', compact('labels', 'data'));
+        // Recensioni per mese
+        $reviewsMonth = DB::table('reviews')
+            ->select(DB::raw('YEAR(created_at) as year'), DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as review_count'))
+            ->where('coach_id', $coachId)
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
+            ->get();
+
+        // Preparo i dati per i grafici e le statistiche
+        $voteLabels = $votes->map(function($item) {
+            return $item->month . '/' . $item->year;
+        })->toArray();
+
+        $voteData = $votes->pluck('vote_count')->toArray();
+
+        $messageLabels = $messages->map(function($item) {
+            return $item->month . '/' . $item->year;
+        })->toArray();
+
+        $messageData = $messages->pluck('message_count')->toArray();
+
+        $reviewData = $reviewsMonth->pluck('review_count');
+
+        return view('statistics.index', compact('voteLabels', 'voteData', 'messageLabels', 'messageData', 'reviewData'));
     }
 }

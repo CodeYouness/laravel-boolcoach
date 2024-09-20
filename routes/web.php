@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SponsorshipController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------

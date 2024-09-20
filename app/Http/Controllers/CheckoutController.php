@@ -12,15 +12,34 @@ class CheckoutController extends Controller
 {
     public function showCheckoutForm(Request $request)
     {
-        $braintreeService = new BraintreeService();
-        $clientToken = $braintreeService->clientToken();
-        $amount = $request->query('amount');
-        $sponsorshipId = $request->query('sponsorship_id');
+        $userHasSponsorship = null;
+        $user = Auth()->user();
+        $sponsorships = $user->sponsorships;
 
-        $selectedSponsorship = Sponsorship::findOrFail($sponsorshipId);
-        $sponsorshipDuration = $selectedSponsorship->time;
+        // dd($sponsorships);
+        foreach ($sponsorships as $sponsorship) {
+            if($sponsorship->pivot_end_date > today()){
+                $userHasSponsorship = false;
+            }else{
+                // dd('HAHA NON PUOI AVERE SPONSORSHIPS');
+                $userHasSponsorship = true;
+            }
+        };
 
-        return view('checkout', compact('clientToken', 'amount', 'selectedSponsorship', 'sponsorshipDuration'));
+        if($userHasSponsorship){
+            // dd(session()->all());
+            return redirect()->route('sponsorships.index')->with('error', 'Non puoi acquistare una Sponsorship se ne hai una attiva!');
+            } else {
+                $braintreeService = new BraintreeService();
+                $clientToken = $braintreeService->clientToken();
+                $amount = $request->query('amount');
+                $sponsorshipId = $request->query('sponsorship_id');
+
+                $selectedSponsorship = Sponsorship::findOrFail($sponsorshipId);
+                $sponsorshipDuration = $selectedSponsorship->time;
+
+                return view('checkout', compact('clientToken', 'amount', 'selectedSponsorship', 'sponsorshipDuration'));
+        }
     }
 
     public function processPayment(Request $request)

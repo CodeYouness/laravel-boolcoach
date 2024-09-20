@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Node\Builder;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 use App\Models\Game;
 use App\Models\Message;
 use App\Models\Review;
@@ -30,14 +31,20 @@ class ApiUserController extends Controller
         //eventuale orderBy va inserito qui
         ->get();
 
-        $sponsoredUsers = User::join('user_vote', 'user_vote.user_id', '=', 'users.id')
-        ->join('votes', 'user_vote.vote_id', '=', 'votes.id')
-        ->join('sponsorship_user', 'sponsorship_user.user_id', '=', 'user_vote.user_id')
-        ->join('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorship_user.sponsorship_id')
+        foreach ($users as $user) {
+            if (Str::startsWith($user->img_url, 'avatars')) {
+                $user->img_url = Storage::url($user->img_url);
+            }
+        }
+
+        $sponsoredUsers = User::with('games', 'votes')
+        ->leftJoin('user_vote', 'user_vote.user_id', '=', 'users.id')
+        ->leftJoin('votes', 'user_vote.vote_id', '=', 'votes.id')
+        ->leftJoin('sponsorship_user', 'sponsorship_user.user_id', '=', 'users.id')
+        ->leftJoin('sponsorships', 'sponsorship_user.sponsorship_id', '=', 'sponsorships.id')
         ->select('users.*', DB::raw('AVG(votes.value) as vote_average'), 'sponsorship_user.end_date')
-        ->where('sponsorship_user.end_date', '>', now())
+        ->where('sponsorship_user.end_date', '>', Carbon::now()->timezone('Europe/Rome'))
         ->groupBy('users.id', 'sponsorship_user.end_date')
-        ->with('games', 'votes')
         ->orderBy('vote_average', 'desc')
         ->get();
 
