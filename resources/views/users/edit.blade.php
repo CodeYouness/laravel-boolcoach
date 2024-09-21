@@ -161,7 +161,7 @@
                             <div class="row mb-3">
                                 <label for="summary" class="col-md-2 col-form-label text-md-end">{{ __('Summary') }}</label>
                                 <div class="col-md-9">
-                                    <textarea id="summary" class="form-control @error('summary') is-invalid @enderror" name="summary"
+                                    <textarea id="summary" class="form-control text-white @error('summary') is-invalid @enderror" name="summary"
                                             autocomplete="summary" rows="5"
                                             placeholder="Tell us more about yourself">{{ old('summary', $user->summary) }}</textarea>
                                     @error('summary')
