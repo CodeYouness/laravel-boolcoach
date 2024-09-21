@@ -69,7 +69,7 @@
                         </p>
                         <p class="fs-4 mb-0">
                             <span class="me-3">Descrizione: </span>
-                            {{$user->summary}}
+                            <span>{{$user->summary ?? 'Non hai ancora inserito un sommario'}}</span>
                         </p>
                     </div>
                     <div class="col-12 card p-3">
