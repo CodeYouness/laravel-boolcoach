@@ -254,6 +254,11 @@ nav#app-header {
 
 // ! PROFILE
 #profile-wrapper {
+
+    button{
+        text-wrap: auto;
+    }
+    
     .profile-img {
         width: 300px;
         aspect-ratio: 1;
