@@ -68,7 +68,7 @@
                             {{$user->language}}
                         </p>
                         <p class="fs-4 mb-0">
-                            <span class="me-3">Descrizione: </span>
+                            <span class="me-3">Sommario: </span>
                             <span>{{$user->summary ?? 'Non hai ancora inserito un sommario'}}</span>
                         </p>
                     </div>

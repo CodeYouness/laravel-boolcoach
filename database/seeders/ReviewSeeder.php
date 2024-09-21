@@ -18,12 +18,13 @@ class ReviewSeeder extends Seeder
 
         $coaches_id = User::all()->pluck("id");
 
-        for ($i=0; $i < 10; $i++) {
+        for ($i=0; $i < 100; $i++) {
             $data = [
                 'coach_id' => $faker->randomElement($coaches_id),
                 'username' => $faker->name(),
                 'email' => $faker->email(),
-                'description' => $faker->paragraph()
+                'description' => $faker->paragraph(),
+                'created_at' => $faker->dateTimeBetween('-1 year', 'now'),
             ];
             Review::create($data);
         }

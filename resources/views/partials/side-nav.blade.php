@@ -65,8 +65,21 @@
                 </div>
             </li>
 
+            {{-- ! MESSAGES --}}
+            <li class="nav-item d-flex align-items-center mb-2 {{Route::is('messages.index') ? 'active-link' : ''}}">
+                <div class="link-container d-flex flex-column">
+                    <div class="w-100 d-flex text-center align-items-center">
+                        <a href="{{route('messages.index')}}" class="menu-icon">
+                            <i class="fa-solid fa-message mx-2"></i>
+                        </a>
+                        <a href="{{route('messages.index')}}" class="text-decoration-none  flex-grow-1 ms-3 d-none d-lg-block">Messaggi</a>
+                    </div>
+                    <div class="bold-line"></div>
+                </div>
+            </li>
+
             {{-- ! SPONSORSHIPS --}}
-            <li class="w-100 nav-item d-flex align-items-center mb-2 {{Route::is('sponsorships.index') ? 'active-link' : ''}}">
+            <li class="w-100 nav-item d-flex align-items-center  {{Route::is('sponsorships.index') ? 'active-link' : ''}}">
                 <div class="link-container d-flex flex-column">
                     <div class="w-100 text-center d-flex align-items-center">
                         <a href="{{route('sponsorships.index')}}" class="menu-icon">
@@ -75,19 +88,6 @@
                         <a href="{{route('sponsorships.index')}}" class="text-decoration-none flex-grow-1 ms-3 d-none d-lg-block">Sponsorizzazioni</a>
                     </div>
                     <div class="bold-line"></div>
-                </div>
-            </li>
-
-            {{-- ! MESSAGES --}}
-            <li class="nav-item d-flex align-items-center {{Route::is('messages.index') ? 'active-link' : ''}}">
-                <div class="link-container d-flex flex-column">
-                    <div class="w-100 d-flex text-center align-items-center">
-                        <a href="{{route('messages.index')}}" class="menu-icon">
-                            <i class="fa-solid fa-message mx-2"></i>
-                        </a>
-                        <a href="{{route('messages.index')}}" class="text-decoration-none  flex-grow-1 ms-3 d-none d-lg-block">Messaggi</a>
-                    </div>
-                        <div class="bold-line"></div>
                 </div>
             </li>
         </ul>

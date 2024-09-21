@@ -235,12 +235,15 @@ nav#app-header {
 #dashboard-wrapper{
     .games {
         flex-direction: row;
+        justify-content: space-evenly;
 
         button {
             align-self: start;
+            height: 5rem;
 
             img {
-                width: 50%;
+                width: 100%;
+                height: 100%;
                 display: inline-block;
             }
         }
@@ -251,6 +254,11 @@ nav#app-header {
 
 // ! PROFILE
 #profile-wrapper {
+
+    button{
+        text-wrap: auto;
+    }
+    
     .profile-img {
         width: 300px;
         aspect-ratio: 1;

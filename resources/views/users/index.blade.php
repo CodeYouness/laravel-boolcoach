@@ -3,14 +3,13 @@
     BoolCoach
 @endsection
 @section('main-content')
-
     <div id="dashboard-wrapper" class="container py-4">
         {{-- @dd(count($review)) --}}
         <div class="row justify-content-center">
             <div class="col-10 col-lg-12">
                 <div class="row justify-content-around">
                     <section class="games col-12 col-lg-7 card p-3 mb-3">
-                        {{-- <h1 class="text-white">Giochi</h1> --}}
+                {{-- <h1 class="text-white">Giochi</h1> --}}
                         @forelse (auth()->user()->games as $game)
                             <button class="btn bg-transparent mx-2 mb-2 border-0">
                                 <img src="{{ $game->img }}" alt="{{ $game->name }}">
@@ -19,13 +18,13 @@
                             <span>Non hai ancora settato alcun gioco</span>
                         @endforelse
                     </section>
-                   <section class="col-12 col-lg-4 card px-3 py-4 mb-3 order-lg-1 align-self-start">
+                    <section class="col-12 col-lg-4 card px-3 py-4 mb-3 order-lg-1 align-self-start">
                         <p class="fs-4 ">Prezzo/ora: <span>&euro; {{ $priceFormatted }}</span></p>
                         <p class="fs-4">Sei:
                             {{ auth()->user()->is_available == true ? 'disponibile' : 'non disponibile' }}</p>
                         @auth
 
-                                <p class="fs-4"><span class="fs-3">{{ count($review) }}</span> recensioni ricevute oggi</p>
+                            <p class="fs-4"><span class="fs-3">{{ count($review) }}</span> recensioni ricevute oggi</p>
 
                         @endauth
                         @auth
@@ -42,9 +41,6 @@
                 <div class="row justify-content-around">
                     <div class="col-12 col-lg-7">
                         <div class="row">
-                            <section class="col-12 card p-3 mb-3">
-                                <h1>Statistiche</h1>
-                            </section>
                             <section class="col-12 card p-3 mb-3">
                                 @if (count($sponsorship) != 0)
                                     <h4 class="mb-1">Hai una sponsorizzazione attiva</p>
