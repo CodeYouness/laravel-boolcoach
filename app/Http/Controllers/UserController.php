@@ -105,7 +105,7 @@ class UserController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('img_url')) {
-            $filepath = $request->file('img_url')->store('avatars');
+            $filepath = $request->file('img_url')->store('avatars', 'public');
 
             //quello che viene salvato nel db
             $data['img_url'] = $filepath;

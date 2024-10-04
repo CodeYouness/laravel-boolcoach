@@ -78,13 +78,13 @@ class UserSeeder extends Seeder
             [
                 'name' => 'youness',
                 'surname' =>  'lijassi',
-                'nickname' => 'PentitoDiMafia',
+                'nickname' => 'Junes',
                 'email' => 'youness@gmail.com',
-                'language' => 'cavallones arabo',
+                'language' => 'italiano',
                 "password" => Hash::make('12345678'),
-                'summary' => 'Non ho precedenti penali, mai avuto a che fare con la mafia e mai stato coinvolto in trattati stato-mafia, tossicodipendente fin da piccolo ma bravo anche con le armi (in-game e irl)',
+                'summary' => 'Descrizione da coach necessario agli utenti per farti conoscere',
                 'img_url' => 'https://avatars.githubusercontent.com/u/119518265?v=4',
-                'price' => 999,
+                'price' => 99,
                 'is_available' => true
             ];
 
